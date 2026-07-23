@@ -1,6 +1,25 @@
 * {
   box-sizing: border-box;
 }
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    color: #101b35;
+    text-decoration: none;
+}
+
+/* Ảnh logo */
+.brand .company-logo {
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px;
+    max-width: 46px !important;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+}
 
 :root {
   --blue: #2563eb;
@@ -63,14 +82,14 @@ button {
   font-weight: 800;
 }
 
-.primary {
+/*.primary {
   border: 0;
   border-radius: 8px;
   background: var(--blue);
   color: #fff;
   padding: 11px 17px;
   font-weight: 700;
-}
+}*/
 
 .outline {
   border: 1px solid #dce2eb;
