@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VietTech Development JSC</title>
+  <!--favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="../favicon/fa/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../favicon/fa/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../favicon/fa/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../favicon/fa/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../favicon/fa/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../favicon/fa/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../favicon/fa/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../favicon/fa/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/fa/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="../favicon/fa/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/fa/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../favicon/fa/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/fa/favicon-16x16.png">
+    <link rel="manifest" href="../favicon/fa/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="../favicon/fa/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--end-->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="#">
+        <img
+            src="../img/logo1.png"
+            alt="Logo VietTech"
+            class="company-logo"
+          />
+        <!--<span class="brand-logo">VT</span>-->
+        <span><b>VietTech</b><small>DEVELOPMENT JSC</small></span>
+      </a>
+
+      <nav>
+        <p>QUẢN TRỊ HỆ THỐNG</p>
+        <button class="nav-item active" data-page="users"><span>♟</span>Quản lý người dùng</button>
+        <button class="nav-item" data-page="settings"><span>⚙</span>Cấu hình hệ thống</button>
+      </nav>
+
+      <div class="admin-card">
+        <span class="avatar blue">AD</span>
+        <span><b>Quản trị viên</b><small>Administrator</small></span>
+        <button title="Đăng xuất">↪</button>
+      </div>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar">
+        <div class="breadcrumb">⌂ <span>Trang chủ</span> <b>›</b> <strong id="breadcrumbTitle">Quản lý người dùng</strong></div>
+        <div class="top-actions">
+          <a class="candidate-portal-button" href="sso.html" title="Mở cổng thông tin ứng viên">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0"></path>
+            </svg>
+            <span>Cổng ứng viên</span>
+          </a>
+
+          <label class="global-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-4-4"></path>
+            </svg>
+            <input id="globalSearch" placeholder="Tìm kiếm nhanh...">
+            <kbd>Ctrl K</kbd>
+          </label>
+
+          <button class="icon-button notification-button" id="notificationButton" type="button" aria-label="Thông báo" aria-expanded="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+              <path d="M10 21h4"></path>
+            </svg>
+            <span class="notification-count" id="notificationCount" aria-label="Thông báo chưa đọc">0</span>
+          </button>
+
+          <button class="icon-button help-button" id="helpButton" type="button" aria-label="Trợ giúp" aria-expanded="false">?</button>
+        </div>
+
+        <section class="notification-panel" id="notificationPanel">
+          <div class="notification-head">
+            <div><h3>Thông báo</h3><small id="notificationSummary">0 thông báo chưa đọc</small></div>
+            <button id="markAllRead" type="button">Đánh dấu đã đọc tất cả</button>
+          </div>
+          <div id="notificationList"></div>
+          <button class="notification-footer" id="viewAllActivity" type="button">Xem tất cả hoạt động</button>
+        </section>
+
+        <section class="help-panel" id="helpPanel">
+          <div class="help-head">
+            <div>
+              <h3>Trung tâm trợ giúp</h3>
+              <small>Hỗ trợ dành cho nhân viên HR</small>
+            </div>
+          </div>
+
+          <button class="help-option" type="button" id="guideButton">
+            <span class="help-option-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="8"></circle>
+                <path d="m10 8 6 4-6 4V8Z"></path>
+              </svg>
+            </span>
+            <span class="help-option-content">
+              <b>Hướng dẫn sử dụng</b>
+              <small>Tìm hiểu các chức năng của hệ thống</small>
+            </span>
+          </button>
+
+          <a class="help-option" href="mailto:hotro@viettech.vn">
+            <span class="help-option-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M5 13v-2a7 7 0 0 1 14 0v2"></path>
+                <path d="M5 12H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2v-6H5Zm14 0h1a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2v-6h1Z"></path>
+                <path d="M18 18c0 2-2 3-5 3"></path>
+              </svg>
+            </span>
+            <span class="help-option-content">
+              <b>Liên hệ hỗ trợ</b>
+              <small>Gửi yêu cầu đến quản trị viên</small>
+            </span>
+          </a>
+
+          <a class="help-center-link" href="helpdesk.html">
+            <span>Mở trung tâm trợ giúp</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M14 7l5 5-5 5"></path>
+            </svg>
+          </a>
+        </section>
+      </header>
+
+      <main class="content">
+        <section class="page active" id="usersPage">
+          <div class="page-heading">
+            <div><p>QUẢN TRỊ HỆ THỐNG</p><h1>Quản lý người dùng</h1><span>Quản lý tài khoản và phân quyền truy cập hệ thống VietTech.</span></div>
+            <button class="primary" id="addUserButton" type="button">＋ Thêm người dùng</button>
+          </div>
+
+          <div class="stats">
+            <article><i class="stat-icon blue-soft">♟</i><div><small>TỔNG NGƯỜI DÙNG</small><b id="totalUsers">0</b><span class="green-text">↑ Dữ liệu hiện tại</span></div></article>
+            <article><i class="stat-icon green-soft">✓</i><div><small>ĐANG HOẠT ĐỘNG</small><b id="activeUsers">0</b><span class="green-text">Tài khoản khả dụng</span></div></article>
+            <article><i class="stat-icon violet-soft">◆</i><div><small>QUẢN TRỊ VIÊN</small><b id="adminUsers">0</b><span>Toàn quyền hệ thống</span></div></article>
+            <article><i class="stat-icon orange-soft">⊘</i><div><small>TẠM KHÓA</small><b id="lockedUsers">0</b><span class="orange-text">Cần kiểm tra</span></div></article>
+          </div>
+
+          <section class="panel">
+            <div class="panel-head">
+              <div><h2>Danh sách người dùng</h2><p>Tất cả tài khoản đang được quản lý trong hệ thống</p></div>
+              <div class="table-tools">
+                <label>⌕ <input id="userSearch" placeholder="Tìm theo tên, email..."></label>
+                <select id="roleFilter"><option value="">Tất cả vai trò</option><option>HR</option><option>Admin</option><option>Manager</option><option>Nhân viên</option></select>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>NGƯỜI DÙNG</th><th>VAI TRÒ</th><th>TRẠNG THÁI</th><th>HOẠT ĐỘNG GẦN NHẤT</th><th>THAO TÁC</th></tr></thead>
+                <tbody id="userTableBody"></tbody>
+              </table>
+              <div class="empty" id="emptyUsers">Không tìm thấy người dùng phù hợp.</div>
+            </div>
+          </section>
+        </section>
+
+        <section class="page" id="settingsPage">
+          <div class="page-heading">
+            <div><p>QUẢN TRỊ HỆ THỐNG</p><h1>Cấu hình hệ thống</h1><span>Quản lý thông tin doanh nghiệp, tuyển dụng, bảo mật và dữ liệu hệ thống.</span></div>
+            <div class="settings-actions">
+              <button class="secondary" id="resetSettings" type="button">↻ Khôi phục mặc định</button>
+              <button class="primary" id="saveSettings" type="button">✓ Lưu thay đổi</button>
+            </div>
+          </div>
+
+          <div class="settings-layout">
+            <aside class="panel settings-menu" aria-label="Danh mục cấu hình">
+              <button class="settings-tab active" data-settings-tab="general" type="button"><i>⚙</i><span><b>Cài đặt chung</b><small>Doanh nghiệp và hệ thống</small></span></button>
+              <button class="settings-tab" data-settings-tab="recruitment" type="button"><i>▣</i><span><b>Cấu hình tuyển dụng</b><small>Quy trình và hồ sơ</small></span></button>
+              <button class="settings-tab" data-settings-tab="notifications" type="button"><i>♢</i><span><b>Email & thông báo</b><small>Kênh gửi và người nhận</small></span></button>
+              <button class="settings-tab" data-settings-tab="security" type="button"><i>◇</i><span><b>Bảo mật</b><small>Đăng nhập và phiên làm việc</small></span></button>
+              <button class="settings-tab" data-settings-tab="appearance" type="button"><i>◐</i><span><b>Giao diện</b><small>Hiển thị trang quản trị</small></span></button>
+              <button class="settings-tab" data-settings-tab="data" type="button"><i>▤</i><span><b>Dữ liệu hệ thống</b><small>Sao lưu và bảo trì</small></span></button>
+            </aside>
+
+            <form class="settings-content" id="settingsForm">
+              <section class="settings-section active" data-settings-section="general">
+                <section class="panel settings-card">
+                  <div class="settings-title"><i class="stat-icon blue-soft">⚙</i><div><h2>Thông tin doanh nghiệp</h2><p>Thông tin được dùng trên trang quản trị và các email hệ thống.</p></div></div>
+                  <div class="settings-form-grid">
+                    <label class="full"><b>Tên doanh nghiệp</b><input id="companyName" value="VietTech Development JSC"></label>
+                    <label><b>Tên hệ thống</b><input id="systemName" value="Hệ thống tuyển dụng VietTech"></label>
+                    <label><b>Mã doanh nghiệp</b><input id="companyCode" value="VIETTECH"></label>
+                    <label><b>Email hỗ trợ</b><input id="supportEmail" type="email" value="hotro@viettech.vn"></label>
+                    <label><b>Email hỗ trợ</b><input id="supportPhone" type="tel" value="028 7300 6688"></label>
+                    <label class="full"><b>Địa chỉ</b><textarea id="companyAddress" rows="3">Tòa nhà VietTech, Thành phố Hồ Chí Minh</textarea></label>
+                  </div>
+                </section>
+                <section class="panel settings-card">
+                  <div class="settings-title"><i class="stat-icon green-soft">⌖</i><div><h2>Ngôn ngữ và khu vực</h2><p>Thiết lập định dạng mặc định cho toàn hệ thống.</p></div></div>
+                  <div class="settings-form-grid">
+                    <label>Ngôn ngữ<select id="language"><option value="vi">Tiếng Việt</option><option value="en">English</option></select></label>
+                    <label>Múi giờ<select id="timezone"><option value="Asia/Ho_Chi_Minh">Việt Nam (GMT+7)</option><option value="Asia/Bangkok">Bangkok (GMT+7)</option></select></label>
+                    <label>Định dạng ngày<select id="dateFormat"><option value="dd/mm/yyyy">DD/MM/YYYY</option><option value="yyyy-mm-dd">YYYY-MM-DD</option></select></label>
+                    <label>Tiền tệ<select id="currency"><option value="VND">VND - Việt Nam Đồng</option><option value="USD">USD - Đô la Mỹ</option></select></label>
+                  </div>
+                </section>
+              </section>
+
+              <section class="settings-section" data-settings-section="recruitment">
+                <section class="panel settings-card">
+                  <div class="settings-title"><i class="stat-icon violet-soft">▣</i><div><h2>Quy trình tuyển dụng</h2><p>Thiết lập cách hệ thống tiếp nhận và xử lý hồ sơ ứng viên.</p></div></div>
+                  <div class="settings-form-grid">
+                    <label>Thời hạn tin mặc định<select id="jobDuration"><option value="30">30 ngày</option><option value="45">45 ngày</option><option value="60">60 ngày</option></select></label>
+                    <label>Điểm AI đạt yêu cầu<input id="aiScore" type="number" min="0" max="100" value="70"></label>
+                    <label>Số MB tối đa của CV<input id="cvSize" type="number" min="1" max="20" value="5"></label>
+                    <label>Định dạng CV<select id="cvFormat"><option>PDF và DOCX</option><option>Chỉ PDF</option></select></label>
+                  </div>
+                  <div class="setting-row"><span><b>Tự động phân tích CV bằng AI</b><small>Phân tích hồ sơ ngay sau khi ứng viên gửi CV.</small></span><button class="switch on" data-setting="autoAi" type="button" role="switch" aria-checked="true"><i></i></button></div>
+                  <div class="setting-row"><span><b>Tự động đóng tin hết hạn</b><small>Chuyển trạng thái tin tuyển dụng khi hết thời gian nhận hồ sơ.</small></span><button class="switch on" data-setting="autoCloseJob" type="button" role="switch" aria-checked="true"><i></i></button></div>
+                  <div class="setting-row"><span><b>Cho phép ứng tuyển nhiều vị trí</b><small>Một ứng viên có thể gửi hồ sơ cho nhiều tin đang mở.</small></span><button class="switch" data-setting="multiApply" type="button" role="switch" aria-checked="false"><i></i></button></div>
+                </section>
+              </section>
+
+              <section class="settings-section" data-settings-section="notifications">
+                <section class="panel settings-card">
+                  <div class="settings-title"><i class="stat-icon orange-soft">♢</i><div><h2>Email và thông báo</h2><p>Chọn các sự kiện quản trị viên và HR cần nhận thông báo.</p></div></div>
+                  <div class="setting-row"><span><b>Có hồ sơ ứng tuyển mới</b><small>Gửi thông báo khi hệ thống tiếp nhận một hồ sơ mới.</small></span><button class="switch on" data-setting="newCandidateNotice" type="button" role="switch" aria-checked="true"><i></i></button></div>
+                  <div class="setting-row"><span><b>Lịch phỏng vấn sắp diễn ra</b><small>Nhắc HR và người phỏng vấn trước 24 giờ.</small></span><button class="switch on" data-setting="interviewReminder" type="button" role="switch" aria-checked="true"><i></i></button></div>
+                  <div class="setting-row"><span><b>Thông báo đăng nhập thiết bị mới</b><small>Gửi email cho quản trị viên khi phát hiện thiết bị lạ.</small></span><button class="switch on" data-setting="loginNotice" type="button" role="switch" aria-checked="true"><i></i></button></div>
+                  <div class="setting-row"><span><b>Báo cáo tuyển dụng hằng tuần</b><small>Gửi báo cáo tổng hợp vào sáng thứ Hai.</small></span><button class="switch" data-setting="weeklyReport" type="button" role="switch" aria-checked="false"><i></i></button></div>
+                  <label>Email nhận báo cáo<input id="reportEmail" type="email" value="admin@viettech.vn"></label>
+                </section>
+              </section>
+
+              <section class="settings-section" data-settings-section="security">
+                <section class="panel settings-card">
+                  <div class="settings-title"><i class="stat-icon red-soft">◇</i><div><h2>Bảo mật tài khoản</h2><p>Áp dụng chính sách đăng nhập cho tài khoản Admin và HR.</p></div></div>
+                  <div class="setting-row"><span><b>Bắt buộc xác thực hai lớp</b><small>Yêu cầu mã xác minh khi đăng nhập tài khoản quản trị.</small></span><button class="switch on" data-setting="twoFactor" type="button" role="switch" aria-checked="true"><i></i></button></div>
+                  <div class="setting-row"><span><b>Khóa sau nhiều lần đăng nhập sai</b><small>Tạm khóa tài khoản để ngăn dò mật khẩu.</small></span><button class="switch on" data-setting="loginLock" type="button" role="switch" aria-checked="true"><i></i></button></div>
+                  <div class="settings-form-grid">
+                    <label>Số lần đăng nhập sai<select id="failedAttempts"><option value="5">5 lần</option><option value="3">3 lần</option><option value="10">10 lần</option></select></label>
+                    <label>Thời gian khóa<select id="lockMinutes"><option value="15">15 phút</option><option value="30">30 phút</option><option value="60">60 phút</option></select></label>
+                    <label>Thời lượng phiên đăng nhập<select id="sessionMinutes"><option value="60">60 phút</option><option value="120">120 phút</option><option value="480">8 giờ</option></select></label>
+                    <label>Độ dài mật khẩu tối thiểu<input id="passwordLength" type="number" min="8" max="32" value="8"></label>
+                  </div>
+                </section>
+              </section>
+
+              <section class="settings-section" data-settings-section="appearance">
+                <section class="panel settings-card appearance-card">
+                  <div class="settings-title appearance-title">
+                    <i class="stat-icon blue-soft">◐</i>
+                    <div><h2>Giao diện quản trị</h2><p>Cá nhân hóa không gian làm việc theo cách bạn thấy thoải mái nhất.</p></div>
+                    <span class="saved-chip">✓ Tự động lưu</span>
+                  </div>
+
+                  <div class="appearance-section">
+                    <div class="appearance-heading"><h3>Chế độ hiển thị</h3><p>Chọn giao diện sáng, tối hoặc đồng bộ với thiết bị.</p></div>
+                    <div class="theme-grid" role="radiogroup" aria-label="Chế độ hiển thị">
+                      <button class="theme-choice selected" data-theme-mode="light" type="button" role="radio" aria-checked="true">
+                        <span class="theme-preview light-preview"><i class="mini-sidebar"></i><i class="mini-topbar"></i><i class="mini-card one"></i><i class="mini-card two"></i><i class="mini-line a"></i><i class="mini-line b"></i><i class="mini-line c"></i></span>
+                        <span class="theme-copy"><b>Giao diện sáng</b><small>Rõ ràng, phù hợp ban ngày</small></span><i class="choice-check">✓</i>
+                      </button>
+                      <button class="theme-choice" data-theme-mode="dark" type="button" role="radio" aria-checked="false">
+                        <span class="theme-preview dark-preview"><i class="mini-sidebar"></i><i class="mini-topbar"></i><i class="mini-card one"></i><i class="mini-card two"></i><i class="mini-line a"></i><i class="mini-line b"></i><i class="mini-line c"></i></span>
+                        <span class="theme-copy"><b>Giao diện tối</b><small>Dịu mắt khi làm việc ban đêm</small></span><i class="choice-check">✓</i>
+                      </button>
+                      <button class="theme-choice" data-theme-mode="system" type="button" role="radio" aria-checked="false">
+                        <span class="theme-preview system-preview"><i class="mini-sidebar"></i><i class="mini-topbar"></i><i class="mini-card one"></i><i class="mini-card two"></i><i class="mini-line a"></i><i class="mini-line b"></i><i class="mini-line c"></i></span>
+                        <span class="theme-copy"><b>Theo hệ thống</b><small>Tự đổi theo thiết bị của bạn</small></span><i class="choice-check">✓</i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="appearance-columns">
+                    <div class="appearance-section">
+                      <div class="appearance-heading"><h3>Màu chủ đạo</h3><p>Áp dụng cho nút, liên kết và trạng thái được chọn.</p></div>
+                      <div class="accent-list">
+                        <button class="selected" data-accent="blue" type="button"><i class="swatch blue-swatch"></i><span><b>Xanh VietTech</b><small>#2563EB</small></span><em>✓</em></button>
+                        <button data-accent="indigo" type="button"><i class="swatch indigo-swatch"></i><span><b>Chàm hiện đại</b><small>#4F46E5</small></span><em>✓</em></button>
+                        <button data-accent="teal" type="button"><i class="swatch teal-swatch"></i><span><b>Xanh ngọc</b><small>#0F9B81</small></span><em>✓</em></button>
+                      </div>
+                    </div>
+                    <div class="appearance-section">
+                      <div class="appearance-heading"><h3>Xem trước thành phần</h3><p>Mẫu hiển thị theo thiết lập hiện tại.</p></div>
+                      <div class="ui-sample" id="uiSample">
+                        <div class="sample-palette"><span>Primary</span><b id="sampleColor">#2563EB</b></div>
+                        <div class="sample-controls"><button type="button">Primary</button><button type="button">Secondary</button><button class="outlined" type="button">Outlined</button></div>
+                        <label><span>⌕</span><input aria-label="Tìm kiếm mẫu" placeholder="Tìm kiếm..." readonly></label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="density-row">
+                    <div><h3>Mật độ hiển thị</h3><p>Điều chỉnh khoảng cách giữa các nội dung trên trang.</p></div>
+                    <div class="segmented">
+                      <button class="active" data-density="comfortable" type="button">Thoải mái</button>
+                      <button data-density="compact" type="button">Thu gọn</button>
+                    </div>
+                  </div>
+                  <div class="appearance-actions">
+                    <button class="secondary" id="resetAppearance" type="button">Khôi phục mặc định</button>
+                    <button class="primary" id="saveAppearance" type="button">✓ Lưu thay đổi</button>
+                  </div>
+                </section>
+              </section>
+
+              <section class="settings-section" data-settings-section="data">
+                <section class="panel settings-card">
+                  <div class="settings-title"><i class="stat-icon green-soft">▤</i><div><h2>Sao lưu dữ liệu</h2><p>Bảo vệ dữ liệu tài khoản, tin tuyển dụng và hồ sơ ứng viên.</p></div></div>
+                  <div class="backup-status"><span>✓</span><div><b>Hệ thống đang hoạt động ổn định</b><small>Lần sao lưu gần nhất: 28/07/2026 lúc 02:00</small></div></div>
+                  <div class="setting-row"><span><b>Sao lưu tự động hằng ngày</b><small>Lưu bản sao dữ liệu vào lúc 02:00 mỗi ngày.</small></span><button class="switch on" data-setting="autoBackup" type="button" role="switch" aria-checked="true"><i></i></button></div>
+                  <div class="data-actions">
+                    <button class="secondary" id="backupNow" type="button">▤ Sao lưu ngay</button>
+                    <button class="secondary" id="exportSettings" type="button">⇩ Xuất cấu hình</button>
+                    <button class="danger-button" id="maintenanceMode" type="button">⚠ Bật chế độ bảo trì</button>
+                  </div>
+                </section>
+              </section>
+            </form>
+          </div>
+        </section>
+      </main>
+    </section>
+  </div>
+
+  <div class="modal-backdrop" id="userModal" aria-hidden="true">
+    <form class="modal account-modal" id="userForm">
+      <header class="account-modal-head">
+        <div>
+          <p id="modalEyebrow">TÀI KHOẢN MỚI</p>
+          <h2 id="modalTitle">Thêm tài khoản mới</h2>
+          <span class="modal-description" id="modalDescription">Tạo tài khoản dành cho nhân sự nội bộ.</span>
+        </div>
+        <button type="button" class="close-modal" id="closeModal" aria-label="Đóng form">×</button>
+      </header>
+
+      <div class="account-modal-body">
+        <input type="hidden" id="editingId">
+
+        <div class="form-grid">
+          <label class="full">Mã tài khoản
+            <span class="locked-field" title="Mã tài khoản do hệ thống tự động sinh">
+              <input id="accountCode" type="text" disabled placeholder="Sẽ được tự động tạo" aria-describedby="accountCodeHelp">
+              <i aria-hidden="true">🔒</i>
+            </span>
+            <small id="accountCodeHelp">Mã tài khoản do hệ thống tự động sinh, không thể chỉnh sửa.</small>
+          </label>
+          <label class="full">Họ và tên <em>*</em>
+            <input id="fullName" required maxlength="80" autocomplete="name" placeholder="Nhập họ và tên">
+          </label>
+          <label class="full">Email công ty <em>*</em>
+            <input id="email" type="email" required autocomplete="email" placeholder="name@viettech.vn" pattern="^[A-Za-z0-9._%+-]+@viettech\.vn$">
+            <small>Chỉ chấp nhận địa chỉ email thuộc miền @viettech.vn.</small>
+          </label>
+          <label>Số điện thoại
+            <input id="phone" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="0901234567" pattern="[0-9]{10}">
+          </label>
+          <label>Vai trò <em>*</em>
+            <select id="role" required>
+              <option>HR</option><option>Admin</option><option>Manager</option><option>Nhân viên</option>
+            </select>
+          </label>
+          <label class="full">Trạng thái <em>*</em>
+            <select id="status" required><option>Đang hoạt động</option><option>Tạm khóa</option></select>
+          </label>
+        </div>
+
+        <div class="info-banner">
+          <span aria-hidden="true">i</span>
+          <p><b>Mật khẩu tạm thời và hướng dẫn đăng nhập sẽ được gửi qua email.</b><small>Mã tài khoản sẽ được hệ thống tự động tạo theo định dạng VT-{Năm}-{STT}.</small></p>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="secondary" id="cancelModal">Hủy</button>
+        <button class="primary" id="submitAccount" type="submit"><i class="button-spinner" aria-hidden="true"></i><span>＋ Tạo tài khoản</span></button>
+      </div>
+    </form>
+  </div>
+
+  <div class="toast" id="toast">✓ <span></span></div>
+  <script src="../js/admin.js"></script>
+</body>
+</html>
