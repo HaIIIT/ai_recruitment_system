@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Help Desk | VietTech Development JSC</title>
+    <!--favicon-->
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="../favicon/fa/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="../favicon/fa/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="../favicon/fa/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../favicon/fa/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="../favicon/fa/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="../favicon/fa/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="../favicon/fa/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="../favicon/fa/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../favicon/fa/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="../favicon/fa/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../favicon/fa/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="../favicon/fa/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../favicon/fa/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../favicon/fa/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="../favicon/fa/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <!--end-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/helpdesk.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="VietTech Help Desk">
+        <img class="brand-logo" src="../img/logo1.png" alt="Logo VietTech" />
+        <span><strong>VietTech</strong><small>DEVELOPMENT JSC</small></span>
+      </a>
+      <nav aria-label="Điều hướng chính">
+        <a href="#categories">Trung tâm trợ giúp</a>
+        <a href="#faq">Câu hỏi thường gặp</a>
+        <button class="outline-btn open-ticket">Gửi yêu cầu</button>
+        <button class="back-button" type="button" onclick="goBack()">
+          ← Trở về trang trước
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-orb orb-one"></div>
+        <div class="hero-orb orb-two"></div>
+        <div class="hero-inner">
+          <span class="eyebrow">TRUNG TÂM HỖ TRỢ VIETTECH</span>
+          <h1>Xin chào, chúng tôi có thể<br />giúp gì cho bạn?</h1>
+          <p>
+            Tìm câu trả lời nhanh hoặc gửi yêu cầu để được đội ngũ hỗ trợ phản
+            hồi.
+          </p>
+          <label class="search-box">
+            <span>⌕</span>
+            <input
+              id="helpSearch"
+              type="search"
+              placeholder="Tìm kiếm câu hỏi, hướng dẫn..."
+              aria-label="Tìm kiếm trợ giúp"
+            />
+            <kbd>Enter</kbd>
+          </label>
+          <div class="popular">
+            <span>Tìm kiếm phổ biến:</span>
+            <button data-query="tra cứu hồ sơ">tra cứu hồ sơ</button>
+            <button data-query="đổi mật khẩu">đổi mật khẩu</button>
+            <button data-query="lịch phỏng vấn">lịch phỏng vấn</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="categories">
+        <div class="section-heading">
+          <div>
+            <span class="kicker">KHÁM PHÁ HỖ TRỢ</span>
+            <h2>Bạn cần trợ giúp về vấn đề gì?</h2>
+          </div>
+          <p>Chọn một danh mục để xem các hướng dẫn chi tiết.</p>
+        </div>
+        <div class="category-grid">
+          <button class="category-card" data-query="Tài khoản đăng nhập">
+            <span class="category-icon">👤</span
+            ><span class="category-copy"
+              ><strong>Tài khoản & đăng nhập</strong
+              ><small>Đăng nhập, đổi mật khẩu và bảo mật tài khoản</small
+              ><em>6 bài viết <b>→</b></em></span
+            >
+          </button>
+          <button class="category-card" data-query="Hồ sơ ứng viên">
+            <span class="category-icon">📄</span
+            ><span class="category-copy"
+              ><strong>Hồ sơ ứng viên</strong
+              ><small>Cập nhật CV, thông tin cá nhân và kinh nghiệm</small
+              ><em>8 bài viết <b>→</b></em></span
+            >
+          </button>
+          <button class="category-card" data-query="Ứng tuyển">
+            <span class="category-icon">💼</span
+            ><span class="category-copy"
+              ><strong>Ứng tuyển</strong
+              ><small>Tra cứu hồ sơ và theo dõi trạng thái ứng tuyển</small
+              ><em>7 bài viết <b>→</b></em></span
+            >
+          </button>
+          <button class="category-card" data-query="Phỏng vấn">
+            <span class="category-icon">📅</span
+            ><span class="category-copy"
+              ><strong>Phỏng vấn</strong
+              ><small>Lịch hẹn, xác nhận và thay đổi lịch phỏng vấn</small
+              ><em>5 bài viết <b>→</b></em></span
+            >
+          </button>
+          <button class="category-card" data-query="Thông báo">
+            <span class="category-icon">🔔</span
+            ><span class="category-copy"
+              ><strong>Thông báo</strong
+              ><small>Email, thông báo hệ thống và tùy chọn nhận tin</small
+              ><em>4 bài viết <b>→</b></em></span
+            >
+          </button>
+          <button class="category-card" data-query="Quyền riêng tư">
+            <span class="category-icon">🛡️</span
+            ><span class="category-copy"
+              ><strong>Quyền riêng tư</strong
+              ><small>Dữ liệu cá nhân, quyền truy cập và xóa tài khoản</small
+              ><em>3 bài viết <b>→</b></em></span
+            >
+          </button>
+        </div>
+      </section>
+
+      <section class="faq-wrap" id="faq">
+        <div class="faq-intro">
+          <span class="kicker">GIẢI ĐÁP NHANH</span>
+          <h2>Câu hỏi thường gặp</h2>
+          <p>Những giải đáp được người dùng tìm kiếm nhiều nhất.</p>
+          <button class="primary-btn open-ticket">
+            Liên hệ hỗ trợ <span>→</span>
+          </button>
+          <div class="support-note">
+            <span>✓</span>
+            <p>
+              <strong>Phản hồi trong 24 giờ</strong
+              ><small>Thứ Hai – Thứ Sáu, 08:00 – 17:30</small>
+            </p>
+          </div>
+        </div>
+        <div class="faq-list" id="faqList">
+          <article class="faq-item open">
+            <button>
+              <span>Làm thế nào để tra cứu trạng thái hồ sơ ứng tuyển?</span
+              ><b>−</b>
+            </button>
+            <div>
+              <p>
+                Vào Cổng thông tin ứng viên, chọn “Tra cứu ứng tuyển”, sau đó
+                nhập chính xác mã hồ sơ, email và số CCCD đã dùng khi ứng tuyển.
+              </p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button>
+              <span
+                >Làm thế nào để đổi mật khẩu khi quên thông tin đăng nhập?</span
+              ><b>+</b>
+            </button>
+            <div>
+              <p>
+                Tại trang đăng nhập, chọn “Quên mật khẩu”. Hệ thống sẽ gửi đường
+                dẫn đặt lại mật khẩu đến email đã đăng ký.
+              </p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button>
+              <span>Tại sao tôi chưa nhận được email xác nhận?</span><b>+</b>
+            </button>
+            <div>
+              <p>
+                Hãy kiểm tra thư mục Spam/Thư rác, xác nhận email đã nhập đúng
+                và chờ vài phút. Nếu vẫn chưa nhận được, hãy gửi yêu cầu hỗ trợ
+                bên dưới.
+              </p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button>
+              <span>Tôi có thể thay đổi lịch phỏng vấn không?</span><b>+</b>
+            </button>
+            <div>
+              <p>
+                Bạn có thể phản hồi email mời phỏng vấn hoặc gửi yêu cầu hỗ trợ.
+                Vui lòng báo trước ít nhất 24 giờ và đề xuất thời gian phù hợp.
+              </p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button>
+              <span>Làm sao cập nhật CV sau khi đã ứng tuyển?</span><b>+</b>
+            </button>
+            <div>
+              <p>
+                Tra cứu hồ sơ thành công, mở “Hồ sơ của tôi”, chọn chỉnh sửa và
+                tải lên CV mới ở định dạng PDF.
+              </p>
+            </div>
+          </article>
+          <div class="empty-search" hidden>
+            Không tìm thấy nội dung phù hợp. Hãy gửi yêu cầu để được hỗ trợ nhé.
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-strip">
+        <div>
+          <span>💬</span>
+          <p>
+            <a href="../html/501.html">Chat với chúng tôi</a>
+            <small>Trao đổi nhanh cùng tư vấn viên</small>
+          </p>
+        </div>
+        <div>
+          <span>✉</span>
+          <p>
+            <strong>hotrohethongquanly@gmail.com</strong
+            ><small>Gửi email bất cứ lúc nào</small>
+          </p>
+        </div>
+        <div>
+          <span>☎</span>
+          <p>
+            <strong>1900 6868</strong
+            ><small>Thứ Hai – Thứ Sáu, 08:00 – 17:30</small>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 VietTech Development JSC. All rights reserved.</span>
+      <span
+        ><a href="#">Chính sách bảo mật</a
+        ><a href="#">Điều khoản sử dụng</a></span
+      >
+    </footer>
+
+    <div class="modal-backdrop" id="ticketModal" hidden>
+      <section
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="ticketTitle"
+      >
+        <button class="modal-close" aria-label="Đóng">×</button>
+        <span class="kicker">PHIẾU HỖ TRỢ</span>
+        <h2 id="ticketTitle">Gửi yêu cầu trợ giúp</h2>
+        <p>Điền thông tin bên dưới, đội ngũ VietTech sẽ phản hồi sớm nhất.</p>
+        <form id="ticketForm">
+          <div class="form-row">
+            <label>
+              Họ và tên
+              <input name="fullName" required placeholder="Nguyễn Văn A" />
+            </label>
+
+            <label>
+              Email
+              <input
+                name="email"
+                required
+                type="email"
+                placeholder="email@example.com"
+              />
+            </label>
+          </div>
+
+          <label>
+            Chủ đề
+            <select name="requestSubject" required>
+              <option value="" selected disabled>Chọn vấn đề cần hỗ trợ</option>
+              <option value="Tài khoản & đăng nhập">
+                Tài khoản & đăng nhập
+              </option>
+              <option value="Hồ sơ ứng viên">Hồ sơ ứng viên</option>
+              <option value="Ứng tuyển">Ứng tuyển</option>
+              <option value="Phỏng vấn">Phỏng vấn</option>
+              <option value="Thông báo">Thông báo</option>
+              <option value="Quyền riêng tư">Quyền riêng tư</option>
+              <option value="Khác">
+                Khác (Mô tả chi tiết tại phần nội dung)
+              </option>
+            </select>
+          </label>
+
+          <label>
+            Nội dung
+            <textarea
+              name="requestDescription"
+              required
+              rows="4"
+              placeholder="Mô tả chi tiết vấn đề bạn đang gặp..."
+            ></textarea>
+          </label>
+
+          <button class="primary-btn submit-btn" type="submit">
+            Gửi yêu cầu hỗ trợ →
+          </button>
+        </form>
+      </section>
+    </div>
+    <div class="modal-backdrop" id="successModal" hidden>
+      <section
+        class="success-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="successTitle"
+      >
+        <button class="success-close" type="button" aria-label="Đóng">×</button>
+
+        <div class="success-icon">✓</div>
+
+        <span class="success-kicker">GỬI THÀNH CÔNG</span>
+
+        <h2 id="successTitle">Yêu cầu hỗ trợ đã được tiếp nhận</h2>
+
+        <p class="success-description">
+          Dưới đây là thông tin phiếu yêu cầu bạn vừa gửi.
+        </p>
+
+        <div class="ticket-summary">
+          <div class="summary-row">
+            <span>Họ và tên</span>
+            <strong id="summaryName"></strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Email</span>
+            <strong id="summaryEmail"></strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Chủ đề yêu cầu</span>
+            <strong id="summarySubject"></strong>
+          </div>
+
+          <div class="summary-row summary-content">
+            <span>Nội dung mô tả</span>
+            <strong id="summaryDescription"></strong>
+          </div>
+        </div>
+
+        <div class="processing-note">
+          <span>◷</span>
+
+          <p>
+            Yêu cầu của bạn sẽ được giải quyết trong
+            <strong>48 giờ kể từ ngày gửi</strong>
+            (ngoại trừ Thứ 7 – Chủ nhật). Nội dung phản hồi sẽ được gửi qua
+            email của bạn.
+          </p>
+        </div>
+
+        <button class="primary-btn finish-btn" type="button">Hoàn tất</button>
+      </section>
+    </div>
+
+    <!-- THÔNG BÁO GÓC PHẢI -->
+    <div
+      class="success-toast"
+      id="successToast"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="toast-check">✓</div>
+
+      <div>
+        <strong>Gửi yêu cầu thành công!</strong>
+        <span>Phiếu hỗ trợ của bạn đã được tiếp nhận.</span>
+      </div>
+    </div>
+
+    <script src="../js/helpdesk.js"></script>
+    <script>
+      function goBack() {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "index.html";
+        }
+      }
+    </script>
+  </body>
+</html>

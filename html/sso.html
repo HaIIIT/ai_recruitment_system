@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Cổng Thông Tin Ứng Viên | VietTech Development JSC</title>
+
+    <!-- Favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="../favicon/fa/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="../favicon/fa/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="../favicon/fa/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../favicon/fa/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="../favicon/fa/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="../favicon/fa/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="../favicon/fa/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="../favicon/fa/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../favicon/fa/apple-icon-180x180.png"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="../favicon/fa/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../favicon/fa/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="../favicon/fa/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../favicon/fa/favicon-16x16.png"
+    />
+
+    <link rel="manifest" href="../favicon/fa/manifest.json" />
+
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="../favicon/fa/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/sso.css" />
+  </head>
+
+  <body>
+    <!-- Thanh trên cùng -->
+    <header class="topbar">
+      <a
+        class="brand"
+        href="../html/index.html"
+        aria-label="VietTech Development JSC"
+      >
+        <img class="brand-logo" src="../img/logo1.png" alt="Logo VietTech" />
+        <strong>VietTech Development JSC</strong>
+      </a>
+
+      <nav class="top-nav" aria-label="Điều hướng chính">
+        <a href="../html/index.html">
+          <span aria-hidden="true">🏠︎</span>
+          Trở về trang chủ
+        </a>
+      </nav>
+    </header>
+
+    <div class="app-layout">
+      <!-- Thanh menu bên trái -->
+      <aside class="sidebar" id="sidebar">
+        <p class="sidebar-label">CỔNG THÔNG TIN ỨNG VIÊN</p>
+
+        <nav class="side-nav" aria-label="Cổng thông tin ứng viên">
+          <a class="active" href="../html/sso.html">
+            <span aria-hidden="true">⌕</span>
+            Tra Cứu Ứng Tuyển
+          </a>
+
+          <a href="../html/hosoUV.html" class="protected-link">
+            <span>♙</span>
+            Hồ sơ của tôi
+          </a>
+
+          <a href="../html/thongbaoUV.html" class="protected-link">
+            <span>♢</span>
+            Thông báo
+          </a>
+          <a href="../html/helpdesk.html"> <span>❔</span>Trung tâm hỗ trợ </a>
+        </nav>
+      </aside>
+
+      <!-- Nội dung chính -->
+      <main class="main-content">
+        <!-- Chào mừng -->
+        <section class="welcome">
+          <div>
+            <p class="eyebrow">Cổng thông tin ứng viên</p>
+
+            <h1>
+              Xin chào, Minh Anh
+              <span aria-hidden="true">👋</span>
+            </h1>
+
+            <p>
+              Theo dõi hồ sơ và chuẩn bị cho bước tiếp theo trong hành trình của
+              bạn.
+            </p>
+          </div>
+
+          <button
+            class="outline-button protected-button"
+            type="button"
+            data-href="../html/hosoUV.html"
+          >
+            Cập nhật hồ sơ
+          </button>
+        </section>
+
+        <!-- Form tra cứu -->
+        <section class="lookup">
+          <div class="lookup-heading">
+            <h2>
+              <span aria-hidden="true">⌕</span>
+              Tra cứu hồ sơ ứng tuyển
+            </h2>
+
+            <p>
+              Vui lòng nhập đầy đủ thông tin để xác minh và xem tiến trình hồ
+              sơ.
+            </p>
+          </div>
+
+          <form class="lookup-form" id="lookupForm" novalidate>
+            <div class="lookup-fields">
+              <div class="lookup-field">
+                <label for="applicationCode">Mã hồ sơ</label>
+
+                <input
+                  id="applicationCode"
+                  name="applicationCode"
+                  type="text"
+                  placeholder="Ví dụ: UV-2026-0186"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+
+              <div class="lookup-field">
+                <label for="lookupEmail">Email ứng tuyển</label>
+
+                <input
+                  id="lookupEmail"
+                  name="email"
+                  type="email"
+                  placeholder="vidu@gmail.com"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+
+              <div class="lookup-field">
+                <label for="lookupCccd">Số CCCD</label>
+
+                <input
+                  id="lookupCccd"
+                  name="cccd"
+                  type="text"
+                  inputmode="numeric"
+                  maxlength="12"
+                  placeholder="Nhập 12 chữ số"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+
+              <div class="lookup-field">
+                <label for="lookupPhone">Số điện thoại</label>
+
+                <input
+                  id="lookupPhone"
+                  name="phone"
+                  type="tel"
+                  inputmode="numeric"
+                  maxlength="10"
+                  placeholder="Ví dụ: 0912345678"
+                  autocomplete="tel"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Thông báo tra cứu và vòng tròn xoay -->
+            <div
+              class="lookup-message"
+              id="lookupMessage"
+              role="status"
+              aria-live="polite"
+            >
+              <span class="color-loader" id="lookupSpinner" aria-hidden="true">
+                <i class="arc arc-blue"></i>
+                <i class="arc arc-pink"></i>
+                <i class="arc arc-yellow"></i>
+                <i class="arc arc-green"></i>
+              </span>
+
+              <span id="lookupMessageText"></span>
+            </div>
+
+            <button class="lookup-button" id="lookupButton" type="submit">
+              <span class="button-spinner" aria-hidden="true"></span>
+              <span class="button-text">Tra cứu hồ sơ</span>
+            </button>
+          </form>
+        </section>
+
+        <!-- Kết quả tra cứu: được ẩn trước khi tra cứu -->
+        <section
+          class="application-card is-hidden"
+          id="applicationCard"
+          aria-label="Kết quả tra cứu hồ sơ"
+        >
+          <div class="job-header">
+            <div class="job-info">
+              <img
+                class="job-logo"
+                src="../img/logo1.png"
+                alt="Logo VietTech"
+              />
+
+              <div>
+                <p class="application-code">Mã hồ sơ: UV-2026-0186</p>
+
+                <h2>Senior Frontend Developer</h2>
+
+                <p>Khối Công nghệ · TP. Hồ Chí Minh</p>
+              </div>
+            </div>
+
+            <span class="status-pill">Đang phỏng vấn</span>
+          </div>
+
+          <!-- Tiến trình ứng tuyển -->
+          <div class="timeline" aria-label="Tiến trình ứng tuyển">
+            <div class="timeline-item completed">
+              <span class="step">✓</span>
+              <strong>Đã nộp hồ sơ</strong>
+              <small>20/07/2026</small>
+            </div>
+
+            <div class="timeline-item completed">
+              <span class="step">✓</span>
+              <strong>Chờ xử lý</strong>
+              <small>21/07/2026</small>
+            </div>
+
+            <div class="timeline-item completed">
+              <span class="step">✓</span>
+              <strong>HR xem xét</strong>
+              <small>22/07/2026</small>
+            </div>
+
+            <div class="timeline-item current">
+              <span class="step">4</span>
+              <strong>Phỏng vấn</strong>
+              <small>24/07/2026 · 09:30</small>
+            </div>
+
+            <div class="timeline-item">
+              <span class="step">5</span>
+              <strong>Chờ kết quả</strong>
+              <small>Dự kiến 26/07</small>
+            </div>
+
+            <div class="timeline-item">
+              <span class="step">6</span>
+              <strong>Kết quả</strong>
+              <small>—</small>
+            </div>
+          </div>
+
+          <!-- Thông tin phỏng vấn -->
+          <div class="interview-card">
+            <span class="card-icon" aria-hidden="true">◷</span>
+
+            <span class="card-copy">
+              <strong>Lịch phỏng vấn sắp tới</strong>
+              <small> 09:30, Thứ Sáu 24/07/2026 · Phòng họp Lotus </small>
+            </span>
+
+            <button
+              type="button"
+              id="openInterviewModal"
+              class="interview-detail-button"
+              aria-haspopup="dialog"
+              aria-controls="interviewDetailModal"
+            >
+              Xem chi tiết
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Popup chi tiết lịch phỏng vấn -->
+    <div
+      class="interview-modal"
+      id="interviewDetailModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="interviewModalTitle"
+      aria-hidden="true"
+    >
+      <div class="interview-modal-dialog">
+        <div class="interview-modal-header">
+          <div class="interview-modal-heading">
+            <span class="interview-modal-icon" aria-hidden="true">◷</span>
+
+            <div>
+              <p>LỊCH PHỎNG VẤN</p>
+              <h2 id="interviewModalTitle">Chi tiết lịch phỏng vấn</h2>
+            </div>
+          </div>
+
+          <button
+            class="interview-modal-close"
+            id="closeInterviewModal"
+            type="button"
+            aria-label="Đóng cửa sổ chi tiết"
+          >
+            ×
+          </button>
+        </div>
+
+        <div class="interview-modal-body">
+          <div class="interview-highlight">
+            <span aria-hidden="true">✓</span>
+            <div>
+              <strong>Lịch phỏng vấn đã được xác nhận</strong>
+              <small>Vui lòng có mặt trước thời gian phỏng vấn 15 phút.</small>
+            </div>
+          </div>
+
+          <div class="interview-detail-grid">
+            <div class="interview-detail-item">
+              <span class="detail-icon" aria-hidden="true">♙</span>
+              <div>
+                <small>Họ tên ứng viên</small>
+                <strong>Nguyễn Minh Anh</strong>
+              </div>
+            </div>
+
+            <div class="interview-detail-item">
+              <span class="detail-icon" aria-hidden="true">✉</span>
+              <div>
+                <small>Email</small>
+                <strong>minhanh.nguyen@gmail.com</strong>
+              </div>
+            </div>
+
+            <div class="interview-detail-item">
+              <span class="detail-icon" aria-hidden="true">☎</span>
+              <div>
+                <small>Số điện thoại</small>
+                <strong>0912 345 678</strong>
+              </div>
+            </div>
+
+            <div class="interview-detail-item">
+              <span class="detail-icon" aria-hidden="true">▤</span>
+              <div>
+                <small>Số CCCD</small>
+                <strong>079204001186</strong>
+              </div>
+            </div>
+
+            <div class="interview-detail-item">
+              <span class="detail-icon" aria-hidden="true">⌘</span>
+              <div>
+                <small>Vị trí ứng tuyển</small>
+                <strong>Senior Frontend Developer</strong>
+              </div>
+            </div>
+
+            <div class="interview-detail-item">
+              <span class="detail-icon" aria-hidden="true">♜</span>
+              <div>
+                <small>Người phỏng vấn</small>
+                <strong>Trần Quốc Huy · Trưởng phòng Nhân sự</strong>
+              </div>
+            </div>
+
+            <div class="interview-detail-item">
+              <span class="detail-icon" aria-hidden="true">◷</span>
+              <div>
+                <small>Thời gian phỏng vấn</small>
+                <strong>09:30, Thứ Sáu, ngày 24/07/2026</strong>
+              </div>
+            </div>
+
+            <div class="interview-detail-item">
+              <span class="detail-icon" aria-hidden="true">⌖</span>
+              <div>
+                <small>Địa điểm</small>
+                <strong
+                  >Phòng họp Lotus, Tầng 6 · Khối Công nghệ, VietTech
+                  Development JSC</strong
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="interview-modal-footer">
+          <button
+            class="interview-modal-confirm"
+            id="confirmInterviewModal"
+            type="button"
+          >
+            Đã hiểu
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Thông báo tra cứu thành công -->
+    <div
+      id="lookupSuccessToast"
+      class="lookup-success-toast"
+      role="status"
+      aria-live="polite"
+    >
+      <span class="lookup-toast-icon">
+        <i class="fa-solid fa-check"></i>
+      </span>
+
+      <span class="lookup-toast-content">
+        <strong>Tra cứu thành công</strong>
+        <small>Đã tìm thấy hồ sơ ứng tuyển của bạn.</small>
+      </span>
+
+      <button
+        type="button"
+        id="closeLookupToast"
+        class="lookup-toast-close"
+        aria-label="Đóng thông báo"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <span class="lookup-toast-progress"></span>
+    </div>
+
+    <!-- JavaScript phải đặt trước thẻ đóng body -->
+    <script src="../js/sso.js"></script>
+    <script src="../js/interview-popup.js"></script>
+  </body>
+</html>

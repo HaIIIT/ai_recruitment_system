@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hồ sơ của tôi | VietTech Development JSC</title>
+    <!--favicon-->
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="../favicon/fa/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="../favicon/fa/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="../favicon/fa/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../favicon/fa/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="../favicon/fa/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="../favicon/fa/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="../favicon/fa/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="../favicon/fa/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../favicon/fa/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="../favicon/fa/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../favicon/fa/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="../favicon/fa/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../favicon/fa/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../favicon/fa/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="../favicon/fa/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <!--end-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/hosoUV.css" />
+    <!--<script src="hoso.js" defer></script>-->
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <img src="../img/logo1.png" alt="Logo VietTech" />
+        <strong>VietTech Development JSC</strong>
+      </a>
+      <nav class="top-nav">
+        <a href="../html/index.html"><span>🏠︎</span> Trở về trang chủ</a>
+      </nav>
+    </header>
+    <aside class="sidebar" id="sidebar">
+      <p class="sidebar-label">CỔNG THÔNG TIN ỨNG VIÊN</p>
+      <nav class="side-nav">
+        <a href="../html/sso.html"><span>⌕</span> Tra Cứu Ứng Tuyển</a>
+        <a class="active" href="#"><span>♙</span> Hồ sơ của tôi</a>
+        <a href="../html/thongbaoUV.html"><span>♢</span> Thông báo</a>
+        <a href="../html/helpdesk.html"> <span>❔</span>Trung tâm hỗ trợ </a>
+      </nav>
+    </aside>
+    <main class="page">
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow">CỔNG THÔNG TIN ỨNG VIÊN</p>
+          <h1>Hồ sơ của tôi</h1>
+          <p>
+            Cập nhật thông tin để VietTech hiểu rõ hơn về kinh nghiệm và năng
+            lực của bạn.
+          </p>
+        </div>
+        <button class="primary-button" id="saveTop" type="button">
+          <span>✍︎ </span>Chỉnh sửa hồ sơ
+        </button>
+      </section>
+
+      <section class="profile-overview card">
+        <div class="photo-wrap">
+          <img
+            id="profileAvatar"
+            class="profile-photo"
+            src="../img/avatar-default.png"
+            alt=""
+          />
+
+          <input
+            id="avatarInput"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            hidden
+          />
+
+          <button id="changeAvatarButton" type="button">
+            <i class="fa-solid fa-camera"></i>
+            Chọn ảnh đại diện
+          </button>
+        </div>
+
+        <div class="profile-copy">
+          <h2 id="profileDisplayName">Họ & tên ứng viên</h2>
+          <p id="profileDisplayJob">Vị Trí Mong Muốn ứng Tuyển</p>
+          <div class="completion-row">
+            <span>Hoàn thiện hồ sơ</span>
+            <strong>85%</strong>
+          </div>
+          <div class="progress"><span></span></div>
+        </div>
+        <span class="verified">✓ Đã xác thực email</span>
+      </section>
+
+      <form id="profileForm">
+        <div class="content-grid">
+          <div class="main-column">
+            <section class="card form-card">
+              <div class="card-heading">
+                <div>
+                  <span class="heading-icon">♙</span>
+                  <h2>Thông tin cá nhân</h2>
+                </div>
+                <p>Các thông tin cơ bản được hiển thị trong hồ sơ ứng tuyển.</p>
+              </div>
+              <div class="form-grid">
+                <label
+                  >Họ và tên
+                  <input name="fullName" value="Nguyễn Minh Anh" required />
+                </label>
+                <label
+                  >Ngày sinh
+                  <input name="birthday" type="date" value="1998-08-18" />
+                </label>
+                <label
+                  >Số điện thoại
+                  <input
+                    name="phone"
+                    type="tel"
+                    value="090 123 4567"
+                    required
+                  />
+                </label>
+                <label
+                  >Email
+                  <input
+                    name="email"
+                    type="email"
+                    value="minhanh@gmail.com"
+                    required
+                  />
+                </label>
+                <label
+                  >Địa chỉ
+                  <input name="address" value="Thành phố Hồ Chí Minh" />
+                </label>
+                <label
+                  >Vị trí mong muốn
+                  <input name="position" value="Senior Frontend Developer" />
+                </label>
+                <label class="full-field"
+                  >Giới thiệu bản thân
+                  <textarea name="about" rows="5">
+Frontend Developer với hơn 4 năm kinh nghiệm xây dựng sản phẩm web, tập trung vào React, JavaScript và trải nghiệm người dùng.</textarea
+                  >
+                </label>
+              </div>
+            </section>
+
+            <section class="card form-card">
+              <div class="card-heading inline-heading">
+                <div>
+                  <span class="heading-icon">▣</span>
+                  <h2>Kinh nghiệm làm việc</h2>
+                </div>
+                <button
+                  class="text-button"
+                  type="button"
+                  onclick="openExperienceModal()"
+                >
+                  + Thêm kinh nghiệm
+                </button>
+              </div>
+              <div id="experienceList">
+                <article class="experience-item">
+                  <div class="experience-top">
+                    <div>
+                      <h3>Frontend Developer</h3>
+                      <p>ABC Technology · 01/2023 – Hiện tại</p>
+                    </div>
+                    <button type="button" data-remove>×</button>
+                  </div>
+                  <p>
+                    Phát triển giao diện React, tối ưu hiệu suất và phối hợp
+                    cùng nhóm thiết kế để cải thiện trải nghiệm người dùng.
+                  </p>
+                </article>
+                <article class="experience-item">
+                  <div class="experience-top">
+                    <div>
+                      <h3>Junior Web Developer</h3>
+                      <p>Digital Solutions · 06/2021 – 12/2022</p>
+                    </div>
+                    <button type="button" data-remove>×</button>
+                  </div>
+                  <p>
+                    Xây dựng website responsive bằng HTML, CSS, JavaScript và
+                    tích hợp API.
+                  </p>
+                </article>
+              </div>
+            </section>
+
+            <section class="card form-card">
+              <div class="card-heading">
+                <div>
+                  <span class="heading-icon">◇</span>
+                  <h2>Kỹ năng chuyên môn</h2>
+                </div>
+              </div>
+              <div class="skills" id="skills">
+                <span>HTML5 <button type="button">×</button></span>
+                <span>CSS3 <button type="button">×</button></span>
+                <span>JavaScript <button type="button">×</button></span>
+                <span>ReactJS <button type="button">×</button></span>
+                <span>Git <button type="button">×</button></span>
+              </div>
+              <input
+                id="skillInput"
+                class="skill-input"
+                placeholder="Ví dụ: TypeScript"
+              />
+              <button class="skill-button" id="addSkillButton" type="button">
+                Thêm kỹ năng
+              </button>
+            </section>
+          </div>
+
+          <aside class="side-column">
+            <section class="card cv-card">
+              <div class="card-heading">
+                <div>
+                  <span class="heading-icon">▤</span>
+                  <h2>CV của bạn</h2>
+                </div>
+              </div>
+              <div class="cv-file">
+                <span class="pdf-icon">PDF</span>
+                <div>
+                  <strong>CV_Nguyen_Minh_Anh.pdf</strong
+                  ><small>Cập nhật 20/07/2026 · 1.8 MB</small>
+                </div>
+              </div>
+              <input id="cvInput" type="file" accept=".pdf,.doc,.docx" hidden />
+              <button class="upload-button" id="uploadCv" type="button">
+                Tải CV mới
+              </button>
+              <p class="file-note">
+                Hỗ trợ PDF, DOC, DOCX. Dung lượng tối đa 5 MB.
+              </p>
+            </section>
+
+            <section class="card contact-card">
+              <div class="card-heading">
+                <div>
+                  <span class="heading-icon">⌁</span>
+                  <h2>Liên kết</h2>
+                </div>
+              </div>
+              <label
+                >LinkedIn
+                <input name="linkedin" placeholder="linkedin.com/in/minhanh" />
+              </label>
+              <label
+                >GitHub
+                <input name="github" placeholder="github.com/minhanh" />
+              </label>
+              <label
+                >Portfolio
+                <input name="portfolio" placeholder="minhanh.dev" />
+              </label>
+            </section>
+          </aside>
+        </div>
+      </form>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="modal-overlay" id="experienceModal">
+      <div class="experience-modal">
+        <button
+          class="modal-close"
+          type="button"
+          onclick="closeExperienceModal()"
+          aria-label="Đóng"
+        >
+          ×
+        </button>
+
+        <h2>Thêm kinh nghiệm làm việc</h2>
+
+        <form id="experienceForm">
+          <div class="form-group">
+            <label for="jobTitle">Vị trí công việc</label>
+            <input
+              id="jobTitle"
+              type="text"
+              placeholder="Ví dụ: Frontend Developer"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="company">Tên công ty</label>
+            <input
+              id="company"
+              type="text"
+              placeholder="Ví dụ: ABC Technology"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="startDate">Thời gian bắt đầu</label>
+              <input id="startDate" type="month" required />
+            </div>
+
+            <div class="form-group">
+              <label for="endDate">Thời gian kết thúc</label>
+              <input id="endDate" type="month" />
+            </div>
+          </div>
+
+          <label class="current-job">
+            <input id="currentJob" type="checkbox" />
+            Tôi đang làm việc tại đây
+          </label>
+
+          <div class="form-group">
+            <label for="jobDescription">Mô tả công việc</label>
+            <textarea
+              id="jobDescription"
+              rows="4"
+              placeholder="Mô tả công việc và những kết quả đã đạt được..."
+              required
+            ></textarea>
+          </div>
+          <div class="modal-actions">
+            <button
+              class="cancel-btn"
+              type="button"
+              onclick="closeExperienceModal()"
+            >
+              Hủy
+            </button>
+            <button class="save-btn" type="submit">Lưu kinh nghiệm</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div
+      id="successToast"
+      class="success-toast"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="toast-check" id="toastIcon">✓</div>
+
+      <div class="toast-content">
+        <strong id="toastTitle">Thao tác thành công!</strong>
+        <span id="toastMessage">Thông tin của bạn đã được cập nhật.</span>
+      </div>
+    </div>
+    <script src="../js/hosoUV.js" defer></script>
+  </body>
+</html>
