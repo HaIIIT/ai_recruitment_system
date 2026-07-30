@@ -1,364 +1,562 @@
 <!doctype html>
 <html lang="vi">
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VietTech Development JSC - Tuyển dụng</title>
+
+    <!-- File HTML nằm trong thư mục html, file CSS nằm trong thư mục css -->
     <link rel="stylesheet" href="../css/index.css" />
-    <!--favicon-->
-    <link rel="apple-touch-icon" sizes="57x57" href="../favicon/fa/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="../favicon/fa/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="../favicon/fa/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="../favicon/fa/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="../favicon/fa/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="../favicon/fa/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="../favicon/fa/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="../favicon/fa/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/fa/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="../favicon/fa/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/fa/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="../favicon/fa/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/fa/favicon-16x16.png">
-    <link rel="manifest" href="../favicon/fa/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="../favicon/fa/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <!--end-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../favicon/fa/favicon-32x32.png"
+    />
+    <style>
+      .footer-logo-image {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+        display: block;
+      }
+    </style>
   </head>
+
   <body>
     <div id="portal">
       <header class="public-header">
-        <button class="brand" onclick="showPage('portal')">
-          <img src="../img/logo1.png" alt="Logo công ty" class="company-logo" />
+        <a class="brand" href="index.html">
+          <img
+            src="../img/logo1.png"
+            alt="Logo VietTech"
+            class="company-logo"
+          />
           <b>VietTech Development JSC</b>
-        </button>
+        </a>
+
         <nav>
-          <button>Việc làm</button><button>Về chúng tôi</button
-          ><button>Cẩm nang nghề nghiệp</button>
-        </nav>
+          <!--<button type="jobsButton" onclick="scrollToJobs()">Việc làm</button
+          ><button>Về chúng tôi</button><button>Cẩm nang nghề nghiệp</button>
+        </nav>-->
+
         <div class="header-actions">
-          <button class="link-btn" onclick="showPage('admin')">
-            Cổng thông tin ứng viên</button
-          ><button class="outline" onclick="showPage('login')">
+          <!-- Đổi login.html nếu file đăng nhập của bạn có tên khác -->
+          <button
+            class="candidate-portal"
+            type="button"
+            onclick="window.location.href = 'cong_thong_tin.html'"
+          >
+            Cổng thông tin ứng viên
+          </button>
+          <button
+            class="outline-btn"
+            type="button"
+            onclick="window.location.href = 'login.html'"
+          >
             Đăng nhập
           </button>
-          <!----
-          ><button class="primary" onclick="showRegister()">Đăng ký</button>
-          -->
         </div>
       </header>
-      <section class="hero">
-        <div>
-          <span class="badge">✦ CƠ HỘI MỚI ĐANG CHỜ BẠN</span>
-          <h1>Tìm công việc phù hợp.<br /><em>Phát triển tương lai.</em></h1>
-          <p>
-            Khám phá môi trường làm việc nơi tài năng được ghi nhận và mỗi ý
-            tưởng đều có cơ hội tạo nên khác biệt.
-          </p>
-          <div class="search-box">
-            <input
-              id="jobSearch"
-              placeholder="⌕  Vị trí, kỹ năng hoặc từ khóa..."
-            /><span>⌖ Tất cả địa điểm⌄</span
-            ><button onclick="filterJobs()">Tìm việc ngay</button>
-          </div>
-          <div class="track-link">
-            Đã ứng tuyển?
-            <button onclick="showPage('candidate')">
-              Tra cứu tiến trình hồ sơ →
-            </button>
-          </div>
-        </div>
-        <div class="hero-art">
-          <div class="bubble b1">✓ 186+ cơ hội nghề nghiệp</div>
-          <div class="job-float">
-            <small>VỊ TRÍ NỔI BẬT</small
-            ><button class="primary" onclick="showPage('login')">
-              Ứng tuyển
-            </button>
-            <h3>Senior Frontend Developer</h3>
-            <p>TP. Hồ Chí Minh · 30–45 triệu</p>
-          </div>
-          <div class="bubble b2">♙ 92% ứng viên hài lòng</div>
-        </div>
-      </section>
-      <section class="section">
-        <div class="section-title">
-          <div>
-            <span class="eyebrow">CƠ HỘI DÀNH CHO BẠN</span>
-            <h2>Vị trí đang tuyển nổi bật</h2>
-            <p class="muted">
-              Gia nhập đội ngũ và cùng tạo ra những điều ý nghĩa.
-            </p>
-          </div>
-        </div>
-        <div class="jobs" id="jobList">
-          <article class="job" data-key="frontend công nghệ hồ chí minh">
-            <span class="job-icon">VT</span><span class="new">MỚI</span>
-            <h3>Senior Frontend Developer</h3>
-            <p class="muted">Khối Công nghệ</p>
-            <div class="tags">
-              <span>⌖ TP. Hồ Chí Minh</span><span>◷ Toàn thời gian</span
-              ><span>◈ 30–45 triệu</span>
-            </div>
-            <div class="job-foot">
-              <span>2 ngày trước</span
-              ><button onclick="showPage('login')">Xem chi tiết →</button>
-            </div>
-          </article>
-          <article class="job" data-key="backend nodejs công nghệ hà nội">
-            <span class="job-icon">VT</span><span class="new">MỚI</span>
-            <h3>Backend Developer (Node.js)</h3>
-            <p class="muted">Khối Công nghệ</p>
-            <div class="tags">
-              <span>⌖ Hà Nội</span><span>◷ Linh hoạt</span
-              ><span>◈ 25–40 triệu</span>
-            </div>
-            <div class="job-foot">
-              <span>3 ngày trước</span
-              ><button onclick="showPage('login')">Xem chi tiết →</button>
-            </div>
-          </article>
-          <article class="job" data-key="ui ux designer sản phẩm hồ chí minh">
-            <span class="job-icon">VT</span><span class="new">MỚI</span>
-            <h3>UI/UX Designer</h3>
-            <p class="muted">Phòng Sản phẩm</p>
-            <div class="tags">
-              <span>⌖ TP. Hồ Chí Minh</span><span>◷ Toàn thời gian</span
-              ><span>◈ 20–32 triệu</span>
-            </div>
-            <div class="job-foot">
-              <span>5 ngày trước</span
-              ><button onclick="showPage('login')">Xem chi tiết →</button>
-            </div>
-          </article>
-        </div>
-      </section>
-    </div>
 
-    <div id="login" class="hidden auth">
-      <section class="auth-side">
-        <button class="brand" onclick="showPage('portal')">
-          <span class="logo"><i>V</i><i>T</i></span
-          ><b>VietTech Development JSC</b>
-        </button>
-        <div>
-          <span class="badge">HÀNH TRÌNH SỰ NGHIỆP</span>
-          <h1>Cơ hội tốt bắt đầu<br />từ một bước nhỏ.</h1>
-          <p>
-            Tạo hồ sơ một lần, ứng tuyển nhanh chóng và theo dõi toàn bộ tiến
-            trình ngay tại một nơi.
-          </p>
-        </div>
-        <blockquote>
-          “Quy trình minh bạch giúp tôi luôn biết hồ sơ của mình đang ở đâu.”
-        </blockquote>
-      </section>
-      <section class="auth-main">
-        <div>
-          <button class="back" onclick="showPage('portal')">
-            ← Quay lại trang tuyển dụng
-          </button>
-          <div class="auth-card">
-            <div class="tabs">
-              <button id="loginTab" class="active" onclick="switchTab('login')">
-                Đăng nhập</button
-              ><button id="registerTab" onclick="switchTab('register')">
-                Đăng ký
+      <main>
+        <section class="hero">
+          <div>
+            <span class="badge">✦ CƠ HỘI MỚI ĐANG CHỜ BẠN</span>
+
+            <h1>
+              Tìm công việc phù hợp.<br />
+              <em>Phát triển tương lai.</em>
+            </h1>
+
+            <p>
+              Khám phá môi trường làm việc nơi tài năng được ghi nhận và mỗi ý
+              tưởng đều có cơ hội tạo nên khác biệt.
+            </p>
+
+            <!--<div class="search-box">
+              <input
+                id="jobSearch"
+                type="search"
+                placeholder="⌕  Vị trí, kỹ năng hoặc từ khóa..."
+              />
+              <span>⌖ Tất cả địa điểm⌄</span>
+              <button type="button" onclick="filterJobs()">
+                Tìm việc ngay
               </button>
+            </div>-->
+          </div>
+
+          <div class="hero-art">
+            <div class="bubble b1">✓ 186+ cơ hội nghề nghiệp</div>
+
+            <div class="job-float">
+              <small>VỊ TRÍ NỔI BẬT</small>
+              <button
+                class="primary apply-link"
+                type="button"
+                id="openApplicationModal"
+              >
+                Ứng tuyển ngay
+              </button>
+              <h3>Senior Frontend Developer</h3>
+              <p>TP. Hồ Chí Minh · 30–45 triệu</p>
             </div>
-            <h2 id="authTitle">Chào mừng bạn quay lại</h2>
-            <p class="muted" id="authDesc">
-              Đăng nhập để quản lý hồ sơ và theo dõi kết quả.
+
+            <div class="bubble b2">♙ 92% ứng viên hài lòng</div>
+          </div>
+        </section>
+        <section class="section">
+          <div class="section-title">
+            <div>
+              <span class="eyebrow">CƠ HỘI DÀNH CHO BẠN</span>
+              <h2>Vị trí đang tuyển nổi bật</h2>
+              <p class="muted">
+                Gia nhập đội ngũ và cùng tạo ra những điều ý nghĩa.
+              </p>
+            </div>
+          </div>
+          <div class="jobs" id="jobList">
+            <article class="job" data-key="frontend công nghệ hồ chí minh">
+              <span class="job-icon">VT</span><span class="new">MỚI</span>
+              <h3>Senior Frontend Developer</h3>
+              <p class="muted">Khối Công nghệ</p>
+              <div class="tags">
+                <span>⌖ TP. Hồ Chí Minh</span><span>◷ Toàn thời gian</span
+                ><span>◈ 30–45 triệu</span>
+              </div>
+              <div class="job-foot">
+                <span>2 ngày trước</span
+                ><button
+                  type="button"
+                  class="job-detail-trigger"
+                  data-job-id="frontend"
+                >
+                  Xem chi tiết →
+                </button>
+              </div>
+            </article>
+            <article class="job" data-key="backend nodejs công nghệ hà nội">
+              <span class="job-icon">VT</span><span class="new">MỚI</span>
+              <h3>Backend Developer (Node.js)</h3>
+              <p class="muted">Khối Công nghệ</p>
+              <div class="tags">
+                <span>⌖ Hà Nội</span><span>◷ Linh hoạt</span
+                ><span>◈ 25–40 triệu</span>
+              </div>
+              <div class="job-foot">
+                <span>3 ngày trước</span
+                ><button
+                  type="button"
+                  class="job-detail-trigger"
+                  data-job-id="backend"
+                >
+                  Xem chi tiết →
+                </button>
+              </div>
+            </article>
+            <article class="job" data-key="ui ux designer sản phẩm hồ chí minh">
+              <span class="job-icon">VT</span><span class="new">MỚI</span>
+              <h3>UI/UX Designer</h3>
+              <p class="muted">Phòng Sản phẩm</p>
+              <div class="tags">
+                <span>⌖ TP. Hồ Chí Minh</span><span>◷ Toàn thời gian</span
+                ><span>◈ 20–32 triệu</span>
+              </div>
+              <div class="job-foot">
+                <span>5 ngày trước</span
+                ><button
+                  type="button"
+                  class="job-detail-trigger"
+                  data-job-id="designer"
+                >
+                  Xem chi tiết →
+                </button>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <section class="company-about" id="gioi-thieu">
+  <div class="company-about-container">
+
+    <div class="company-about-content">
+      <span class="company-about-label">VỀ CHÚNG TÔI</span>
+
+      <h2>Giới thiệu về VietTech Development JSC</h2>
+
+      <p class="company-slogan">
+        “Kiến tạo công nghệ – Phát triển tương lai”
+      </p>
+
+      <p class="company-description">
+        VietTech Development JSC là môi trường làm việc năng động, sáng tạo
+        và chuyên nghiệp. Chúng tôi luôn đề cao con người, khuyến khích những
+        ý tưởng mới và tạo điều kiện để mỗi thành viên phát triển toàn diện.
+      </p>
+
+      <!--<a href="#viec-lam" class="company-about-button">
+        Khám phá cơ hội nghề nghiệp
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>-->
+    </div>
+
+    <div class="company-values">
+      <article class="value-card">
+        <div class="value-icon">
+          <i class="fa-solid fa-users"></i>
+        </div>
+
+        <div>
+          <h3>Con người</h3>
+          <p>Tôn trọng, kết nối và cùng nhau phát triển.</p>
+        </div>
+      </article>
+
+      <article class="value-card">
+        <div class="value-icon">
+          <i class="fa-solid fa-lightbulb"></i>
+        </div>
+
+        <div>
+          <h3>Đổi mới</h3>
+          <p>Không ngừng sáng tạo và ứng dụng công nghệ mới.</p>
+        </div>
+      </article>
+
+      <article class="value-card">
+        <div class="value-icon">
+          <i class="fa-solid fa-handshake"></i>
+        </div>
+
+        <div>
+          <h3>Đồng hành</h3>
+          <p>Cùng nhân viên và khách hàng tạo nên giá trị bền vững.</p>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+    <div id="notice" class="notice" aria-live="polite"></div>
+    <!-- ===== THÔNG TIN LIÊN HỆ ===== -->
+    <footer class="footer" id="contact">
+      <div class="footer-container">
+        <div class="footer-content">
+          <!-- Thông tin công ty -->
+          <div class="footer-company">
+            <a href="index.html" class="footer-logo">
+              <img
+                src="../img/logo1.png"
+                alt="Logo VietTech"
+                class="footer-logo-image"
+              />
+              <span>VietTech Development JSC</span>
+            </a>
+
+            <p>
+              Người bạn đồng hành tin cậy trên hành trình chinh phục đỉnh cao
+              công nghệ. Chúng tôi cam kết mang lại những giải pháp nhân sự và
+              công nghệ tối ưu nhất.
             </p>
-            <label id="nameField" class="field hidden"
-              >Họ và tên<input placeholder="Nguyễn Văn A" /></label
-            ><label class="field"
-              >Email<input
-                type="email"
-                placeholder="email@example.com" /></label
-            ><label class="field"
-              >Mật khẩu<input
-                type="password"
-                placeholder="Tối thiểu 8 ký tự" /></label
-            ><button class="primary submit" onclick="showPage('candidate')">
-              <span id="submitText">Đăng nhập</span></button
-            ><button class="link-btn submit" onclick="showPage('admin')">
-              Bạn là HR/Admin? Đăng nhập cổng quản trị →
-            </button>
+
+            <div class="footer-socials">
+              <a href="#" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+
+              <a href="#" aria-label="Email">
+                <i class="fa-regular fa-envelope"></i>
+              </a>
+
+              <a href="tel:19002026" aria-label="Điện thoại">
+                <i class="fa-solid fa-phone"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Thông tin liên hệ -->
+          <div class="footer-contact">
+            <h3>Thông tin liên hệ</h3>
+
+            <ul>
+              <li>
+                <i class="fa-solid fa-building"></i>
+
+                <span>
+                  Tòa nhà VietTech, Khu Công nghệ cao Q9,<br />
+                  TP. Hồ Chí Minh
+                </span>
+              </li>
+
+              <li>
+                <i class="fa-regular fa-envelope"></i>
+
+                <a href="mailto:contact@viettech.com.vn">
+                  contact@viettech.com.vn
+                </a>
+              </li>
+
+              <li>
+                <i class="fa-solid fa-phone"></i>
+
+                <a href="tel:19002026">Hotline: 1900 2026</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bản đồ -->
+          <div class="footer-map">
+            <iframe
+              src="https://www.google.com/maps?q=Khu+Công+nghệ+cao+Quận+9+TP+Hồ+Chí+Minh&output=embed"
+              title="Vị trí công ty VietTech"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 VietTech Development JSC. All rights reserved.</p>
+
+          <nav class="footer-links" aria-label="Liên kết cuối trang">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Company Map</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <!-- POPUP CHI TIẾT VIỆC LÀM: phần độc lập, không ảnh hưởng code hiện có -->
+    <div class="job-detail-modal" id="jobDetailModal" aria-hidden="true">
+      <div class="job-detail-modal__backdrop" data-close-job-detail></div>
+
+      <section
+        class="job-detail-modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="jobDetailTitle"
+      >
+        <header class="job-detail-modal__header">
+          <div class="job-detail-modal__brand" aria-hidden="true">VT</div>
+          <div class="job-detail-modal__heading">
+            <span class="job-detail-modal__eyebrow">CƠ HỘI NGHỀ NGHIỆP</span>
+            <h2 id="jobDetailTitle">Senior Frontend Developer</h2>
+            <p id="jobDetailDepartment">Khối Công nghệ</p>
+          </div>
+          <button
+            class="job-detail-modal__close"
+            type="button"
+            aria-label="Đóng chi tiết vị trí"
+            data-close-job-detail
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </header>
+
+        <div class="job-detail-modal__meta" id="jobDetailMeta"></div>
+
+        <div class="job-detail-modal__body">
+          <div class="job-detail-modal__content">
+            <section class="job-detail-section">
+              <h3><i class="fa-regular fa-rectangle-list"></i> Mô tả công việc</h3>
+              <ul id="jobDetailDescription"></ul>
+            </section>
+
+            <section class="job-detail-section">
+              <h3><i class="fa-solid fa-user-check"></i> Yêu cầu ứng viên</h3>
+              <ul id="jobDetailRequirements"></ul>
+            </section>
+
+            <section class="job-detail-section">
+              <h3><i class="fa-solid fa-gift"></i> Quyền lợi</h3>
+              <ul id="jobDetailBenefits"></ul>
+            </section>
+          </div>
+
+          <aside class="job-detail-summary">
+            <h3>Thông tin vị trí</h3>
+            <dl id="jobDetailSummary"></dl>
+            <div class="job-detail-summary__deadline">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <span>Hạn nộp hồ sơ</span>
+                <strong id="jobDetailDeadline">30/08/2026</strong>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <footer class="job-detail-modal__footer">
+          <p>
+            <i class="fa-solid fa-circle-info"></i>
+            Hồ sơ phù hợp sẽ được phản hồi trong 3–5 ngày làm việc.
+          </p>
+          <button type="button" class="job-detail-apply" id="jobDetailApply">
+            Ứng tuyển ngay
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </footer>
       </section>
     </div>
 
-    <div id="candidate" class="hidden candidate-page">
-      <header class="candidate-top">
-        <button class="brand" onclick="showPage('portal')">
-          <span class="logo"><i>V</i><i>T</i></span
-          ><b>VietTech Development JSC</b>
-        </button>
-        <div>
-          <button class="link-btn" onclick="showPage('portal')">Tìm việc</button
-          ><button class="link-btn" onclick="showPage('admin')">
-            Cổng thông tin ứng viên</button>
-          </button>
-        </div>
-      </header>
-      <main class="candidate-body">
-        <span class="eyebrow">CỔNG THÔNG TIN ỨNG VIÊN</span>
-        <h1>Xin chào, Minh Anh 👋</h1>
-        <p class="muted">
-          Theo dõi hồ sơ và chuẩn bị cho bước tiếp theo trong hành trình của
-          bạn.
-        </p>
-        <section class="lookup">
-          <div>
-            <b>⌕ Tra cứu nhanh hồ sơ</b>
-            <p>Nhập mã ứng tuyển được gửi qua email để xem tiến trình.</p>
-          </div>
-          <input id="lookupCode" placeholder="Ví dụ: UV-2026-0186" />
-        </section>
-        <section class="application">
-          <div class="app-head">
+    <!-- POPUP ỨNG TUYỂN: phần độc lập, không ảnh hưởng giao diện hiện có -->
+    <div
+      class="application-modal"
+      id="applicationModal"
+      aria-hidden="true"
+    >
+      <div class="application-modal__backdrop" data-close-application></div>
+
+      <section
+        class="application-modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="applicationModalTitle"
+      >
+        <header class="application-modal__header">
+          <div class="application-modal__heading">
+            <span class="application-modal__icon" aria-hidden="true">
+              <i class="fa-solid fa-file-lines"></i>
+            </span>
             <div>
-              <small>MÃ HỒ SƠ: UV-2026-0186</small>
-              <h2>Senior Frontend Developer</h2>
-              <p class="muted">Khối Công nghệ · TP. Hồ Chí Minh</p>
-            </div>
-            <span class="pill">Đang phỏng vấn</span>
-          </div>
-          <div class="timeline">
-            <div class="step done">
-              <span class="dot">✓</span><b>Đã nộp</b><small>20/07/2026</small>
-            </div>
-            <div class="step done">
-              <span class="dot">✓</span><b>Chờ xử lý</b
-              ><small>21/07/2026</small>
-            </div>
-            <div class="step done">
-              <span class="dot">✓</span><b>HR xem xét</b
-              ><small>22/07/2026</small>
-            </div>
-            <div class="step current">
-              <span class="dot">4</span><b>Phỏng vấn</b
-              ><small>24/07/2026</small>
-            </div>
-            <div class="step">
-              <span class="dot">5</span><b>Chờ kết quả</b
-              ><small>Dự kiến 26/07</small>
-            </div>
-            <div class="step">
-              <span class="dot">6</span><b>Kết quả</b><small>—</small>
+              <h2 id="applicationModalTitle">Ứng tuyển vị trí</h2>
+              <p>Điền thông tin và tải CV để hoàn tất hồ sơ ứng tuyển.</p>
             </div>
           </div>
-        </section>
-      </main>
+
+          <button
+            class="application-modal__close"
+            type="button"
+            aria-label="Đóng popup ứng tuyển"
+            data-close-application
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </header>
+
+        <form class="application-form" id="applicationForm" novalidate>
+          <div class="application-form__body">
+            <div class="application-form__grid">
+              <label class="application-field">
+                <span>Họ và tên <b>*</b></span>
+                <input
+                  id="applicantName"
+                  name="fullName"
+                  type="text"
+                  placeholder="Nguyễn Văn A"
+                  autocomplete="name"
+                  required
+                />
+                <small class="application-field__error"></small>
+              </label>
+
+              <label class="application-field">
+                <span>Email <b>*</b></span>
+                <input
+                  id="applicantEmail"
+                  name="email"
+                  type="email"
+                  placeholder="nguyenvana@gmail.com"
+                  autocomplete="email"
+                  required
+                />
+                <small class="application-field__error"></small>
+              </label>
+
+              <label class="application-field">
+                <span>Số điện thoại <b>*</b></span>
+                <input
+                  id="applicantPhone"
+                  name="phone"
+                  type="tel"
+                  placeholder="0901 234 567"
+                  autocomplete="tel"
+                  required
+                />
+                <small class="application-field__error"></small>
+              </label>
+
+              <label class="application-field">
+                <span>Vị trí ứng tuyển <b>*</b></span>
+                <select id="applicationPosition" name="position" required>
+                  <option value="Senior Frontend Developer">
+                    Senior Frontend Developer
+                  </option>
+                  <option value="Backend Developer (Node.js)">
+                    Backend Developer (Node.js)
+                  </option>
+                  <option value="UI/UX Designer">UI/UX Designer</option>
+                </select>
+                <small class="application-field__error"></small>
+              </label>
+            </div>
+
+            <div class="application-upload">
+              <span class="application-upload__label">Hồ sơ CV <b>*</b></span>
+
+              <label class="application-dropzone" id="applicationDropzone">
+                <input
+                  id="applicationCv"
+                  name="cv"
+                  type="file"
+                  accept=".pdf,.doc,.docx"
+                  hidden
+                  required
+                />
+                <i
+                  class="fa-solid fa-cloud-arrow-up application-dropzone__icon"
+                  aria-hidden="true"
+                ></i>
+                <div class="application-dropzone__content">
+                  <p>Kéo thả CV vào đây hoặc</p>
+                  <span>Chọn tệp từ máy</span>
+                  <small>Hỗ trợ PDF, DOC, DOCX • Tối đa 5 MB</small>
+                </div>
+              </label>
+
+              <div
+                class="application-file"
+                id="applicationFileStatus"
+                aria-live="polite"
+              ></div>
+            </div>
+          </div>
+
+          <footer class="application-form__footer">
+            <button
+              class="application-form__cancel"
+              type="button"
+              data-close-application
+            >
+              Hủy
+            </button>
+            <button class="application-form__submit" type="submit">
+              <i class="fa-regular fa-paper-plane"></i>
+              Gửi hồ sơ ứng tuyển
+            </button>
+          </footer>
+        </form>
+      </section>
     </div>
 
-    <div id="admin" class="hidden admin">
-      <aside class="sidebar">
-        <button class="brand">
-          <span class="logo"><i>V</i><i>T</i></span
-          ><b>VietTech</b></button
-        ><button class="active">▦ Tổng quan</button
-        ><button>▣ Tin tuyển dụng</button><button>♙ Ứng viên</button
-        ><button>✦ AI phân tích CV</button
-        ><button>⇄ Quy trình tuyển dụng</button><button>□ Lịch phỏng vấn</button
-        ><button>⌁ Báo cáo & thống kê</button
-        ><button>♧ Quản lý người dùng</button>
-      </aside>
-      <main class="admin-main">
-        <header class="topbar">
-          <b>Tổng quan</b>
-          <div>
-            <button class="link-btn" onclick="showPage('portal')">
-              Cổng ứng viên</button
-            >　 Chí Hải ▾
-          </div>
-        </header>
-        <div class="content">
-          <section class="welcome">
-            <div>
-              <span class="eyebrow">TỔNG QUAN TUYỂN DỤNG</span>
-              <h1>Chào buổi sáng, Chí Hải 👋</h1>
-              <p class="muted">Đây là tình hình tuyển dụng của bạn hôm nay.</p>
-            </div>
-            <button class="primary">＋ Tạo tin tuyển dụng</button>
-          </section>
-          <section class="stats">
-            <article class="card stat">
-              <span class="stat-icon">▣</span>
-              <div>
-                <small>TIN ĐANG TUYỂN</small><strong>12</strong
-                ><small>+2 so với tháng trước</small>
-              </div>
-            </article>
-            <article class="card stat">
-              <span class="stat-icon">♙</span>
-              <div>
-                <small>HỒ SƠ MỚI</small><strong>186</strong
-                ><small>+18% so với tháng trước</small>
-              </div>
-            </article>
-            <article class="card stat">
-              <span class="stat-icon">✓</span>
-              <div>
-                <small>ỨNG VIÊN ĐẠT</small><strong>47</strong
-                ><small>+8 trong tháng này</small>
-              </div>
-            </article>
-            <article class="card stat">
-              <span class="stat-icon">□</span>
-              <div>
-                <small>LỊCH PHỎNG VẤN</small><strong>8</strong
-                ><small>3 lịch hôm nay</small>
-              </div>
-            </article>
-          </section>
-          <section class="grid">
-            <article class="card">
-              <h2>Hồ sơ ứng viên</h2>
-              <p class="muted">Số lượng hồ sơ nhận được trong năm 2026</p>
-              <div class="bars">
-                <i class="bar" style="height: 34%"></i
-                ><i class="bar" style="height: 47%"></i
-                ><i class="bar" style="height: 39%"></i
-                ><i class="bar" style="height: 62%"></i
-                ><i class="bar" style="height: 54%"></i
-                ><i class="bar" style="height: 76%"></i
-                ><i class="bar" style="height: 69%"></i
-                ><i class="bar" style="height: 86%"></i
-                ><i class="bar" style="height: 72%"></i
-                ><i class="bar" style="height: 92%"></i>
-              </div>
-            </article>
-            <article class="card">
-              <h2>Ứng viên mới nhất</h2>
-              <div class="candidate">
-                <span class="avatar">NM</span>
-                <div>
-                  <b>Nguyễn Minh Anh</b><small>Frontend Developer</small>
-                </div>
-                <span class="score">92</span><span class="pill">Phỏng vấn</span>
-              </div>
-              <div class="candidate">
-                <span class="avatar">TT</span>
-                <div>
-                  <b>Trần Thanh Tùng</b><small>Backend Developer</small>
-                </div>
-                <span class="score">86</span
-                ><span class="pill">HR xem xét</span>
-              </div>
-              <div class="candidate">
-                <span class="avatar">LH</span>
-                <div><b>Lê Ngọc Hân</b><small>UI/UX Designer</small></div>
-                <span class="score">79</span
-                ><span class="pill">Đã phân tích</span>
-              </div>
-            </article>
-          </section>
-        </div>
-      </main>
+    <div
+      class="application-toast"
+      id="applicationToast"
+      role="status"
+      aria-live="polite"
+    >
+      <i class="fa-solid fa-circle-check"></i>
+      <span>Gửi hồ sơ ứng tuyển thành công!</span>
     </div>
+
     <script src="../js/index.js"></script>
   </body>
 </html>
