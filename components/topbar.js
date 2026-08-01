@@ -128,7 +128,7 @@ function initializeTopbar() {
                 event.preventDefault();
 
                 navigateToPage(
-                    "html/TongQuan.html",
+                    "TongQuan.html",
                     "Tổng quan",
                 );
             },
@@ -307,7 +307,7 @@ function initializeNotificationDropdown() {
                     const routes = {
                         interview: {
                             page:
-                                "html/LichPhongVan.html",
+                                "LichPhongVan.html",
 
                             title:
                                 "Lịch phỏng vấn",
@@ -315,7 +315,7 @@ function initializeNotificationDropdown() {
 
                         candidate: {
                             page:
-                                "html/UngVien.html",
+                                "UngVien.html",
 
                             title:
                                 "Ứng viên",
@@ -323,7 +323,7 @@ function initializeNotificationDropdown() {
 
                         job: {
                             page:
-                                "html/TinTuyenDung.html",
+                                "TinTuyenDung.html",
 
                             title:
                                 "Tin tuyển dụng",
@@ -563,7 +563,7 @@ function createHelpDropdown() {
             "click",
             function () {
                 navigateToPage(
-                    "html/helpdesk.html",
+                    "helpdesk.html",
                     "Trung tâm trợ giúp",
                 );
             },
@@ -575,7 +575,7 @@ function createHelpDropdown() {
             "click",
             function () {
                 navigateToPage(
-                    "html/helpdesk.html",
+                    "helpdesk.html",
                     "Trung tâm trợ giúp",
                 );
             },
@@ -1857,7 +1857,7 @@ function initializeGlobalSearch() {
         {
             name: "Tổng quan",
             icon: "fa-solid fa-house",
-            page: "html/TongQuan.html",
+            page: "TongQuan.html",
 
             keywords: [
                 "tong quan",
@@ -1870,7 +1870,7 @@ function initializeGlobalSearch() {
         {
             name: "Tin tuyển dụng",
             icon: "fa-solid fa-briefcase",
-            page: "html/TinTuyenDung.html",
+            page: "TinTuyenDung.html",
 
             keywords: [
                 "tin tuyen dung",
@@ -1884,7 +1884,7 @@ function initializeGlobalSearch() {
         {
             name: "Ứng viên",
             icon: "fa-solid fa-users",
-            page: "html/UngVien.html",
+            page: "UngVien.html",
 
             keywords: [
                 "ung vien",
@@ -1898,7 +1898,7 @@ function initializeGlobalSearch() {
         {
             name: "AI phân tích CV",
             icon: "fa-solid fa-robot",
-            page: "html/AI.html",
+            page: "AI.html",
 
             keywords: [
                 "ai",
@@ -1914,7 +1914,7 @@ function initializeGlobalSearch() {
                 "fa-solid fa-diagram-project",
 
             page:
-                "html/QuyTrinhTuyenDung.html",
+                "QuyTrinhTuyenDung.html",
 
             keywords: [
                 "quy trinh",
@@ -1930,7 +1930,7 @@ function initializeGlobalSearch() {
                 "fa-solid fa-calendar-days",
 
             page:
-                "html/LichPhongVan.html",
+                "LichPhongVan.html",
 
             keywords: [
                 "lich phong van",
@@ -1946,7 +1946,7 @@ function initializeGlobalSearch() {
                 "fa-solid fa-chart-column",
 
             page:
-                "html/BaoCaoThongKe.html",
+                "BaoCaoThongKe.html",
 
             keywords: [
                 "bao cao",
@@ -1963,7 +1963,7 @@ function initializeGlobalSearch() {
                 "fa-solid fa-circle-question",
 
             page:
-                "html/helpdesk.html",
+                "helpdesk.html",
 
             keywords: [
                 "tro giup",
