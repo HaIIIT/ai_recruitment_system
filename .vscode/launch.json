@@ -7,9 +7,14 @@
         {
             "type": "chrome",
             "request": "launch",
+<<<<<<< HEAD
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:8080",
             "webRoot": "${workspaceFolder}"
+=======
+            "name": "Open index.html",
+            "file": "d:\\Website\\html\\index.html"
+>>>>>>> f618cae8c184ff279e34fe8f5e830ff7ac5529c0
         }
     ]
 }

@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thông báo - Ứng viên | VietTech Development JSC</title>
+    <!--favicon-->
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="../favicon/fa/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="../favicon/fa/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="../favicon/fa/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../favicon/fa/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="../favicon/fa/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="../favicon/fa/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="../favicon/fa/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="../favicon/fa/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../favicon/fa/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="../favicon/fa/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../favicon/fa/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="../favicon/fa/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../favicon/fa/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../favicon/fa/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="../favicon/fa/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <!--end-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/thongbaoUV.css" />
+    <!--<script src="thongbao.js" defer></script>-->
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="../html/index.html">
+        <img src="../img/logo1.png" alt="Logo VietTech" />
+        <strong>VietTech Development JSC</strong>
+      </a>
+      <nav class="top-nav">
+        <a href="../html/index.html"> <span>🏠︎</span> Trở về trang chủ </a>
+      </nav>
+    </header>
+    <aside class="sidebar" id="sidebar">
+      <p class="sidebar-label">CỔNG THÔNG TIN ỨNG VIÊN</p>
+      <nav class="side-nav">
+        <a href="../html/sso.html"><span>⌕</span> Tra Cứu Ứng Tuyển</a>
+        <a href="../html/hosoUV.html"><span>♙</span> Hồ sơ của tôi</a>
+        <a class="active" href="#"><span>♢</span> Thông báo</a>
+        <a href="../html/helpdesk.html"> <span>❔</span>Trung tâm hỗ trợ </a>
+      </nav>
+    </aside>
+
+    <main class="page">
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow">Cổng thông tin ứng viên</p>
+          <h1>Thông báo của bạn</h1>
+          <p>
+            Theo dõi lịch phỏng vấn và những cập nhật mới nhất về hồ sơ ứng
+            tuyển.
+          </p>
+        </div>
+        <button class="outline-button" id="markAllRead" type="button">
+          ✓ Đánh dấu tất cả đã đọc
+        </button>
+      </section>
+
+      <section class="notification-panel">
+        <div class="panel-toolbar">
+          <div class="filters" role="tablist" aria-label="Lọc thông báo">
+            <button class="active" type="button" data-filter="all">
+              Tất cả <span id="allCount">5</span>
+            </button>
+            <button type="button" data-filter="unread">
+              Chưa đọc <span id="unreadCount">2</span>
+            </button>
+            <button type="button" data-filter="interview">Phỏng vấn</button>
+            <button type="button" data-filter="profile">Hồ sơ</button>
+          </div>
+        </div>
+
+        <div class="notification-list" id="notificationList">
+          <article class="notification unread" data-type="interview">
+            <span class="unread-dot" aria-label="Chưa đọc"></span>
+            <span class="notice-icon interview-icon">◷</span>
+            <div class="notice-copy">
+              <div class="notice-title">
+                <h2>Lịch phỏng vấn đã được xác nhận</h2>
+                <time>10 phút trước</time>
+              </div>
+              <p>
+                Buổi phỏng vấn vị trí
+                <strong>Senior Frontend Developer</strong> diễn ra lúc 09:30,
+                Thứ Sáu 24/07/2026 tại phòng họp Lotus.
+              </p>
+              <button
+                type="button"
+                data-detail="Lịch phỏng vấn: 09:30, Thứ Sáu 24/07/2026 · Phòng họp Lotus"
+              >
+                Xem lịch phỏng vấn →
+              </button>
+            </div>
+            <button
+              class="more-button"
+              type="button"
+              aria-label="Xóa thông báo"
+              data-delete
+            >
+              ×
+            </button>
+          </article>
+
+          <article class="notification unread" data-type="profile">
+            <span class="unread-dot" aria-label="Chưa đọc"></span>
+            <span class="notice-icon profile-icon">✓</span>
+            <div class="notice-copy">
+              <div class="notice-title">
+                <h2>Hồ sơ đã qua vòng HR xem xét</h2>
+                <time>1 giờ trước</time>
+              </div>
+              <p>
+                Chúc mừng bạn! Hồ sơ <strong>UV-2026-0186</strong> đã được
+                chuyển sang vòng phỏng vấn.
+              </p>
+              <button type="button" data-href="../html/index.html">
+                Xem tiến trình →
+              </button>
+            </div>
+            <button
+              class="more-button"
+              type="button"
+              aria-label="Xóa thông báo"
+              data-delete
+            >
+              ×
+            </button>
+          </article>
+
+          <article class="notification" data-type="profile">
+            <span class="unread-dot" aria-hidden="true"></span>
+            <span class="notice-icon document-icon">▤</span>
+            <div class="notice-copy">
+              <div class="notice-title">
+                <h2>CV của bạn đã được cập nhật</h2>
+                <time>20/07/2026</time>
+              </div>
+              <p>
+                Tệp CV_Nguyen_Minh_Anh.pdf đã được tải lên thành công và sẵn
+                sàng sử dụng.
+              </p>
+              <button type="button" data-href="hoso.html">Quản lý CV →</button>
+            </div>
+            <button
+              class="more-button"
+              type="button"
+              aria-label="Xóa thông báo"
+              data-delete
+            >
+              ×
+            </button>
+          </article>
+
+          <article class="notification" data-type="profile">
+            <span class="unread-dot" aria-hidden="true"></span>
+            <span class="notice-icon profile-icon">♙</span>
+            <div class="notice-copy">
+              <div class="notice-title">
+                <h2>Hoàn thiện hồ sơ ứng viên</h2>
+                <time>19/07/2026</time>
+              </div>
+              <p>
+                Hồ sơ của bạn đã hoàn thành 85%. Hãy bổ sung thông tin để tăng
+                cơ hội được nhà tuyển dụng chú ý.
+              </p>
+              <button type="button" data-href="hoso.html">
+                Hoàn thiện hồ sơ →
+              </button>
+            </div>
+            <button
+              class="more-button"
+              type="button"
+              aria-label="Xóa thông báo"
+              data-delete
+            >
+              ×
+            </button>
+          </article>
+
+          <article class="notification" data-type="general">
+            <span class="unread-dot" aria-hidden="true"></span>
+            <span class="notice-icon general-icon">★</span>
+            <div class="notice-copy">
+              <div class="notice-title">
+                <h2>Chào mừng bạn đến với VietTech</h2>
+                <time>18/07/2026</time>
+              </div>
+              <p>
+                Tài khoản ứng viên đã được tạo thành công. Bạn có thể cập nhật
+                hồ sơ và theo dõi tiến trình ngay tại đây.
+              </p>
+            </div>
+            <button
+              class="more-button"
+              type="button"
+              aria-label="Xóa thông báo"
+              data-delete
+            >
+              ×
+            </button>
+          </article>
+        </div>
+
+        <div class="empty-state" id="emptyState" hidden>
+          <span>♢</span>
+          <h2>Không có thông báo</h2>
+          <p>Hiện chưa có thông báo phù hợp với bộ lọc này.</p>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
