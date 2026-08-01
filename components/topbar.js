@@ -25,7 +25,7 @@ async function loadTopbar() {
 
     try {
         const response = await fetch(
-            "components/topbar.html",
+            "../components/topbar.html",
         );
 
         if (!response.ok) {
