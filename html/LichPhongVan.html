@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Lịch phỏng vấn</title>
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/LichPhongVan.css"
+    >
+</head>
+
+<body>
+
+    <main class="interview-page">
+
+        <!-- =========================
+             TIÊU ĐỀ TRANG
+        ========================== -->
+
+        <header class="page-header">
+
+            <div class="page-header-content">
+
+                <p class="page-label">
+                    LỊCH LÀM VIỆC
+                </p>
+
+                <h1>
+                    Lịch phỏng vấn
+                </h1>
+
+                <p class="page-description">
+                    Quản lý lịch, người phỏng vấn và kết quả từng vòng.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="add-button"
+                id="openAddModalButton"
+            >
+
+                <i class="fa-solid fa-plus"></i>
+
+                <span>
+                    Thêm lịch phỏng vấn
+                </span>
+
+            </button>
+
+        </header>
+
+        <!-- =========================
+             THANH CÔNG CỤ
+        ========================== -->
+
+        <section class="toolbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Tìm ứng viên, vị trí hoặc người phỏng vấn..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="filterButton"
+                aria-expanded="false"
+            >
+
+                <i class="fa-solid fa-sliders"></i>
+
+                <span>
+                    Bộ lọc
+                </span>
+
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="exportButton"
+            >
+
+                <i class="fa-solid fa-download"></i>
+
+                <span>
+                    Xuất dữ liệu
+                </span>
+
+            </button>
+
+        </section>
+
+        <!-- =========================
+             BỘ LỌC
+        ========================== -->
+
+        <section
+            class="filter-panel"
+            id="filterPanel"
+            aria-hidden="true"
+        >
+
+            <div class="filter-group">
+
+                <label for="positionFilter">
+                    Vị trí ứng tuyển
+                </label>
+
+                <select id="positionFilter">
+
+                    <option value="all">
+                        Tất cả vị trí
+                    </option>
+
+                    <option value="Frontend Developer">
+                        Frontend Developer
+                    </option>
+
+                    <option value="Backend Developer">
+                        Backend Developer
+                    </option>
+
+                    <option value="UI/UX Designer">
+                        UI/UX Designer
+                    </option>
+
+                    <option value="Data Analyst">
+                        Data Analyst
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="filter-group">
+
+                <label for="statusFilter">
+                    Trạng thái
+                </label>
+
+                <select id="statusFilter">
+
+                    <option value="all">
+                        Tất cả trạng thái
+                    </option>
+
+                    <option value="Sắp diễn ra">
+                        Sắp diễn ra
+                    </option>
+
+                    <option value="Đang diễn ra">
+                        Đang diễn ra
+                    </option>
+
+                    <option value="Hoàn thành">
+                        Hoàn thành
+                    </option>
+
+                    <option value="Đã hoãn">
+                        Đã hoãn
+                    </option>
+
+                </select>
+
+            </div>
+
+            <button
+                type="button"
+                class="clear-filter-button"
+                id="clearFilterButton"
+            >
+
+                <i class="fa-solid fa-rotate-left"></i>
+
+                <span>
+                    Xóa bộ lọc
+                </span>
+
+            </button>
+
+        </section>
+
+        <!-- =========================
+             THẺ THỐNG KÊ
+        ========================== -->
+
+        <section class="schedule-stats">
+
+            <!-- Tổng lịch -->
+            <article class="stat-card">
+
+                <span class="stat-icon stat-icon-blue">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                </span>
+
+                <div>
+
+                    <span class="stat-label">
+                        Tổng lịch
+                    </span>
+
+                    <strong id="totalScheduleCount">
+                        0
+                    </strong>
+
+                    <small>
+                        Trong tháng đang xem
+                    </small>
+
+                </div>
+
+            </article>
+
+            <!-- Sắp diễn ra -->
+            <article class="stat-card">
+
+                <span class="stat-icon stat-icon-orange">
+
+                    <i class="fa-regular fa-clock"></i>
+
+                </span>
+
+                <div>
+
+                    <span class="stat-label">
+                        Sắp diễn ra
+                    </span>
+
+                    <strong id="upcomingScheduleCount">
+                        0
+                    </strong>
+
+                    <small>
+                        Chưa đến thời gian
+                    </small>
+
+                </div>
+
+            </article>
+
+            <!-- Đang diễn ra -->
+            <article class="stat-card">
+
+                <span class="stat-icon stat-icon-green">
+
+                    <i class="fa-solid fa-video"></i>
+
+                </span>
+
+                <div>
+
+                    <span class="stat-label">
+                        Đang diễn ra
+                    </span>
+
+                    <strong id="ongoingScheduleCount">
+                        0
+                    </strong>
+
+                    <small>
+                        Cần theo dõi
+                    </small>
+
+                </div>
+
+            </article>
+
+            <!-- Hoàn thành -->
+            <article class="stat-card">
+
+                <span class="stat-icon stat-icon-purple">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </span>
+
+                <div>
+
+                    <span class="stat-label">
+                        Hoàn thành
+                    </span>
+
+                    <strong id="completedScheduleCount">
+                        0
+                    </strong>
+
+                    <small>
+                        Đã có kết quả
+                    </small>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- =========================
+             BỐ CỤC LỊCH
+        ========================== -->
+
+        <section class="schedule-layout">
+
+            <!-- =========================
+                 LỊCH THÁNG
+            ========================== -->
+
+            <article class="calendar-card">
+
+                <div class="card-header calendar-header">
+
+                    <div>
+
+                        <span class="card-kicker">
+                            LỊCH THÁNG
+                        </span>
+
+                        <h2 id="calendarMonthTitle">
+                            Tháng 7, 2026
+                        </h2>
+
+                    </div>
+
+                    <div class="calendar-actions">
+
+                        <button
+                            type="button"
+                            class="today-button"
+                            id="todayButton"
+                        >
+                            Hôm nay
+                        </button>
+
+                        <button
+                            type="button"
+                            class="icon-button"
+                            id="previousMonthButton"
+                            aria-label="Tháng trước"
+                            title="Tháng trước"
+                        >
+
+                            <i class="fa-solid fa-chevron-left"></i>
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="icon-button"
+                            id="nextMonthButton"
+                            aria-label="Tháng sau"
+                            title="Tháng sau"
+                        >
+
+                            <i class="fa-solid fa-chevron-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Thứ trong tuần -->
+                <div
+                    class="calendar-weekdays"
+                    aria-hidden="true"
+                >
+
+                    <span>T2</span>
+                    <span>T3</span>
+                    <span>T4</span>
+                    <span>T5</span>
+                    <span>T6</span>
+                    <span>T7</span>
+                    <span>CN</span>
+
+                </div>
+
+                <!-- Ngày sẽ được JS tạo -->
+                <div
+                    class="calendar-grid"
+                    id="calendarGrid"
+                ></div>
+
+                <!-- Chú thích -->
+                <div class="calendar-legend">
+
+                    <span>
+
+                        <i class="legend-dot legend-blue"></i>
+
+                        Có lịch phỏng vấn
+
+                    </span>
+
+                    <span>
+
+                        <i class="legend-ring"></i>
+
+                        Ngày đang chọn
+
+                    </span>
+
+                </div>
+
+            </article>
+
+            <!-- =========================
+                 LỊCH TRONG NGÀY
+            ========================== -->
+
+            <article class="agenda-card">
+
+                <div class="card-header agenda-header">
+
+                    <div>
+
+                        <span class="card-kicker">
+                            LỊCH TRONG NGÀY
+                        </span>
+
+                        <h2 id="selectedDateTitle">
+                            Hôm nay
+                        </h2>
+
+                    </div>
+
+                    <span
+                        class="agenda-count"
+                        id="selectedDateCount"
+                    >
+                        0 lịch
+                    </span>
+
+                </div>
+
+                <!-- Danh sách lịch sẽ được JS tạo -->
+                <div
+                    class="agenda-list"
+                    id="agendaList"
+                ></div>
+
+                <!-- Không có lịch -->
+                <div
+                    class="agenda-empty"
+                    id="agendaEmpty"
+                    hidden
+                >
+
+                    <span class="agenda-empty-icon">
+
+                        <i class="fa-regular fa-calendar-xmark"></i>
+
+                    </span>
+
+                    <h3>
+                        Chưa có lịch phỏng vấn
+                    </h3>
+
+                    <p>
+                        Chọn ngày khác hoặc tạo lịch mới cho ngày này.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="emptyAddButton"
+                    >
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        <span>
+                            Thêm lịch
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+        <!-- =========================
+         MODAL THÊM LỊCH PHỎNG VẤN
+    ========================== -->
+
+    <div
+        class="modal-overlay"
+        id="interviewModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="interviewModalTitle"
+        >
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2 id="interviewModalTitle">
+                        Thêm lịch phỏng vấn
+                    </h2>
+
+                    <p>
+                        Nhập thông tin ứng viên và thời gian phỏng vấn.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="close-modal-button"
+                    id="closeModalButton"
+                    aria-label="Đóng"
+                    title="Đóng"
+                >
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+            <form id="interviewForm">
+
+                <!-- Họ tên ứng viên -->
+                <div class="form-group">
+
+                    <label for="candidateName">
+                        Họ và tên ứng viên
+                    </label>
+
+                    <input
+                        type="text"
+                        id="candidateName"
+                        placeholder="Ví dụ: Nguyễn Văn A"
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+                <!-- Vị trí ứng tuyển -->
+                <div class="form-group">
+
+                    <label for="candidatePosition">
+                        Vị trí ứng tuyển
+                    </label>
+
+                    <select
+                        id="candidatePosition"
+                        required
+                    >
+
+                        <option value="">
+                            Chọn vị trí
+                        </option>
+
+                        <option value="Frontend Developer">
+                            Frontend Developer
+                        </option>
+
+                        <option value="Backend Developer">
+                            Backend Developer
+                        </option>
+
+                        <option value="UI/UX Designer">
+                            UI/UX Designer
+                        </option>
+
+                        <option value="Data Analyst">
+                            Data Analyst
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- Điểm AI và trạng thái -->
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="candidateScore">
+                            Điểm AI
+                        </label>
+
+                        <input
+                            type="number"
+                            id="candidateScore"
+                            min="0"
+                            max="100"
+                            placeholder="0 - 100"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="candidateStatus">
+                            Trạng thái
+                        </label>
+
+                        <select
+                            id="candidateStatus"
+                            required
+                        >
+
+                            <option value="Sắp diễn ra">
+                                Sắp diễn ra
+                            </option>
+
+                            <option value="Đang diễn ra">
+                                Đang diễn ra
+                            </option>
+
+                            <option value="Hoàn thành">
+                                Hoàn thành
+                            </option>
+
+                            <option value="Đã hoãn">
+                                Đã hoãn
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <!-- Ngày và giờ -->
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="interviewDate">
+                            Ngày phỏng vấn
+                        </label>
+
+                        <input
+                            type="date"
+                            id="interviewDate"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="interviewTime">
+                            Giờ phỏng vấn
+                        </label>
+
+                        <input
+                            type="time"
+                            id="interviewTime"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+                <!-- Người phỏng vấn -->
+                <div class="form-group">
+
+                    <label for="interviewerName">
+                        Người phỏng vấn
+                    </label>
+
+                    <input
+                        type="text"
+                        id="interviewerName"
+                        placeholder="Ví dụ: Trần Văn B"
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+                <!-- Hình thức phỏng vấn -->
+                <div class="form-group">
+
+                    <label for="interviewType">
+                        Hình thức phỏng vấn
+                    </label>
+
+                    <select id="interviewType">
+
+                        <option value="Trực tuyến">
+                            Trực tuyến
+                        </option>
+
+                        <option value="Trực tiếp">
+                            Trực tiếp
+                        </option>
+
+                        <option value="Điện thoại">
+                            Điện thoại
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- Nút hành động -->
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancelModalButton"
+                    >
+                        Hủy
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <span>
+                            Lưu lịch
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- =========================
+         MENU THAO TÁC
+    ========================== -->
+
+    <div
+        class="context-menu"
+        id="contextMenu"
+        aria-hidden="true"
+    >
+
+        <button
+            type="button"
+            id="changeStatusButton"
+        >
+
+            <i class="fa-solid fa-rotate"></i>
+
+            <span>
+                Đổi trạng thái
+            </span>
+
+        </button>
+
+        <button
+            type="button"
+            class="delete-menu-button"
+            id="deleteInterviewButton"
+        >
+
+            <i class="fa-solid fa-trash"></i>
+
+            <span>
+                Xóa lịch
+            </span>
+
+        </button>
+
+    </div>
+
+    <!-- =========================
+         TOAST THÔNG BÁO
+    ========================== -->
+
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    >
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        <span id="toastMessage">
+            Thành công
+        </span>
+
+    </div>
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="../js/common.js"></script>
+
+    <script src="../js/LichPhongVan.js"></script>
+
+</body>
+</html>

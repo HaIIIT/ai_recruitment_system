@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Quy trình tuyển dụng</title>
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/QuyTrinhTuyenDung.css"
+    >
+</head>
+
+<body>
+
+<main class="pipeline-page">
+
+        <!-- Tiêu đề trang -->
+        <header class="page-header">
+
+            <div class="page-header-content">
+                <p class="page-label">
+                    PIPELINE TUYỂN DỤNG
+                </p>
+
+                <h1>Quy trình ứng viên</h1>
+
+                <p class="page-description">
+                    Theo dõi ứng viên xuyên suốt từ khi nộp hồ sơ đến nhận việc.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="add-button"
+                id="openAddModalButton"
+            >
+                <i class="fa-solid fa-plus"></i>
+                Thêm mới
+            </button>
+
+        </header>
+
+        <!-- Thanh công cụ -->
+        <section class="toolbar">
+
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="candidateSearchInput"
+                    placeholder="Tìm kiếm theo tên, vị trí hoặc từ khóa..."
+                >
+            </div>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="filterButton"
+            >
+                <i class="fa-solid fa-list"></i>
+                Bộ lọc
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="exportButton"
+            >
+                <i class="fa-solid fa-arrow-down"></i>
+                Xuất dữ liệu
+            </button>
+
+        </section>
+
+        <!-- Bộ lọc -->
+        <section
+            class="filter-panel"
+            id="filterPanel"
+        >
+
+            <div class="filter-group">
+                <label for="positionFilter">
+                    Vị trí ứng tuyển
+                </label>
+
+                <select id="positionFilter">
+                    <option value="all">Tất cả vị trí</option>
+                    <option value="Frontend Developer">
+                        Frontend Developer
+                    </option>
+                    <option value="Backend Developer">
+                        Backend Developer
+                    </option>
+                    <option value="UI/UX Designer">
+                        UI/UX Designer
+                    </option>
+                    <option value="Data Analyst">
+                        Data Analyst
+                    </option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="stageFilter">
+                    Giai đoạn
+                </label>
+
+                <select id="stageFilter">
+                    <option value="all">Tất cả giai đoạn</option>
+                    <option value="pending">Chờ xử lý</option>
+                    <option value="review">HR xem xét</option>
+                    <option value="interview">Phỏng vấn</option>
+                    <option value="offer">Đề nghị nhận việc</option>
+                </select>
+            </div>
+
+            <button
+                type="button"
+                class="clear-filter-button"
+                id="clearFilterButton"
+            >
+                Xóa bộ lọc
+            </button>
+
+        </section>
+
+        <!-- Kanban -->
+        <section class="pipeline-wrapper">
+
+            <div class="pipeline-board">
+
+                <!-- Cột chờ xử lý -->
+                <article
+                    class="pipeline-column"
+                    data-stage="pending"
+                >
+
+                    <header class="column-header">
+                        <h2>Chờ xử lý</h2>
+
+                        <span class="column-count">0</span>
+                    </header>
+
+                    <div
+                        class="candidate-list"
+                        data-stage="pending"
+                    >
+
+                        <div
+                            class="candidate-card"
+                            draggable="true"
+                            data-id="1"
+                            data-name="Nguyễn Minh Anh"
+                            data-position="Frontend Developer"
+                            data-score="92"
+                        >
+
+                            <div class="candidate-top">
+
+                                <div class="candidate-person">
+
+                                    <div class="avatar avatar-purple">
+                                        NM
+                                    </div>
+
+                                    <div class="candidate-main-info">
+                                        <strong>Nguyễn Minh Anh</strong>
+                                        <span>Frontend Developer</span>
+                                    </div>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="card-menu-button"
+                                    aria-label="Mở menu"
+                                >
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="candidate-score">
+                                <span>Điểm phù hợp</span>
+                                <strong>92/100</strong>
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="candidate-card"
+                            draggable="true"
+                            data-id="2"
+                            data-name="Trần Thanh Tùng"
+                            data-position="Backend Developer"
+                            data-score="86"
+                        >
+
+                            <div class="candidate-top">
+
+                                <div class="candidate-person">
+
+                                    <div class="avatar avatar-blue">
+                                        TT
+                                    </div>
+
+                                    <div class="candidate-main-info">
+                                        <strong>Trần Thanh Tùng</strong>
+                                        <span>Backend Developer</span>
+                                    </div>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="card-menu-button"
+                                    aria-label="Mở menu"
+                                >
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="candidate-score">
+                                <span>Điểm phù hợp</span>
+                                <strong>86/100</strong>
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="candidate-card"
+                            draggable="true"
+                            data-id="3"
+                            data-name="Phạm Quốc Thịnh"
+                            data-position="Data Analyst"
+                            data-score="74"
+                        >
+
+                            <div class="candidate-top">
+
+                                <div class="candidate-person">
+
+                                    <div class="avatar avatar-green">
+                                        PT
+                                    </div>
+
+                                    <div class="candidate-main-info">
+                                        <strong>Phạm Quốc Thịnh</strong>
+                                        <span>Data Analyst</span>
+                                    </div>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="card-menu-button"
+                                    aria-label="Mở menu"
+                                >
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="candidate-score">
+                                <span>Điểm phù hợp</span>
+                                <strong>74/100</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- Cột HR xem xét -->
+                <article
+                    class="pipeline-column"
+                    data-stage="review"
+                >
+
+                    <header class="column-header">
+                        <h2>HR xem xét</h2>
+
+                        <span class="column-count">0</span>
+                    </header>
+
+                    <div
+                        class="candidate-list"
+                        data-stage="review"
+                    >
+
+                        <div
+                            class="candidate-card"
+                            draggable="true"
+                            data-id="4"
+                            data-name="Trần Thanh Tùng"
+                            data-position="Backend Developer"
+                            data-score="86"
+                        >
+
+                            <div class="candidate-top">
+
+                                <div class="candidate-person">
+
+                                    <div class="avatar avatar-blue">
+                                        TT
+                                    </div>
+
+                                    <div class="candidate-main-info">
+                                        <strong>Trần Thanh Tùng</strong>
+                                        <span>Backend Developer</span>
+                                    </div>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="card-menu-button"
+                                    aria-label="Mở menu"
+                                >
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="candidate-score">
+                                <span>Điểm phù hợp</span>
+                                <strong>86/100</strong>
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="candidate-card"
+                            draggable="true"
+                            data-id="5"
+                            data-name="Lê Ngọc Hân"
+                            data-position="UI/UX Designer"
+                            data-score="79"
+                        >
+
+                            <div class="candidate-top">
+
+                                <div class="candidate-person">
+
+                                    <div class="avatar avatar-orange">
+                                        LH
+                                    </div>
+
+                                    <div class="candidate-main-info">
+                                        <strong>Lê Ngọc Hân</strong>
+                                        <span>UI/UX Designer</span>
+                                    </div>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="card-menu-button"
+                                    aria-label="Mở menu"
+                                >
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="candidate-score">
+                                <span>Điểm phù hợp</span>
+                                <strong>79/100</strong>
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="candidate-card"
+                            draggable="true"
+                            data-id="6"
+                            data-name="Võ Hoàng Nam"
+                            data-position="Frontend Developer"
+                            data-score="81"
+                        >
+
+                            <div class="candidate-top">
+
+                                <div class="candidate-person">
+
+                                    <div class="avatar avatar-purple">
+                                        VN
+                                    </div>
+
+                                    <div class="candidate-main-info">
+                                        <strong>Võ Hoàng Nam</strong>
+                                        <span>Frontend Developer</span>
+                                    </div>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="card-menu-button"
+                                    aria-label="Mở menu"
+                                >
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="candidate-score">
+                                <span>Điểm phù hợp</span>
+                                <strong>81/100</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- Cột phỏng vấn -->
+                <article
+                    class="pipeline-column"
+                    data-stage="interview"
+                >
+
+                    <header class="column-header">
+                        <h2>Phỏng vấn</h2>
+
+                        <span class="column-count">0</span>
+                    </header>
+
+                    <div
+                        class="candidate-list"
+                        data-stage="interview"
+                    >
+
+                        <div
+                            class="candidate-card"
+                            draggable="true"
+                            data-id="7"
+                            data-name="Lê Ngọc Hân"
+                            data-position="UI/UX Designer"
+                            data-score="79"
+                        >
+
+                            <div class="candidate-top">
+
+                                <div class="candidate-person">
+
+                                    <div class="avatar avatar-orange">
+                                        LH
+                                    </div>
+
+                                    <div class="candidate-main-info">
+                                        <strong>Lê Ngọc Hân</strong>
+                                        <span>UI/UX Designer</span>
+                                    </div>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="card-menu-button"
+                                    aria-label="Mở menu"
+                                >
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="candidate-score">
+                                <span>Điểm phù hợp</span>
+                                <strong>79/100</strong>
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="candidate-card"
+                            draggable="true"
+                            data-id="8"
+                            data-name="Phạm Quốc Thịnh"
+                            data-position="Data Analyst"
+                            data-score="74"
+                        >
+
+                            <div class="candidate-top">
+
+                                <div class="candidate-person">
+
+                                    <div class="avatar avatar-green">
+                                        PT
+                                    </div>
+
+                                    <div class="candidate-main-info">
+                                        <strong>Phạm Quốc Thịnh</strong>
+                                        <span>Data Analyst</span>
+                                    </div>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="card-menu-button"
+                                    aria-label="Mở menu"
+                                >
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="candidate-score">
+                                <span>Điểm phù hợp</span>
+                                <strong>74/100</strong>
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="candidate-card"
+                            draggable="true"
+                            data-id="9"
+                            data-name="Đặng Mỹ Linh"
+                            data-position="Backend Developer"
+                            data-score="88"
+                        >
+
+                            <div class="candidate-top">
+
+                                <div class="candidate-person">
+
+                                    <div class="avatar avatar-blue">
+                                        ĐL
+                                    </div>
+
+                                    <div class="candidate-main-info">
+                                        <strong>Đặng Mỹ Linh</strong>
+                                        <span>Backend Developer</span>
+                                    </div>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="card-menu-button"
+                                    aria-label="Mở menu"
+                                >
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="candidate-score">
+                                <span>Điểm phù hợp</span>
+                                <strong>88/100</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- Cột đề nghị nhận việc -->
+                <article
+                    class="pipeline-column"
+                    data-stage="offer"
+                >
+
+                    <header class="column-header">
+                        <h2>Đề nghị nhận việc</h2>
+
+                        <span class="column-count">0</span>
+                    </header>
+
+                    <div
+                        class="candidate-list"
+                        data-stage="offer"
+                    >
+
+                        <div
+                            class="candidate-card"
+                            draggable="true"
+                            data-id="10"
+                            data-name="Nguyễn Minh Anh"
+                            data-position="Frontend Developer"
+                            data-score="92"
+                        >
+
+                            <div class="candidate-top">
+
+                                <div class="candidate-person">
+
+                                    <div class="avatar avatar-purple">
+                                        NM
+                                    </div>
+
+                                    <div class="candidate-main-info">
+                                        <strong>Nguyễn Minh Anh</strong>
+                                        <span>Frontend Developer</span>
+                                    </div>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="card-menu-button"
+                                    aria-label="Mở menu"
+                                >
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="candidate-score">
+                                <span>Điểm phù hợp</span>
+                                <strong>92/100</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Modal thêm ứng viên -->
+    <div
+        class="modal-overlay"
+        id="candidateModal"
+    >
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Thêm ứng viên</h2>
+
+                    <p>
+                        Nhập thông tin ứng viên vào quy trình tuyển dụng.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="close-modal-button"
+                    id="closeModalButton"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <form id="candidateForm">
+
+                <div class="form-group">
+                    <label for="candidateName">
+                        Họ và tên
+                    </label>
+
+                    <input
+                        type="text"
+                        id="candidateName"
+                        placeholder="Ví dụ: Nguyễn Văn A"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="candidatePosition">
+                        Vị trí ứng tuyển
+                    </label>
+
+                    <select
+                        id="candidatePosition"
+                        required
+                    >
+                        <option value="">
+                            Chọn vị trí
+                        </option>
+
+                        <option value="Frontend Developer">
+                            Frontend Developer
+                        </option>
+
+                        <option value="Backend Developer">
+                            Backend Developer
+                        </option>
+
+                        <option value="UI/UX Designer">
+                            UI/UX Designer
+                        </option>
+
+                        <option value="Data Analyst">
+                            Data Analyst
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="candidateScore">
+                            Điểm phù hợp
+                        </label>
+
+                        <input
+                            type="number"
+                            id="candidateScore"
+                            min="0"
+                            max="100"
+                            placeholder="0 - 100"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="candidateStage">
+                            Giai đoạn
+                        </label>
+
+                        <select
+                            id="candidateStage"
+                            required
+                        >
+                            <option value="pending">
+                                Chờ xử lý
+                            </option>
+
+                            <option value="review">
+                                HR xem xét
+                            </option>
+
+                            <option value="interview">
+                                Phỏng vấn
+                            </option>
+
+                            <option value="offer">
+                                Đề nghị nhận việc
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancelModalButton"
+                    >
+                        Hủy
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+                        <i class="fa-solid fa-check"></i>
+                        Thêm ứng viên
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Menu thẻ ứng viên -->
+    <div
+        class="card-context-menu"
+        id="cardContextMenu"
+    >
+        <button
+            type="button"
+            id="deleteCandidateButton"
+        >
+            <i class="fa-solid fa-trash"></i>
+            Xóa ứng viên
+        </button>
+    </div>
+
+    <!-- Thông báo -->
+    <div
+        class="toast"
+        id="toast"
+    >
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMessage">Thành công</span>
+    </div>
+
+    <!-- JavaScript -->
+     <script src="../js/common.js"></script>
+    <script src="../js/QuyTrinhTuyenDung.js"></script>
+
+</body>
+</html>

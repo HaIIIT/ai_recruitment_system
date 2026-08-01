@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Danh sách tin tuyển dụng</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/TinTuyenDung.css">
+</head>
+
+<body>
+
+<main class="recruitment-page">
+
+        <!-- Tiêu đề -->
+        <section class="page-header">
+
+            <div class="heading-content">
+                <p class="page-label">QUẢN LÝ TUYỂN DỤNG</p>
+
+                <h1>Danh sách tin tuyển dụng</h1>
+
+                <p class="page-description">
+                    Theo dõi hiệu quả và cập nhật trạng thái các vị trí đang tuyển.
+                </p>
+            </div>
+
+            <button class="add-button" id="addJobButton" type="button">
+                <i class="fa-solid fa-plus"></i>
+                Thêm mới
+            </button>
+
+        </section>
+
+        <!-- Thanh công cụ -->
+        <section class="toolbar">
+
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Tìm kiếm theo tên, vị trí hoặc từ khóa..."
+                >
+            </div>
+
+            <button class="toolbar-button" id="filterButton" type="button">
+                <i class="fa-solid fa-filter"></i>
+                Bộ lọc
+            </button>
+
+            <button class="toolbar-button" id="exportButton" type="button">
+                <i class="fa-solid fa-download"></i>
+                Xuất dữ liệu
+            </button>
+
+        </section>
+
+        <!-- Bộ lọc -->
+        <section class="filter-panel" id="filterPanel">
+
+            <div class="filter-group">
+                <label for="statusFilter">Trạng thái</label>
+
+                <select id="statusFilter">
+                    <option value="all">Tất cả trạng thái</option>
+                    <option value="active">Đang tuyển</option>
+                    <option value="expiring">Sắp hết hạn</option>
+                    <option value="closed">Đã đóng</option>
+                </select>
+            </div>
+
+            <button class="clear-filter-button" id="clearFilterButton" type="button">
+                Xóa bộ lọc
+            </button>
+
+        </section>
+
+        <!-- Bảng tuyển dụng -->
+        <section class="job-table-wrapper">
+
+            <table class="job-table">
+
+                <thead>
+                    <tr>
+                        <th>Vị trí tuyển dụng</th>
+                        <th>Ứng viên</th>
+                        <th>Phù hợp</th>
+                        <th>Hạn nộp</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody id="jobTableBody">
+
+                    <tr
+                        class="job-row"
+                        data-status="active"
+                        data-search="senior frontend developer khối công nghệ"
+                    >
+                        <td>
+                            <div class="job-info">
+                                <strong>Senior Frontend Developer</strong>
+                                <span>Khối Công nghệ</span>
+                            </div>
+                        </td>
+
+                        <td class="number-cell">48</td>
+                        <td class="number-cell">18</td>
+                        <td>31/07/2026</td>
+
+                        <td>
+                            <span class="status-badge status-active">
+                                Đang tuyển
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="more-button" type="button">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr
+                        class="job-row"
+                        data-status="active"
+                        data-search="backend developer khối công nghệ"
+                    >
+                        <td>
+                            <div class="job-info">
+                                <strong>Backend Developer</strong>
+                                <span>Khối Công nghệ</span>
+                            </div>
+                        </td>
+
+                        <td class="number-cell">35</td>
+                        <td class="number-cell">12</td>
+                        <td>05/08/2026</td>
+
+                        <td>
+                            <span class="status-badge status-active">
+                                Đang tuyển
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="more-button" type="button">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr
+                        class="job-row"
+                        data-status="expiring"
+                        data-search="ui ux designer phòng sản phẩm"
+                    >
+                        <td>
+                            <div class="job-info">
+                                <strong>UI/UX Designer</strong>
+                                <span>Phòng Sản phẩm</span>
+                            </div>
+                        </td>
+
+                        <td class="number-cell">29</td>
+                        <td class="number-cell">9</td>
+                        <td>28/07/2026</td>
+
+                        <td>
+                            <span class="status-badge status-expiring">
+                                Sắp hết hạn
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="more-button" type="button">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr
+                        class="job-row"
+                        data-status="active"
+                        data-search="chuyên viên tuyển dụng phòng nhân sự"
+                    >
+                        <td>
+                            <div class="job-info">
+                                <strong>Chuyên viên Tuyển dụng</strong>
+                                <span>Phòng Nhân sự</span>
+                            </div>
+                        </td>
+
+                        <td class="number-cell">22</td>
+                        <td class="number-cell">7</td>
+                        <td>10/08/2026</td>
+
+                        <td>
+                            <span class="status-badge status-active">
+                                Đang tuyển
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="more-button" type="button">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="empty-state" id="emptyState">
+                <i class="fa-regular fa-folder-open"></i>
+                <p>Không tìm thấy tin tuyển dụng phù hợp.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Hộp thêm tin -->
+    <div class="modal-overlay" id="jobModal">
+
+        <div class="modal">
+
+            <div class="modal-header">
+                <div>
+                    <h2>Thêm tin tuyển dụng</h2>
+                    <p>Nhập thông tin vị trí cần tuyển.</p>
+                </div>
+
+                <button class="close-modal-button" id="closeModalButton" type="button">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="jobForm">
+
+                <div class="form-group">
+                    <label for="jobTitle">Vị trí tuyển dụng</label>
+
+                    <input
+                        type="text"
+                        id="jobTitle"
+                        placeholder="Ví dụ: Java Developer"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="department">Phòng ban</label>
+
+                    <input
+                        type="text"
+                        id="department"
+                        placeholder="Ví dụ: Khối Công nghệ"
+                        required
+                    >
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="candidateCount">Ứng viên</label>
+
+                        <input
+                            type="number"
+                            id="candidateCount"
+                            min="0"
+                            value="0"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="matchingCount">Phù hợp</label>
+
+                        <input
+                            type="number"
+                            id="matchingCount"
+                            min="0"
+                            value="0"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="deadline">Hạn nộp</label>
+
+                    <input type="date" id="deadline" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="jobStatus">Trạng thái</label>
+
+                    <select id="jobStatus">
+                        <option value="active">Đang tuyển</option>
+                        <option value="expiring">Sắp hết hạn</option>
+                        <option value="closed">Đã đóng</option>
+                    </select>
+                </div>
+
+                <div class="modal-actions">
+                    <button
+                        class="cancel-button"
+                        id="cancelButton"
+                        type="button"
+                    >
+                        Hủy
+                    </button>
+
+                    <button class="save-button" type="submit">
+                        <i class="fa-solid fa-check"></i>
+                        Lưu tin tuyển dụng
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+     <script src="../js/common.js"></script>
+    <script src="../js/TinTuyenDung.js"></script>
+
+</body>
+
+</html>

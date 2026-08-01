@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Báo cáo & thống kê</title>
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/BaoCaoThongKe.css"
+    >
+</head>
+
+<body>
+
+<main class="report-page">
+
+        <!-- Tiêu đề -->
+        <header class="page-header">
+
+            <div>
+
+                <p class="page-label">
+                    BÁO CÁO
+                </p>
+
+                <h1>
+                    Phân tích hiệu quả
+                </h1>
+
+                <p class="page-description">
+                    Đo lường nguồn ứng viên, tỷ lệ chuyển đổi và thời gian tuyển dụng.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="add-button"
+                id="openAddModalButton"
+            >
+                <i class="fa-solid fa-plus"></i>
+                Thêm mới
+            </button>
+
+        </header>
+
+        <!-- Thẻ thống kê -->
+        <section class="summary-grid">
+
+            <article class="summary-card">
+
+                <div class="summary-icon icon-blue">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <div>
+                    <span>Tổng ứng viên</span>
+                    <strong id="totalCandidates">4</strong>
+                </div>
+
+            </article>
+
+            <article class="summary-card">
+
+                <div class="summary-icon icon-green">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+
+                <div>
+                    <span>Đang phỏng vấn</span>
+                    <strong id="interviewCandidates">1</strong>
+                </div>
+
+            </article>
+
+            <article class="summary-card">
+
+                <div class="summary-icon icon-orange">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <div>
+                    <span>Điểm AI trung bình</span>
+                    <strong id="averageScore">82.8</strong>
+                </div>
+
+            </article>
+
+            <article class="summary-card">
+
+                <div class="summary-icon icon-purple">
+                    <i class="fa-solid fa-percent"></i>
+                </div>
+
+                <div>
+                    <span>Tỷ lệ chuyển đổi</span>
+                    <strong id="conversionRate">25%</strong>
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- Biểu đồ -->
+        <section class="chart-section">
+
+            <article class="chart-card">
+
+                <div class="chart-header">
+
+                    <div>
+                        <h2>Hiệu quả tuyển dụng</h2>
+                        <p>Số lượng ứng viên theo từng trạng thái</p>
+                    </div>
+
+                    <select id="chartPeriod">
+                        <option value="month">Tháng này</option>
+                        <option value="quarter">Quý này</option>
+                        <option value="year">Năm nay</option>
+                    </select>
+
+                </div>
+
+                <div class="bar-chart" id="barChart">
+
+                    <div class="chart-column">
+
+                        <div class="bar-value">
+                            4
+                        </div>
+
+                        <div
+                            class="chart-bar"
+                            data-value="4"
+                        ></div>
+
+                        <span>Tổng hồ sơ</span>
+
+                    </div>
+
+                    <div class="chart-column">
+
+                        <div class="bar-value">
+                            3
+                        </div>
+
+                        <div
+                            class="chart-bar"
+                            data-value="3"
+                        ></div>
+
+                        <span>AI phân tích</span>
+
+                    </div>
+
+                    <div class="chart-column">
+
+                        <div class="bar-value">
+                            2
+                        </div>
+
+                        <div
+                            class="chart-bar"
+                            data-value="2"
+                        ></div>
+
+                        <span>HR xem xét</span>
+
+                    </div>
+
+                    <div class="chart-column">
+
+                        <div class="bar-value">
+                            1
+                        </div>
+
+                        <div
+                            class="chart-bar"
+                            data-value="1"
+                        ></div>
+
+                        <span>Phỏng vấn</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="source-card">
+
+                <div class="chart-header">
+
+                    <div>
+                        <h2>Nguồn ứng viên</h2>
+                        <p>Tỷ lệ hồ sơ theo nguồn</p>
+                    </div>
+
+                </div>
+
+                <div class="source-list">
+
+                    <div class="source-item">
+
+                        <div class="source-info">
+                            <span>Website tuyển dụng</span>
+                            <strong>45%</strong>
+                        </div>
+
+                        <div class="source-progress">
+                            <span style="width: 45%;"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="source-item">
+
+                        <div class="source-info">
+                            <span>LinkedIn</span>
+                            <strong>30%</strong>
+                        </div>
+
+                        <div class="source-progress">
+                            <span style="width: 30%;"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="source-item">
+
+                        <div class="source-info">
+                            <span>Giới thiệu nội bộ</span>
+                            <strong>15%</strong>
+                        </div>
+
+                        <div class="source-progress">
+                            <span style="width: 15%;"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="source-item">
+
+                        <div class="source-info">
+                            <span>Nguồn khác</span>
+                            <strong>10%</strong>
+                        </div>
+
+                        <div class="source-progress">
+                            <span style="width: 10%;"></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- Thanh công cụ -->
+        <section class="toolbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Tìm kiếm theo tên, vị trí hoặc từ khóa..."
+                >
+
+            </div>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="filterButton"
+            >
+                <i class="fa-solid fa-list"></i>
+                Bộ lọc
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="exportButton"
+            >
+                <i class="fa-solid fa-arrow-down"></i>
+                Xuất dữ liệu
+            </button>
+
+        </section>
+
+        <!-- Bộ lọc -->
+        <section
+            class="filter-panel"
+            id="filterPanel"
+        >
+
+            <div class="filter-group">
+
+                <label for="positionFilter">
+                    Vị trí
+                </label>
+
+                <select id="positionFilter">
+
+                    <option value="all">
+                        Tất cả vị trí
+                    </option>
+
+                    <option value="Frontend Developer">
+                        Frontend Developer
+                    </option>
+
+                    <option value="Backend Developer">
+                        Backend Developer
+                    </option>
+
+                    <option value="UI/UX Designer">
+                        UI/UX Designer
+                    </option>
+
+                    <option value="Data Analyst">
+                        Data Analyst
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="filter-group">
+
+                <label for="statusFilter">
+                    Trạng thái
+                </label>
+
+                <select id="statusFilter">
+
+                    <option value="all">
+                        Tất cả trạng thái
+                    </option>
+
+                    <option value="Phỏng vấn">
+                        Phỏng vấn
+                    </option>
+
+                    <option value="HR xem xét">
+                        HR xem xét
+                    </option>
+
+                    <option value="AI đã phân tích">
+                        AI đã phân tích
+                    </option>
+
+                    <option value="Chờ xử lý">
+                        Chờ xử lý
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="filter-group">
+
+                <label for="scoreFilter">
+                    Điểm AI
+                </label>
+
+                <select id="scoreFilter">
+
+                    <option value="all">
+                        Tất cả mức điểm
+                    </option>
+
+                    <option value="90">
+                        Từ 90 điểm
+                    </option>
+
+                    <option value="80">
+                        Từ 80 điểm
+                    </option>
+
+                    <option value="70">
+                        Từ 70 điểm
+                    </option>
+
+                </select>
+
+            </div>
+
+            <button
+                type="button"
+                class="clear-filter-button"
+                id="clearFilterButton"
+            >
+                Xóa bộ lọc
+            </button>
+
+        </section>
+
+        <!-- Bảng -->
+        <section class="report-table-wrapper">
+
+            <table class="report-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Ứng viên</th>
+                        <th>Vị trí</th>
+                        <th>Điểm AI</th>
+                        <th>Trạng thái</th>
+                        <th>Cập nhật</th>
+                        <th></th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="reportTableBody">
+
+                    <tr
+                        class="report-row"
+                        data-name="Nguyễn Minh Anh"
+                        data-position="Frontend Developer"
+                        data-score="92"
+                        data-status="Phỏng vấn"
+                        data-updated="10 phút trước"
+                    >
+
+                        <td>
+
+                            <div class="candidate-cell">
+
+                                <div class="avatar avatar-purple">
+                                    NM
+                                </div>
+
+                                <strong>
+                                    Nguyễn Minh Anh
+                                </strong>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            Frontend Developer
+                        </td>
+
+                        <td class="score-cell">
+                            92/100
+                        </td>
+
+                        <td>
+
+                            <span class="status-badge">
+                                Phỏng vấn
+                            </span>
+
+                        </td>
+
+                        <td>
+                            10 phút trước
+                        </td>
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="more-button"
+                                aria-label="Mở menu"
+                            >
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr
+                        class="report-row"
+                        data-name="Trần Thanh Tùng"
+                        data-position="Backend Developer"
+                        data-score="86"
+                        data-status="HR xem xét"
+                        data-updated="35 phút trước"
+                    >
+
+                        <td>
+
+                            <div class="candidate-cell">
+
+                                <div class="avatar avatar-blue">
+                                    TT
+                                </div>
+
+                                <strong>
+                                    Trần Thanh Tùng
+                                </strong>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            Backend Developer
+                        </td>
+
+                        <td class="score-cell">
+                            86/100
+                        </td>
+
+                        <td>
+
+                            <span class="status-badge">
+                                HR xem xét
+                            </span>
+
+                        </td>
+
+                        <td>
+                            35 phút trước
+                        </td>
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="more-button"
+                                aria-label="Mở menu"
+                            >
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr
+                        class="report-row"
+                        data-name="Lê Ngọc Hân"
+                        data-position="UI/UX Designer"
+                        data-score="79"
+                        data-status="AI đã phân tích"
+                        data-updated="1 giờ trước"
+                    >
+
+                        <td>
+
+                            <div class="candidate-cell">
+
+                                <div class="avatar avatar-orange">
+                                    LH
+                                </div>
+
+                                <strong>
+                                    Lê Ngọc Hân
+                                </strong>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            UI/UX Designer
+                        </td>
+
+                        <td class="score-cell">
+                            79/100
+                        </td>
+
+                        <td>
+
+                            <span class="status-badge">
+                                AI đã phân tích
+                            </span>
+
+                        </td>
+
+                        <td>
+                            1 giờ trước
+                        </td>
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="more-button"
+                                aria-label="Mở menu"
+                            >
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr
+                        class="report-row"
+                        data-name="Phạm Quốc Thịnh"
+                        data-position="Data Analyst"
+                        data-score="74"
+                        data-status="Chờ xử lý"
+                        data-updated="2 giờ trước"
+                    >
+
+                        <td>
+
+                            <div class="candidate-cell">
+
+                                <div class="avatar avatar-green">
+                                    PT
+                                </div>
+
+                                <strong>
+                                    Phạm Quốc Thịnh
+                                </strong>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            Data Analyst
+                        </td>
+
+                        <td class="score-cell">
+                            74/100
+                        </td>
+
+                        <td>
+
+                            <span class="status-badge">
+                                Chờ xử lý
+                            </span>
+
+                        </td>
+
+                        <td>
+                            2 giờ trước
+                        </td>
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="more-button"
+                                aria-label="Mở menu"
+                            >
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div
+                class="empty-state"
+                id="emptyState"
+            >
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                <p>
+                    Không tìm thấy dữ liệu phù hợp.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Modal thêm dữ liệu -->
+    <div
+        class="modal-overlay"
+        id="reportModal"
+    >
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Thêm dữ liệu báo cáo
+                    </h2>
+
+                    <p>
+                        Nhập thông tin ứng viên mới.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="close-modal-button"
+                    id="closeModalButton"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <form id="reportForm">
+
+                <div class="form-group">
+
+                    <label for="candidateName">
+                        Họ và tên
+                    </label>
+
+                    <input
+                        type="text"
+                        id="candidateName"
+                        placeholder="Ví dụ: Nguyễn Văn A"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="candidatePosition">
+                        Vị trí ứng tuyển
+                    </label>
+
+                    <select
+                        id="candidatePosition"
+                        required
+                    >
+
+                        <option value="">
+                            Chọn vị trí
+                        </option>
+
+                        <option value="Frontend Developer">
+                            Frontend Developer
+                        </option>
+
+                        <option value="Backend Developer">
+                            Backend Developer
+                        </option>
+
+                        <option value="UI/UX Designer">
+                            UI/UX Designer
+                        </option>
+
+                        <option value="Data Analyst">
+                            Data Analyst
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="candidateScore">
+                            Điểm AI
+                        </label>
+
+                        <input
+                            type="number"
+                            id="candidateScore"
+                            min="0"
+                            max="100"
+                            placeholder="0 - 100"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="candidateStatus">
+                            Trạng thái
+                        </label>
+
+                        <select
+                            id="candidateStatus"
+                            required
+                        >
+
+                            <option value="Chờ xử lý">
+                                Chờ xử lý
+                            </option>
+
+                            <option value="AI đã phân tích">
+                                AI đã phân tích
+                            </option>
+
+                            <option value="HR xem xét">
+                                HR xem xét
+                            </option>
+
+                            <option value="Phỏng vấn">
+                                Phỏng vấn
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancelModalButton"
+                    >
+                        Hủy
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+                        <i class="fa-solid fa-check"></i>
+                        Lưu dữ liệu
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Menu thao tác -->
+    <div
+        class="context-menu"
+        id="contextMenu"
+    >
+
+        <button
+            type="button"
+            id="changeStatusButton"
+        >
+            <i class="fa-solid fa-rotate"></i>
+            Đổi trạng thái
+        </button>
+
+        <button
+            type="button"
+            class="delete-button"
+            id="deleteRowButton"
+        >
+            <i class="fa-solid fa-trash"></i>
+            Xóa dữ liệu
+        </button>
+
+    </div>
+
+    <!-- Thông báo -->
+    <div
+        class="toast"
+        id="toast"
+    >
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        <span id="toastMessage">
+            Thành công
+        </span>
+
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/BaoCaoThongKe.js"></script>
+
+</body>
+</html>

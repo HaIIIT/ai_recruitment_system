@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Tổng quan tuyển dụng</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/TongQuan.css"
+    >
+
+    <style>
+        /* ===== PHÓNG TO TOÀN BỘ TRANG TỔNG QUAN ===== */
+        .dashboard-page {
+            width: min(1460px, calc(100% - 48px)) !important;
+            max-width: none !important;
+            margin: 0 auto !important;
+            padding: 34px 0 52px !important;
+        }
+
+        .welcome-section {
+            margin-bottom: 26px !important;
+        }
+
+        .welcome-content h1 {
+            font-size: 33px !important;
+            line-height: 1.2 !important;
+        }
+
+        .welcome-content > p:last-child {
+            font-size: 16px !important;
+        }
+
+        .page-label {
+            font-size: 14px !important;
+            letter-spacing: 0.12em !important;
+        }
+
+        .create-job-button {
+            min-height: 48px !important;
+            padding: 0 22px !important;
+            border-radius: 12px !important;
+            font-size: 15px !important;
+        }
+
+        .stat-grid {
+            gap: 18px !important;
+            margin-bottom: 22px !important;
+        }
+
+        .stat-card {
+            min-height: 118px !important;
+            padding: 20px !important;
+            border-radius: 14px !important;
+        }
+
+        .stat-icon {
+            width: 48px !important;
+            height: 48px !important;
+            font-size: 19px !important;
+            border-radius: 12px !important;
+        }
+
+        .stat-label {
+            font-size: 13px !important;
+        }
+
+        .stat-content strong {
+            font-size: 27px !important;
+        }
+
+        .stat-content small {
+            font-size: 13px !important;
+        }
+
+        .analytics-grid {
+            grid-template-columns: minmax(0, 1.7fr) minmax(390px, 0.9fr) !important;
+            gap: 20px !important;
+            margin-bottom: 20px !important;
+        }
+
+        .bottom-grid {
+            grid-template-columns: minmax(0, 1.15fr) minmax(430px, 0.95fr) !important;
+            gap: 20px !important;
+        }
+
+        .dashboard-card {
+            border-radius: 14px !important;
+        }
+
+        .candidate-chart-card,
+        .source-card {
+            min-height: 360px !important;
+        }
+
+        .candidate-list-card,
+        .interview-card {
+            min-height: 305px !important;
+        }
+
+        .card-header {
+            padding: 22px 22px 0 !important;
+        }
+
+        .card-header h2 {
+            font-size: 20px !important;
+        }
+
+        .card-header p,
+        .view-all-link {
+            font-size: 13px !important;
+        }
+
+        .chart-area {
+            min-height: 270px !important;
+            padding: 18px 22px 18px !important;
+        }
+
+        .bar-chart {
+            min-height: 225px !important;
+        }
+
+        .bar {
+            max-width: 34px !important;
+        }
+
+        .source-chart-content {
+            min-height: 300px !important;
+            padding: 18px 22px 24px !important;
+        }
+
+        .donut-chart {
+            width: 165px !important;
+            height: 165px !important;
+        }
+
+        .donut-center strong {
+            font-size: 27px !important;
+        }
+
+        .donut-center span {
+            font-size: 12px !important;
+        }
+
+        .source-legend {
+            gap: 14px !important;
+        }
+
+        .legend-item {
+            font-size: 14px !important;
+        }
+
+        .candidate-list,
+        .interview-list {
+            padding: 12px 22px 22px !important;
+        }
+
+        .candidate-item,
+        .interview-item {
+            min-height: 62px !important;
+        }
+
+        .avatar {
+            width: 38px !important;
+            height: 38px !important;
+            font-size: 12px !important;
+        }
+
+        .candidate-info strong,
+        .interview-info strong {
+            font-size: 14px !important;
+        }
+
+        .candidate-info span,
+        .interview-info span,
+        .interview-info small,
+        .interview-time span {
+            font-size: 12px !important;
+        }
+
+        .candidate-result strong,
+        .interview-time strong {
+            font-size: 16px !important;
+        }
+
+        @media (max-width: 1200px) {
+            .dashboard-page {
+                width: min(100% - 36px, 1280px) !important;
+            }
+
+            .analytics-grid,
+            .bottom-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .page-topbar {
+                align-items: flex-start;
+                flex-direction: column;
+
+                height: auto;
+                min-height: 70px;
+                max-height: none;
+                padding: 14px 20px;
+            }
+
+            .page-topbar-actions {
+                width: 100%;
+            }
+
+            .topbar-search {
+                flex: 1;
+                width: auto;
+            }
+
+            .dashboard-page {
+                width: calc(100% - 28px) !important;
+            }
+
+            .welcome-section {
+                align-items: flex-start !important;
+                flex-direction: column !important;
+                gap: 18px !important;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .candidate-portal-button {
+                width: 44px;
+                padding: 0;
+                font-size: 0;
+            }
+
+            .candidate-portal-button i {
+                font-size: 14px;
+            }
+
+            .topbar-search span {
+                display: none;
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .welcome-content h1 {
+                font-size: 29px !important;
+            }
+        }
+
+    </style>
+
+
+    <style>
+        /* Sửa phần lịch phỏng vấn: thời gian không chạm vào thanh màu */
+        .interview-item {
+            display: grid !important;
+            grid-template-columns: 72px 3px minmax(0, 1fr) !important;
+            column-gap: 14px !important;
+            align-items: stretch !important;
+        }
+
+        .interview-time {
+            min-width: 0 !important;
+            padding-right: 2px !important;
+        }
+
+        .interview-line {
+            width: 3px !important;
+            min-width: 3px !important;
+            height: auto !important;
+            margin: 0 !important;
+            border-radius: 999px !important;
+        }
+
+        .interview-info {
+            min-width: 0 !important;
+            padding-left: 0 !important;
+        }
+
+        @media (max-width: 650px) {
+            .interview-item {
+                grid-template-columns: 62px 3px minmax(0, 1fr) !important;
+                column-gap: 10px !important;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+<main class="dashboard-page">
+
+        <!-- Phần tiêu đề -->
+        <section class="welcome-section">
+
+            <div class="welcome-content">
+
+                <p class="page-label">
+                    TỔNG QUAN TUYỂN DỤNG
+                </p>
+
+                <h1 id="welcomeTitle">
+                    Xin chào, HR 👋
+                </h1>
+
+                <p>
+                    Chúc bạn có một ngày làm việc hiệu quả. Dưới đây là tổng quan hoạt động của hệ thống tuyển dụng VT Development JSC.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="create-job-button"
+                id="createJobButton"
+            >
+                <i class="fa-solid fa-plus"></i>
+                Tạo tin tuyển dụng
+            </button>
+
+        </section>
+
+        <!-- Thẻ thống kê -->
+        <section class="stat-grid">
+
+            <article class="stat-card">
+
+                <div class="stat-icon icon-blue">
+                    <i class="fa-regular fa-file-lines"></i>
+                </div>
+
+                <div class="stat-content">
+
+                    <span class="stat-label">
+                        TIN ĐANG TUYỂN
+                    </span>
+
+                    <strong id="activeJobsValue">
+                        12
+                    </strong>
+
+                    <small class="stat-increase">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        2 so với tháng trước
+                    </small>
+
+                </div>
+
+            </article>
+
+            <article class="stat-card">
+
+                <div class="stat-icon icon-purple">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="stat-content">
+
+                    <span class="stat-label">
+                        HỒ SƠ MỚI
+                    </span>
+
+                    <strong id="newProfilesValue">
+                        186
+                    </strong>
+
+                    <small class="stat-increase">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        18% so với tháng trước
+                    </small>
+
+                </div>
+
+            </article>
+
+            <article class="stat-card">
+
+                <div class="stat-icon icon-green">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <div class="stat-content">
+
+                    <span class="stat-label">
+                        ỨNG VIÊN ĐẠT
+                    </span>
+
+                    <strong id="qualifiedValue">
+                        47
+                    </strong>
+
+                    <small class="stat-increase">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        Trong tháng này
+                    </small>
+
+                </div>
+
+            </article>
+
+            <article class="stat-card">
+
+                <div class="stat-icon icon-orange">
+                    <i class="fa-regular fa-calendar"></i>
+                </div>
+
+                <div class="stat-content">
+
+                    <span class="stat-label">
+                        LỊCH PHỎNG VẤN
+                    </span>
+
+                    <strong id="interviewValue">
+                        8
+                    </strong>
+
+                    <small class="stat-warning">
+                        <i class="fa-solid fa-user"></i>
+                        3 lịch hôm nay
+                    </small>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- Biểu đồ -->
+        <section class="analytics-grid">
+
+            <!-- Biểu đồ cột -->
+            <article class="dashboard-card candidate-chart-card">
+
+                <header class="card-header">
+
+                    <div>
+                        <h2>Hồ sơ ứng viên</h2>
+
+                        <p>
+                            Số lượng hồ sơ nhận được trong năm 2026
+                        </p>
+                    </div>
+
+                    <select id="yearFilter">
+                        <option value="2026">Năm 2026</option>
+                        <option value="2025">Năm 2025</option>
+                        <option value="2024">Năm 2024</option>
+                    </select>
+
+                </header>
+
+                <div class="chart-area">
+
+                    <div class="chart-y-axis">
+                        <span>120</span>
+                        <span>80</span>
+                        <span>40</span>
+                        <span>0</span>
+                    </div>
+
+                    <div class="bar-chart" id="candidateChart">
+
+                        <div class="month-column">
+                            <span class="bar-number">52</span>
+                            <div class="bar" data-value="52"></div>
+                            <small>T1</small>
+                        </div>
+
+                        <div class="month-column">
+                            <span class="bar-number">71</span>
+                            <div class="bar" data-value="71"></div>
+                            <small>T2</small>
+                        </div>
+
+                        <div class="month-column">
+                            <span class="bar-number">88</span>
+                            <div class="bar" data-value="88"></div>
+                            <small>T3</small>
+                        </div>
+
+                        <div class="month-column">
+                            <span class="bar-number">102</span>
+                            <div class="bar" data-value="102"></div>
+                            <small>T4</small>
+                        </div>
+
+                        <div class="month-column">
+                            <span class="bar-number">96</span>
+                            <div class="bar" data-value="96"></div>
+                            <small>T5</small>
+                        </div>
+
+                        <div class="month-column">
+                            <span class="bar-number">111</span>
+                            <div class="bar active-bar" data-value="111"></div>
+                            <small>T6</small>
+                        </div>
+
+                        <div class="month-column empty-month">
+                            <span class="bar-number"></span>
+                            <div class="bar" data-value="0"></div>
+                            <small>T7</small>
+                        </div>
+
+                        <div class="month-column empty-month">
+                            <span class="bar-number"></span>
+                            <div class="bar" data-value="0"></div>
+                            <small>T8</small>
+                        </div>
+
+                        <div class="month-column empty-month">
+                            <span class="bar-number"></span>
+                            <div class="bar" data-value="0"></div>
+                            <small>T9</small>
+                        </div>
+
+                        <div class="month-column empty-month">
+                            <span class="bar-number"></span>
+                            <div class="bar" data-value="0"></div>
+                            <small>T10</small>
+                        </div>
+
+                        <div class="month-column empty-month">
+                            <span class="bar-number"></span>
+                            <div class="bar" data-value="0"></div>
+                            <small>T11</small>
+                        </div>
+
+                        <div class="month-column empty-month">
+                            <span class="bar-number"></span>
+                            <div class="bar" data-value="0"></div>
+                            <small>T12</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- Biểu đồ tròn -->
+            <article class="dashboard-card source-card">
+
+                <header class="card-header">
+
+                    <div>
+                        <h2>Nguồn ứng viên</h2>
+
+                        <p>
+                            Phân bổ theo kênh tuyển dụng
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="more-button"
+                        id="sourceMoreButton"
+                    >
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </button>
+
+                </header>
+
+                <div class="source-chart-content">
+
+                    <div class="donut-chart">
+
+                        <svg
+                            viewBox="0 0 42 42"
+                            class="donut-svg"
+                        >
+
+                            <circle
+                                class="donut-background"
+                                cx="21"
+                                cy="21"
+                                r="15.9155"
+                            ></circle>
+
+                            <circle
+                                class="donut-segment segment-website"
+                                cx="21"
+                                cy="21"
+                                r="15.9155"
+                                stroke-dasharray="42 58"
+                                stroke-dashoffset="25"
+                            ></circle>
+
+                            <circle
+                                class="donut-segment segment-linkedin"
+                                cx="21"
+                                cy="21"
+                                r="15.9155"
+                                stroke-dasharray="28 72"
+                                stroke-dashoffset="83"
+                            ></circle>
+
+                            <circle
+                                class="donut-segment segment-referral"
+                                cx="21"
+                                cy="21"
+                                r="15.9155"
+                                stroke-dasharray="18 82"
+                                stroke-dashoffset="55"
+                            ></circle>
+
+                            <circle
+                                class="donut-segment segment-other"
+                                cx="21"
+                                cy="21"
+                                r="15.9155"
+                                stroke-dasharray="12 88"
+                                stroke-dashoffset="37"
+                            ></circle>
+
+                        </svg>
+
+                        <div class="donut-center">
+                            <strong>328</strong>
+                            <span>Tổng hồ sơ</span>
+                        </div>
+
+                    </div>
+
+                    <div class="source-legend">
+
+                        <div class="legend-item">
+                            <span class="legend-dot dot-blue"></span>
+                            <span>Website công ty</span>
+                            <strong>42%</strong>
+                        </div>
+
+                        <div class="legend-item">
+                            <span class="legend-dot dot-purple"></span>
+                            <span>LinkedIn</span>
+                            <strong>28%</strong>
+                        </div>
+
+                        <div class="legend-item">
+                            <span class="legend-dot dot-orange"></span>
+                            <span>Giới thiệu nội bộ</span>
+                            <strong>18%</strong>
+                        </div>
+
+                        <div class="legend-item">
+                            <span class="legend-dot dot-light"></span>
+                            <span>Khác</span>
+                            <strong>12%</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- Danh sách và lịch -->
+        <section class="bottom-grid">
+
+            <!-- Ứng viên mới -->
+            <article class="dashboard-card candidate-list-card">
+
+                <header class="card-header">
+
+                    <div>
+                        <h2>Ứng viên mới nhất</h2>
+
+                        <p>
+                            Các hồ sơ vừa được cập nhật
+                        </p>
+                    </div>
+
+                    <a href="#" class="view-all-link">
+                        Xem tất cả
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </header>
+
+                <div class="candidate-list" id="candidateList">
+
+                    <div class="candidate-item">
+
+                        <div class="candidate-info">
+
+                            <div class="avatar avatar-purple">
+                                NM
+                            </div>
+
+                            <div>
+                                <strong>Nguyễn Minh Anh</strong>
+                                <span>Frontend Developer · 10 phút trước</span>
+                            </div>
+
+                        </div>
+
+                        <div class="candidate-result">
+                            <strong>92</strong>
+                            <span>/100</span>
+                            <small class="status-badge status-interview">
+                                Phỏng vấn
+                            </small>
+                        </div>
+
+                    </div>
+
+                    <div class="candidate-item">
+
+                        <div class="candidate-info">
+
+                            <div class="avatar avatar-blue">
+                                TT
+                            </div>
+
+                            <div>
+                                <strong>Trần Thanh Tùng</strong>
+                                <span>Backend Developer · 35 phút trước</span>
+                            </div>
+
+                        </div>
+
+                        <div class="candidate-result">
+                            <strong>86</strong>
+                            <span>/100</span>
+                            <small class="status-badge status-review">
+                                HR xem xét
+                            </small>
+                        </div>
+
+                    </div>
+
+                    <div class="candidate-item">
+
+                        <div class="candidate-info">
+
+                            <div class="avatar avatar-orange">
+                                LH
+                            </div>
+
+                            <div>
+                                <strong>Lê Ngọc Hân</strong>
+                                <span>UI/UX Designer · 1 giờ trước</span>
+                            </div>
+
+                        </div>
+
+                        <div class="candidate-result">
+                            <strong>79</strong>
+                            <span>/100</span>
+                            <small class="status-badge status-analyzed">
+                                AI đã phân tích
+                            </small>
+                        </div>
+
+                    </div>
+
+                    <div class="candidate-item">
+
+                        <div class="candidate-info">
+
+                            <div class="avatar avatar-green">
+                                PT
+                            </div>
+
+                            <div>
+                                <strong>Phạm Quốc Thịnh</strong>
+                                <span>Data Analyst · 2 giờ trước</span>
+                            </div>
+
+                        </div>
+
+                        <div class="candidate-result">
+                            <strong>74</strong>
+                            <span>/100</span>
+                            <small class="status-badge status-pending">
+                                Chờ xử lý
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- Lịch phỏng vấn -->
+            <article class="dashboard-card interview-card">
+
+                <header class="card-header">
+
+                    <div>
+                        <h2>Lịch phỏng vấn hôm nay</h2>
+
+                        <p id="currentDateText">
+                            Thứ Năm, 23 tháng 7
+                        </p>
+                    </div>
+
+                    <a href="#" class="view-all-link">
+                        Xem lịch
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </header>
+
+                <div class="interview-list">
+
+                    <div class="interview-item">
+
+                        <div class="interview-time">
+                            <strong>09:30</strong>
+                            <span>45 phút</span>
+                        </div>
+
+                        <div class="interview-line line-blue"></div>
+
+                        <div class="interview-info">
+                            <strong>Nguyễn Minh Anh</strong>
+                            <span>Frontend Developer · Vòng chuyên môn</span>
+
+                            <small>
+                                <i class="fa-solid fa-video"></i>
+                                Phỏng vấn online
+                            </small>
+                        </div>
+
+                    </div>
+
+                    <div class="interview-item">
+
+                        <div class="interview-time">
+                            <strong>14:00</strong>
+                            <span>60 phút</span>
+                        </div>
+
+                        <div class="interview-line line-orange"></div>
+
+                        <div class="interview-info">
+                            <strong>Hoàng Đức Long</strong>
+                            <span>Product Manager · Vòng HR</span>
+
+                            <small>
+                                <i class="fa-solid fa-video"></i>
+                                Google Meet
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- Modal tạo tin -->
+    <div
+        class="modal-overlay"
+        id="jobModal"
+    >
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Tạo tin tuyển dụng</h2>
+                    <p>Nhập thông tin cơ bản của vị trí cần tuyển.</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="close-modal-button"
+                    id="closeModalButton"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <form id="jobForm">
+
+                <div class="form-group">
+
+                    <label for="jobTitle">
+                        Vị trí tuyển dụng
+                    </label>
+
+                    <input
+                        type="text"
+                        id="jobTitle"
+                        placeholder="Ví dụ: Frontend Developer"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="department">
+                            Phòng ban
+                        </label>
+
+                        <select id="department" required>
+                            <option value="">Chọn phòng ban</option>
+                            <option>Công nghệ</option>
+                            <option>Nhân sự</option>
+                            <option>Marketing</option>
+                            <option>Kinh doanh</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="quantity">
+                            Số lượng
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantity"
+                            min="1"
+                            value="1"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="deadline">
+                        Hạn tuyển dụng
+                    </label>
+
+                    <input
+                        type="date"
+                        id="deadline"
+                        required
+                    >
+
+                </div>
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancelModalButton"
+                    >
+                        Hủy
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+                        <i class="fa-solid fa-check"></i>
+                        Tạo tin
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        <span id="toastMessage">
+            Thao tác thành công
+        </span>
+
+    </div>
+
+    <!-- JavaScript -->
+     <script src="../js/common.js"></script>
+    <script src="../js/TongQuan.js"></script>
+
+</body>
+</html>

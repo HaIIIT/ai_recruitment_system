@@ -1,0 +1,1754 @@
+/* =========================================================
+   LỊCH PHỎNG VẤN
+   File: css/LichPhongVan.css
+========================================================= */
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #2868ed;
+    --primary-dark: #1e56d2;
+    --primary-soft: #eaf1ff;
+
+    --background: #f4f7fc;
+    --surface: #ffffff;
+    --surface-soft: #f8faff;
+
+    --text: #182033;
+    --muted: #8490a5;
+    --border: #dfe5ee;
+
+    --success: #159272;
+    --success-soft: #dff5ed;
+
+    --warning: #e48325;
+    --warning-soft: #fff0df;
+
+    --danger: #dc4b4b;
+    --danger-soft: #fff0f0;
+
+    --purple: #7454e7;
+    --purple-soft: #eee8ff;
+
+    --shadow-sm:
+        0 4px 14px rgba(16, 24, 40, 0.04);
+
+    --shadow-md:
+        0 16px 35px rgba(40, 104, 237, 0.12);
+}
+
+html {
+    min-height: 100%;
+    overflow-y: scroll;
+
+    scrollbar-width: thin;
+    scrollbar-color:
+        #aab4c3
+        #edf1f6;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    color: var(--text);
+    background: var(--background);
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* =========================
+   THANH CUỘN
+========================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #edf1f6;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #aab4c3;
+
+    border: 2px solid #edf1f6;
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8b98aa;
+}
+
+/* =========================
+   TRANG CHÍNH
+========================= */
+
+.interview-page {
+    width: 100%;
+    min-height: 100vh;
+
+    padding:
+        40px
+        43px
+        74px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    margin-bottom: 27px;
+}
+
+.page-header-content {
+    min-width: 0;
+}
+
+.page-label,
+.card-kicker {
+    color: var(--primary);
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+}
+
+.page-label {
+    margin-bottom: 17px;
+}
+
+.page-header h1 {
+    margin-bottom: 11px;
+
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -0.8px;
+}
+
+.page-description {
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.add-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    flex: 0 0 auto;
+
+    min-width: 174px;
+    height: 48px;
+    padding: 0 20px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    background: var(--primary);
+
+    border: none;
+    border-radius: 10px;
+
+    box-shadow: var(--shadow-md);
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.add-button:hover {
+    background: var(--primary-dark);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 18px 38px rgba(40, 104, 237, 0.18);
+}
+
+.add-button:active {
+    transform: translateY(0);
+}
+
+/* =========================
+   THANH CÔNG CỤ
+========================= */
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-bottom: 16px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+
+    width: min(100%, 560px);
+    height: 46px;
+    padding: 0 15px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.search-box:focus-within {
+    border-color: #9eb9f4;
+
+    box-shadow:
+        0 0 0 4px rgba(40, 104, 237, 0.08);
+}
+
+.search-box i {
+    margin-right: 10px;
+
+    color: #8d99ad;
+
+    font-size: 13px;
+}
+
+.search-box input {
+    width: 100%;
+    height: 100%;
+
+    color: var(--text);
+
+    font-size: 12px;
+
+    background: transparent;
+
+    border: none;
+    outline: none;
+}
+
+.search-box input::placeholder {
+    color: #bac3d1;
+}
+
+.toolbar-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    height: 46px;
+    padding: 0 16px;
+
+    color: #5b677b;
+
+    font-size: 12px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.toolbar-button:hover,
+.toolbar-button.active {
+    color: var(--primary);
+    border-color: #a8c0f4;
+    background: #f8fbff;
+}
+
+.toolbar-button:active {
+    transform: scale(0.98);
+}
+
+/* =========================
+   BỘ LỌC
+========================= */
+
+.filter-panel {
+    display: none;
+    align-items: flex-end;
+    gap: 14px;
+
+    margin-bottom: 18px;
+    padding: 17px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-panel.show {
+    display: flex;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-group label {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.filter-group select {
+    min-width: 220px;
+    height: 41px;
+    padding: 0 12px;
+
+    color: #536078;
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+}
+
+.filter-group select:focus {
+    border-color: #9db9f4;
+
+    box-shadow:
+        0 0 0 3px rgba(40, 104, 237, 0.07);
+}
+
+.clear-filter-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    height: 41px;
+    padding: 0 15px;
+
+    color: #58657a;
+    background: #f7f9fc;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.clear-filter-button:hover {
+    color: var(--primary);
+    border-color: #abc1ef;
+    background: #f5f8ff;
+}
+
+/* =========================
+   THỐNG KÊ
+========================= */
+
+.schedule-stats {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+    gap: 16px;
+
+    margin-bottom: 18px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    min-height: 112px;
+    padding: 18px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    border-color: #d2dceb;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 24px rgba(16, 24, 40, 0.07);
+}
+
+.stat-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 13px;
+
+    font-size: 18px;
+}
+
+.stat-icon-blue {
+    color: var(--primary);
+    background: var(--primary-soft);
+}
+
+.stat-icon-orange {
+    color: var(--warning);
+    background: var(--warning-soft);
+}
+
+.stat-icon-green {
+    color: var(--success);
+    background: var(--success-soft);
+}
+
+.stat-icon-purple {
+    color: var(--purple);
+    background: var(--purple-soft);
+}
+
+.stat-card > div {
+    display: grid;
+    gap: 2px;
+
+    min-width: 0;
+}
+
+.stat-label {
+    color: var(--muted);
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.stat-card strong {
+    color: #10182b;
+
+    font-size: 23px;
+    line-height: 1.15;
+}
+
+.stat-card small {
+    overflow: hidden;
+
+    color: #9aa5b6;
+
+    font-size: 9px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* =========================
+   BỐ CỤC CHÍNH
+========================= */
+
+.schedule-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(340px, 0.85fr);
+    gap: 18px;
+    align-items: stretch;
+}
+
+.calendar-card,
+.agenda-card {
+    min-height: 570px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    box-shadow: var(--shadow-sm);
+}
+
+/* =========================
+   HEADER CARD
+========================= */
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 23px 25px;
+
+    border-bottom: 1px solid #e8edf4;
+}
+
+.card-header h2 {
+    margin-top: 7px;
+
+    color: #10182b;
+
+    font-size: 19px;
+    font-weight: 650;
+}
+
+/* =========================
+   NÚT CHUYỂN THÁNG
+========================= */
+
+.calendar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.today-button,
+.icon-button {
+    height: 36px;
+
+    color: #5c687c;
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.today-button {
+    padding: 0 13px;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+}
+
+.today-button:hover,
+.icon-button:hover {
+    color: var(--primary);
+    border-color: #aac1f1;
+    background: #f7faff;
+}
+
+.today-button:active,
+.icon-button:active {
+    transform: scale(0.96);
+}
+/* =========================
+   THỨ TRONG TUẦN
+========================= */
+
+.calendar-weekdays,
+.calendar-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(7, minmax(0, 1fr));
+}
+
+.calendar-weekdays {
+    padding:
+        16px
+        24px
+        8px;
+}
+
+.calendar-weekdays span {
+    color: #8e9aae;
+
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* =========================
+   LƯỚI LỊCH
+========================= */
+
+.calendar-grid {
+    gap: 7px;
+
+    padding:
+        5px
+        22px
+        18px;
+}
+
+.calendar-day {
+    position: relative;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    min-height: 70px;
+    padding: 10px;
+
+    color: #38445a;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    background: #fbfcfe;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    transition:
+        color 0.18s ease,
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease;
+}
+
+.calendar-day:hover {
+    color: var(--primary);
+    background: #f2f6ff;
+
+    border-color: #d6e2fb;
+
+    transform: translateY(-1px);
+}
+
+.calendar-day.other-month {
+    color: #c3cbd7;
+    background: transparent;
+}
+
+.calendar-day.today {
+    color: var(--primary);
+    background: #f4f7ff;
+}
+
+.calendar-day.selected {
+    color: var(--primary);
+    background: #edf3ff;
+
+    border-color: var(--primary);
+
+    box-shadow:
+        inset 0 0 0 1px var(--primary);
+}
+
+.calendar-day.has-events::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+
+    width: 6px;
+    height: 6px;
+
+    background: var(--primary);
+
+    border-radius: 50%;
+
+    transform: translateX(-50%);
+}
+
+.calendar-day .event-count {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+
+    color: #ffffff;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    background: var(--primary);
+
+    border-radius: 999px;
+}
+
+/* =========================
+   CHÚ THÍCH LỊCH
+========================= */
+
+.calendar-legend {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding:
+        14px
+        25px
+        20px;
+
+    color: #8793a7;
+
+    font-size: 9px;
+
+    border-top: 1px solid #eef2f7;
+}
+
+.calendar-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.legend-dot,
+.legend-ring {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+}
+
+.legend-blue {
+    background: var(--primary);
+}
+
+.legend-ring {
+    background: #ffffff;
+
+    border: 2px solid var(--primary);
+}
+
+/* =========================
+   SỐ LƯỢNG LỊCH TRONG NGÀY
+========================= */
+
+.agenda-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 29px;
+    padding: 0 11px;
+
+    color: var(--primary);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    background: var(--primary-soft);
+
+    border-radius: 999px;
+}
+
+/* =========================
+   DANH SÁCH LỊCH
+========================= */
+
+.agenda-list {
+    max-height: 485px;
+    overflow-y: auto;
+
+    padding:
+        14px
+        17px
+        20px;
+}
+
+.agenda-item {
+    position: relative;
+
+    display: grid;
+    grid-template-columns:
+        68px
+        minmax(0, 1fr)
+        auto;
+    gap: 12px;
+
+    padding:
+        15px
+        10px;
+
+    border-bottom: 1px solid #edf1f6;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.agenda-item:last-child {
+    border-bottom: none;
+}
+
+.agenda-item:hover {
+    background: #fafcff;
+
+    transform: translateX(1px);
+}
+
+/* =========================
+   THỜI GIAN
+========================= */
+
+.agenda-time {
+    display: grid;
+    align-content: start;
+    gap: 5px;
+}
+
+.agenda-time strong {
+    color: #10182b;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.agenda-time span {
+    color: #9aa5b6;
+
+    font-size: 9px;
+}
+
+/* =========================
+   THÔNG TIN ỨNG VIÊN
+========================= */
+
+.agenda-main {
+    min-width: 0;
+}
+
+.agenda-name-row {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-bottom: 8px;
+}
+
+.agenda-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+
+    width: 34px;
+    height: 34px;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    border-radius: 50%;
+}
+
+.avatar-purple {
+    color: #7454e7;
+    background: #eee8ff;
+}
+
+.avatar-blue {
+    color: #2868df;
+    background: #e5edff;
+}
+
+.avatar-orange {
+    color: #df7c24;
+    background: #fff0df;
+}
+
+.avatar-green {
+    color: #159272;
+    background: #dff5ed;
+}
+
+.agenda-name {
+    min-width: 0;
+}
+
+.agenda-name strong {
+    display: block;
+    overflow: hidden;
+
+    color: #10182b;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.agenda-name span {
+    display: block;
+    overflow: hidden;
+
+    margin-top: 3px;
+
+    color: #7f8ba0;
+
+    font-size: 9px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* =========================
+   THÔNG TIN PHỤ
+========================= */
+
+.agenda-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap:
+        7px
+        12px;
+
+    color: #8793a7;
+
+    font-size: 9px;
+}
+
+.agenda-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.agenda-meta i {
+    color: #9aa6ba;
+}
+
+/* =========================
+   CỘT TRẠNG THÁI
+========================= */
+
+.agenda-side {
+    display: grid;
+    justify-items: end;
+    align-content: space-between;
+    gap: 10px;
+}
+
+/* =========================
+   BADGE TRẠNG THÁI
+========================= */
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 25px;
+    padding: 0 10px;
+
+    font-size: 8px;
+    font-weight: 600;
+
+    border-radius: 999px;
+
+    white-space: nowrap;
+}
+
+.status-upcoming {
+    color: #4f72c7;
+    background: #e7efff;
+}
+
+.status-ongoing {
+    color: #b66a13;
+    background: #fff0df;
+}
+
+.status-completed {
+    color: #118063;
+    background: #dff5ed;
+}
+
+.status-postponed {
+    color: #bf3f3f;
+    background: #fff0f0;
+}
+
+/* =========================
+   NÚT BA CHẤM
+========================= */
+
+.more-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 31px;
+    height: 31px;
+
+    color: #7c899d;
+    background: transparent;
+
+    border: none;
+    border-radius: 7px;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.more-button:hover {
+    color: var(--primary);
+    background: #edf3ff;
+
+    transform: translateY(-1px);
+}
+
+/* =========================
+   TRẠNG THÁI RỖNG
+========================= */
+
+.agenda-empty {
+    display: grid;
+    place-items: center;
+    align-content: center;
+
+    min-height: 420px;
+    padding:
+        50px
+        30px;
+
+    text-align: center;
+}
+
+.agenda-empty-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 66px;
+    height: 66px;
+    margin-bottom: 16px;
+
+    color: var(--primary);
+
+    font-size: 24px;
+
+    background: var(--primary-soft);
+
+    border-radius: 18px;
+}
+
+.agenda-empty h3 {
+    margin-bottom: 8px;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.agenda-empty p {
+    max-width: 280px;
+    margin-bottom: 18px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.agenda-empty button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    height: 40px;
+    padding: 0 14px;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    background: var(--primary);
+
+    border: none;
+    border-radius: 8px;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.agenda-empty button:hover {
+    background: var(--primary-dark);
+
+    transform: translateY(-1px);
+}
+/* =========================
+   MODAL THÊM LỊCH
+========================= */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.48);
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal {
+    width: 100%;
+    max-width: 540px;
+    max-height: 92vh;
+    overflow-y: auto;
+
+    padding: 27px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5eaf2;
+    border-radius: 17px;
+
+    box-shadow:
+        0 25px 65px rgba(15, 23, 42, 0.24);
+
+    animation:
+        modalShow
+        0.2s
+        ease;
+}
+
+@keyframes modalShow {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+/* =========================
+   HEADER MODAL
+========================= */
+
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+
+    margin-bottom: 23px;
+}
+
+.modal-header > div {
+    min-width: 0;
+}
+
+.modal-header h2 {
+    margin-bottom: 7px;
+
+    color: #182033;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.modal-header p {
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.close-modal-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 36px;
+
+    width: 36px;
+    height: 36px;
+
+    color: #657287;
+    background: #f4f6f9;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.close-modal-button:hover {
+    color: var(--primary);
+    background: #edf3ff;
+    border-color: #d9e4fa;
+
+    transform: rotate(4deg);
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    color: #334155;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    height: 44px;
+    padding: 0 13px;
+
+    color: var(--text);
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: #b7c0ce;
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: #cfd8e7;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #90aff3;
+
+    box-shadow:
+        0 0 0 4px rgba(40, 104, 237, 0.08);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+/* =========================
+   NÚT MODAL
+========================= */
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 24px;
+}
+
+.cancel-button,
+.save-button {
+    height: 44px;
+    padding: 0 18px;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.cancel-button {
+    color: #59667a;
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+}
+
+.cancel-button:hover {
+    color: var(--primary);
+    background: #f7faff;
+    border-color: #b9caef;
+}
+
+.save-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    color: #ffffff;
+    background: var(--primary);
+
+    border: none;
+
+    box-shadow:
+        0 10px 22px rgba(40, 104, 237, 0.18);
+}
+
+.save-button:hover {
+    background: var(--primary-dark);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 12px 26px rgba(40, 104, 237, 0.24);
+}
+
+.cancel-button:active,
+.save-button:active {
+    transform: scale(0.98);
+}
+
+/* =========================
+   MENU THAO TÁC
+========================= */
+
+.context-menu {
+    position: fixed;
+    z-index: 1200;
+
+    display: none;
+
+    min-width: 175px;
+    padding: 6px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.15);
+}
+
+.context-menu.show {
+    display: block;
+}
+
+.context-menu button {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    width: 100%;
+    height: 39px;
+    padding: 0 11px;
+
+    color: #536078;
+
+    font-size: 11px;
+    text-align: left;
+
+    background: transparent;
+
+    border: none;
+    border-radius: 7px;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.context-menu button:hover {
+    color: var(--primary);
+    background: #edf3ff;
+}
+
+.context-menu .delete-menu-button {
+    color: var(--danger);
+}
+
+.context-menu .delete-menu-button:hover {
+    color: var(--danger);
+    background: #fff0f0;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 1500;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    min-width: 230px;
+    max-width: min(
+        360px,
+        calc(100vw - 32px)
+    );
+    padding: 14px 17px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    line-height: 1.5;
+
+    background: #172033;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+
+    box-shadow:
+        0 15px 35px rgba(15, 23, 42, 0.25);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.25s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+.toast i {
+    color: #66e0ae;
+    font-size: 16px;
+}
+
+.toast span {
+    flex: 1;
+}
+
+/* =========================
+   KHÓA CUỘN KHI MỞ MODAL
+========================= */
+
+body.modal-open {
+    overflow: hidden;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1150px) {
+    .schedule-stats {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .schedule-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar-card,
+    .agenda-card {
+        min-height: auto;
+    }
+
+    .agenda-list {
+        max-height: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .interview-page {
+        padding:
+            32px
+            24px
+            70px;
+    }
+
+    .toolbar {
+        flex-wrap: wrap;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .filter-panel.show {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 650px) {
+    .interview-page {
+        padding:
+            26px
+            16px
+            60px;
+    }
+
+    .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .page-header h1 {
+        font-size: 25px;
+    }
+
+    .add-button {
+        width: 100%;
+    }
+
+    .toolbar-button {
+        flex: 1;
+    }
+
+    .schedule-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-panel.show {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .filter-group select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .clear-filter-button {
+        justify-content: center;
+    }
+
+    .card-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .calendar-actions {
+        width: 100%;
+    }
+
+    .today-button {
+        flex: 1;
+    }
+
+    .calendar-grid {
+        gap: 4px;
+
+        padding:
+            5px
+            12px
+            15px;
+    }
+
+    .calendar-weekdays {
+        padding-inline: 13px;
+    }
+
+    .calendar-day {
+        min-height: 54px;
+        padding: 7px;
+    }
+
+    .calendar-day .event-count {
+        display: none;
+    }
+
+    .calendar-legend {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .agenda-item {
+        grid-template-columns:
+            58px
+            minmax(0, 1fr);
+    }
+
+    .agenda-side {
+        grid-column: 2;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            auto;
+        align-items: center;
+        justify-items: start;
+    }
+
+    .agenda-side .more-button {
+        justify-self: end;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .modal-actions {
+        flex-direction: column-reverse;
+    }
+
+    .cancel-button,
+    .save-button {
+        width: 100%;
+    }
+
+    .toast {
+        right: 16px;
+        bottom: 16px;
+        left: 16px;
+
+        min-width: 0;
+        max-width: none;
+    }
+}
+
+@media (max-width: 430px) {
+    .toolbar {
+        gap: 8px;
+    }
+
+    .toolbar-button {
+        padding: 0 11px;
+    }
+
+    .stat-card {
+        min-height: 100px;
+    }
+
+    .stat-icon {
+        width: 43px;
+        height: 43px;
+    }
+
+    .calendar-day {
+        min-height: 47px;
+
+        font-size: 10px;
+    }
+
+    .calendar-day.has-events::after {
+        bottom: 7px;
+
+        width: 5px;
+        height: 5px;
+    }
+
+    .agenda-list {
+        padding-inline: 10px;
+    }
+
+    .agenda-item {
+        padding-inline: 6px;
+    }
+
+    .modal {
+        padding: 22px 18px;
+    }
+
+    .modal-header h2 {
+        font-size: 18px;
+    }
+}

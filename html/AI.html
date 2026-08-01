@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI phân tích CV</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/AI.css">
+</head>
+
+<body>
+
+<main class="ai-page">
+
+        <!-- Tiêu đề -->
+        <section class="page-header">
+
+            <div class="heading-content">
+
+                <p class="page-label">
+                    TRỢ LÝ TUYỂN DỤNG
+                </p>
+
+                <h1>AI phân tích CV</h1>
+
+                <p class="page-description">
+                    So khớp năng lực với yêu cầu công việc,
+                    minh bạch theo từng tiêu chí.
+                </p>
+
+            </div>
+
+            <button
+                class="add-button"
+                id="addButton"
+                type="button"
+            >
+                <i class="fa-solid fa-plus"></i>
+                Thêm mới
+            </button>
+
+        </section>
+
+        <!-- Thanh công cụ -->
+        <section class="toolbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Tìm kiếm theo tên, vị trí hoặc từ khóa..."
+                >
+
+            </div>
+
+            <button
+                class="toolbar-button"
+                id="filterButton"
+                type="button"
+            >
+                <i class="fa-solid fa-filter"></i>
+                Bộ lọc
+            </button>
+
+            <button
+                class="toolbar-button"
+                id="exportButton"
+                type="button"
+            >
+                <i class="fa-solid fa-download"></i>
+                Xuất dữ liệu
+            </button>
+
+        </section>
+
+        <!-- Bộ lọc -->
+        <section
+            class="filter-panel"
+            id="filterPanel"
+        >
+
+            <div class="filter-group">
+
+                <label for="positionFilter">
+                    Vị trí ứng tuyển
+                </label>
+
+                <select id="positionFilter">
+                    <option value="all">
+                        Tất cả vị trí
+                    </option>
+
+                    <option value="frontend developer">
+                        Frontend Developer
+                    </option>
+
+                    <option value="backend developer">
+                        Backend Developer
+                    </option>
+
+                    <option value="ui/ux designer">
+                        UI/UX Designer
+                    </option>
+                </select>
+
+            </div>
+
+            <div class="filter-group">
+
+                <label for="scoreFilter">
+                    Điểm tối thiểu
+                </label>
+
+                <select id="scoreFilter">
+                    <option value="0">
+                        Tất cả điểm
+                    </option>
+
+                    <option value="90">
+                        Từ 90 điểm
+                    </option>
+
+                    <option value="80">
+                        Từ 80 điểm
+                    </option>
+
+                    <option value="70">
+                        Từ 70 điểm
+                    </option>
+                </select>
+
+            </div>
+
+            <button
+                class="clear-filter-button"
+                id="clearFilterButton"
+                type="button"
+            >
+                <i class="fa-solid fa-rotate-left"></i>
+                Xóa bộ lọc
+            </button>
+
+        </section>
+
+        <!-- Nội dung chính -->
+        <section class="content-grid">
+
+            <!-- Upload CV -->
+            <div
+                class="upload-card"
+                id="uploadArea"
+            >
+
+                <input
+                    type="file"
+                    id="cvInput"
+                    accept=".pdf,.doc,.docx"
+                    hidden
+                >
+
+                <div class="upload-icon">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+
+                <h2>Tải CV để phân tích</h2>
+
+                <p>
+                    Hỗ trợ PDF, DOCX · Tối đa 10 MB
+                </p>
+
+                <button
+                    class="upload-button"
+                    id="uploadButton"
+                    type="button"
+                >
+                    Chọn tệp CV
+                </button>
+
+                <span
+                    class="file-name"
+                    id="fileName"
+                ></span>
+
+            </div>
+
+            <!-- Kết quả -->
+            <div class="result-card">
+
+                <h2>Kết quả phân tích gần đây</h2>
+
+                <div
+                    class="candidate-list"
+                    id="candidateList"
+                >
+
+                    <!-- Ứng viên 1 -->
+                    <article
+                        class="candidate-item"
+                        data-name="nguyễn minh anh"
+                        data-position="frontend developer"
+                        data-score="92"
+                    >
+
+                        <div class="candidate-avatar avatar-purple">
+                            NM
+                        </div>
+
+                        <div class="candidate-info">
+
+                            <strong>
+                                Nguyễn Minh Anh
+                            </strong>
+
+                            <span>
+                                Frontend Developer
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="score-circle"
+                            style="--score: 92"
+                        >
+                            <span>92</span>
+                        </div>
+
+                    </article>
+
+                    <!-- Ứng viên 2 -->
+                    <article
+                        class="candidate-item"
+                        data-name="trần thanh tùng"
+                        data-position="backend developer"
+                        data-score="86"
+                    >
+
+                        <div class="candidate-avatar avatar-blue">
+                            TT
+                        </div>
+
+                        <div class="candidate-info">
+
+                            <strong>
+                                Trần Thanh Tùng
+                            </strong>
+
+                            <span>
+                                Backend Developer
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="score-circle"
+                            style="--score: 86"
+                        >
+                            <span>86</span>
+                        </div>
+
+                    </article>
+
+                    <!-- Ứng viên 3 -->
+                    <article
+                        class="candidate-item"
+                        data-name="lê ngọc hân"
+                        data-position="ui/ux designer"
+                        data-score="79"
+                    >
+
+                        <div class="candidate-avatar avatar-orange">
+                            LH
+                        </div>
+
+                        <div class="candidate-info">
+
+                            <strong>
+                                Lê Ngọc Hân
+                            </strong>
+
+                            <span>
+                                UI/UX Designer
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="score-circle"
+                            style="--score: 79"
+                        >
+                            <span>79</span>
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <div
+                    class="empty-result"
+                    id="emptyResult"
+                >
+                    <i class="fa-regular fa-folder-open"></i>
+
+                    <p>
+                        Không tìm thấy ứng viên phù hợp.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Modal thêm ứng viên -->
+    <div
+        class="modal-overlay"
+        id="candidateModal"
+    >
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Thêm kết quả phân tích</h2>
+
+                    <p>
+                        Nhập thông tin ứng viên mới.
+                    </p>
+                </div>
+
+                <button
+                    class="close-modal-button"
+                    id="closeModalButton"
+                    type="button"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <form id="candidateForm">
+
+                <div class="form-group">
+
+                    <label for="candidateName">
+                        Tên ứng viên
+                    </label>
+
+                    <input
+                        type="text"
+                        id="candidateName"
+                        placeholder="Ví dụ: Nguyễn Văn An"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="candidatePosition">
+                        Vị trí ứng tuyển
+                    </label>
+
+                    <input
+                        type="text"
+                        id="candidatePosition"
+                        placeholder="Ví dụ: Java Developer"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="candidateScore">
+                        Điểm phân tích
+                    </label>
+
+                    <input
+                        type="number"
+                        id="candidateScore"
+                        min="0"
+                        max="100"
+                        placeholder="Nhập điểm từ 0 đến 100"
+                        required
+                    >
+
+                </div>
+
+                <div class="modal-actions">
+
+                    <button
+                        class="cancel-button"
+                        id="cancelButton"
+                        type="button"
+                    >
+                        Hủy
+                    </button>
+
+                    <button
+                        class="save-button"
+                        type="submit"
+                    >
+                        <i class="fa-solid fa-check"></i>
+                        Thêm ứng viên
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/common.js"></script>
+    <script src="../js/AI.js"></script>
+
+</body>
+
+</html> 
