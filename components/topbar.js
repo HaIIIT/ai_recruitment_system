@@ -558,30 +558,41 @@ function createHelpDropdown() {
             "#contactSupport",
         );
 
-    if (helpDeskButton) {
-        helpDeskButton.addEventListener(
-            "click",
-            function () {
-                navigateToPage(
-                    "helpdesk.html",
-                    "Trung tâm trợ giúp",
-                );
-            },
-        );
-    }
+   if (helpDeskButton) {
+    helpDeskButton.addEventListener(
+        "click",
+        function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
 
-    if (contactSupportButton) {
-        contactSupportButton.addEventListener(
-            "click",
-            function () {
-                navigateToPage(
+            window.top.location.assign(
+                new URL(
                     "helpdesk.html",
-                    "Trung tâm trợ giúp",
-                );
-            },
-        );
-    }
+                    window.top.location.href,
+                ).href,
+            );
+        },
+    );
+}
 
+if (contactSupportButton) {
+    contactSupportButton.addEventListener(
+        "click",
+        function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+
+            window.top.location.assign(
+                new URL(
+                    "helpdesk.html",
+                    window.top.location.href,
+                ).href,
+            );
+        },
+    );
+}
     return dropdown;
 }
 
