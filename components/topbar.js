@@ -2017,16 +2017,22 @@ function initializeGlobalSearch() {
         activeIndex = -1;
     }
 
-    function openPage(item) {
-        navigateToPage(
-            item.page,
-            item.name,
-        );
+   function openPage(item) {
+    searchInput.value = "";
+    closeSuggestions();
 
-        searchInput.value = "";
-
-        closeSuggestions();
+    /* Trung tâm trợ giúp mở thành trang độc lập */
+    if (item.page === "helpdesk.html") {
+        window.location.href = "helpdesk.html";
+        return;
     }
+
+    /* Các chức năng còn lại vẫn mở trong Dashboard */
+    navigateToPage(
+        item.page,
+        item.name,
+    );
+}
 
     function renderSuggestions(
         results,
