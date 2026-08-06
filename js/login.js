@@ -84,6 +84,6 @@ loginForm.addEventListener("submit", function (event) {
   sessionStorage.setItem("candidateEmail", email);
 
   setTimeout(function () {
-    window.location.href = "../html/Main.html";
+    window.location.href = "Main.html";
   }, 700);
 });
