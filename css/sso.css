@@ -301,13 +301,17 @@ a {
   color: #253452;
   background: #fff;
   transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .lookup-field input:focus {
+  transform: translateY(-2px);
   border-color: #9fc0ff;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.18),
+    0 8px 18px rgba(0, 35, 100, 0.18);
 }
 
 .lookup-field input.input-error {
@@ -977,9 +981,30 @@ a {
   display: none;
 }
 
-.application-card.show-result {
+/*.application-card.show-result {
   display: block;
   animation: result-appear 0.45s ease both;
+}*/
+.application-card.show-result {
+  animation: resultAppearAdvanced 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes resultAppearAdvanced {
+  from {
+    opacity: 0;
+
+    transform: translateY(30px) scale(0.97);
+
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+
+    filter: blur(0);
+  }
 }
 
 @keyframes result-appear {
@@ -1494,5 +1519,212 @@ body.modal-open {
     right: 16px;
     left: 16px;
     width: auto;
+  }
+}
+/*Open page*/
+/* =================================
+   ANIMATION KHI MỞ TRANG
+================================= */
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Header */
+.topbar {
+  animation: fadeSlideDown 0.6s ease both;
+}
+
+/* Sidebar */
+.sidebar {
+  animation: fadeSlideLeft 0.7s ease both;
+}
+
+/* Xin chào */
+.welcome {
+  animation: fadeSlideUp 0.65s ease 0.1s both;
+}
+
+/* Khung tra cứu */
+.lookup {
+  animation: fadeSlideUp 0.7s ease 0.2s both;
+}
+/*found information*/
+.lookup {
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(120deg, #2158c7, #286df0, #174ea6, #286df0);
+
+  background-size: 300% 300%;
+
+  animation:
+    fadeSlideUp 0.7s ease 0.2s both,
+    lookupGradient 8s ease infinite;
+}
+
+@keyframes lookupGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/*button*/
+.lookup-button {
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.lookup-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(4, 34, 86, 0.25);
+}
+
+.lookup-button:active {
+  transform: scale(0.96);
+}
+
+/* ánh sáng trên button */
+.lookup-button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 70px;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.7),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.6s ease;
+}
+
+.lookup-button:hover::before {
+  left: 130%;
+}
+/*sidebar*/
+.side-nav a {
+  position: relative;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.side-nav a:hover {
+  transform: translateX(5px);
+}
+
+/* thanh xanh nhỏ bên trái */
+.side-nav a::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  width: 3px;
+  height: 0;
+
+  border-radius: 5px;
+
+  background: #2465df;
+
+  transform: translateY(-50%);
+
+  transition: height 0.25s ease;
+}
+
+.side-nav a:hover::before,
+.side-nav a.active::before {
+  height: 55%;
+}
+/*timeline*/
+.timeline-item.current .step {
+  animation: currentPulse 2s ease-in-out infinite;
+}
+
+@keyframes currentPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 6px #ede8fd;
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 10px rgba(111, 75, 216, 0.12),
+      0 0 22px rgba(111, 75, 216, 0.28);
+  }
+}
+/*toast*/
+.lookup-success-toast.show .lookup-toast-icon {
+  animation: toastCheckPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both;
+}
+
+@keyframes toastCheckPop {
+  from {
+    opacity: 0;
+    transform: scale(0) rotate(-30deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
   }
 }

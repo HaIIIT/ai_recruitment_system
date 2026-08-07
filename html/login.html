@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Đăng nhập ứng viên | VietTech Development JSC</title>
+    <title>Trung tâm xác thực tập trung</title>
+    <link rel="stylesheet" href="../css/login.css" />
+
     <!--favicon-->
     <link
       rel="apple-touch-icon"
@@ -82,107 +84,303 @@
     />
     <meta name="theme-color" content="#ffffff" />
     <!--end-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../css/login.css" />
   </head>
 
   <body>
-    <main class="login-page">
-      <section class="hero" aria-label="Giới thiệu">
-        <a class="brand" href="../index.html">
-          <img src="../img/logo1.png" alt="Logo VietTech" />
-          <strong>VietTech Development JSC</strong>
-        </a>
+    <!-- PAGE TRANSITION - CỬA THÉP -->
+    <div class="page-transition" id="pageTransition" aria-hidden="true">
+      <div class="steel-door steel-door-left">
+        <span class="door-rivet rivet-1"></span>
+        <span class="door-rivet rivet-2"></span>
+        <span class="door-rivet rivet-3"></span>
+        <span class="door-rivet rivet-4"></span>
+      </div>
 
-        <div class="hero-content">
-          <span class="tag">HÀNH TRÌNH SỰ NGHIỆP</span>
-          <h1>Cơ hội tốt bắt đầu<br />từ một bước nhỏ.</h1>
-          <p>
-            Tạo hồ sơ một lần, ứng tuyển nhanh chóng và theo dõi toàn bộ tiến
-            trình ngay tại một nơi.
-          </p>
+      <div class="steel-door steel-door-right">
+        <span class="door-rivet rivet-1"></span>
+        <span class="door-rivet rivet-2"></span>
+        <span class="door-rivet rivet-3"></span>
+        <span class="door-rivet rivet-4"></span>
+      </div>
+
+      <div class="vault-lock">
+        <div class="vault-wheel">
+          <span class="wheel-spoke spoke-1"></span>
+          <span class="wheel-spoke spoke-2"></span>
+          <span class="wheel-spoke spoke-3"></span>
+          <span class="wheel-core"></span>
         </div>
 
-        <blockquote>
-          “Quy trình minh bạch giúp tôi luôn biết hồ sơ của mình đang ở đâu.”
-          <cite>— Nguyễn Minh Anh, Ứng viên</cite>
-        </blockquote>
-      </section>
+        <div class="transition-text">ĐANG CHUYỂN PHIÊN XÁC THỰC</div>
+      </div>
+    </div>
 
-      <section class="form-side">
-        <div class="form-wrap">
-          <a class="back-link" href="../html/index.html">
-            <span aria-hidden="true">←</span> Quay lại trang chủ
-          </a>
+    <div class="background">
+      <div class="mesh"></div>
+      <div class="aurora aurora-one"></div>
+      <div class="aurora aurora-two"></div>
+      <div class="noise"></div>
+    </div>
 
-          <div class="login-card">
-            <header>
-              <h2>Chào mừng bạn quay lại</h2>
-              <p>Đăng nhập để quản lý hồ sơ và theo dõi kết quả.</p>
-            </header>
+    <header class="topbar">
+      <a href="../html/index.html" class="brand">
+        <div class="brand-mark">
+          <img src="../img/logo1.png" alt="Logo VietTech" />
+        </div>
+
+        <div class="brand-copy">
+          <strong>TRUNG TÂM XÁC THỰC TẬP TRUNG</strong>
+          <span>VietTech Development JSC</span>
+        </div>
+      </a>
+    </header>
+
+    <main class="page">
+      <section class="auth-frame">
+        <div class="frame-glow"></div>
+
+        <!-- LEFT INFO -->
+        <aside class="security-side">
+          <div class="security-badge">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 3l7 3v5c0 4.5-2.8 8.2-7 10-4.2-1.8-7-5.5-7-10V6l7-3z"
+              ></path>
+              <path d="M9 12l2 2 4-4"></path>
+            </svg>
+
+            <span>SECURE ACCESS</span>
+          </div>
+
+          <div class="security-copy">
+            <p class="kicker">HỆ THỐNG NỘI BỘ DOANH NGHIỆP</p>
+
+            <h1>
+              Một điểm xác thực.
+              <span>Mọi quyền truy cập.</span>
+            </h1>
+
+            <p class="description">
+              Trung tâm xác thực tập trung dành riêng cho nhân sự, giúp truy cập
+              các chức năng nội bộ theo đúng quyền được cấp.
+            </p>
+          </div>
+
+          <div class="security-list">
+            <div class="security-item">
+              <div class="security-number">01</div>
+
+              <div>
+                <strong>Xác thực tập trung</strong>
+                <span
+                  >Một tài khoản nội bộ cho các hệ thống được phân quyền.</span
+                >
+              </div>
+            </div>
+
+            <div class="security-item">
+              <div class="security-number">02</div>
+
+              <div>
+                <strong>Kiểm soát truy cập</strong>
+                <span
+                  >Quyền sử dụng được cấp theo vai trò trong doanh nghiệp.</span
+                >
+              </div>
+            </div>
+
+            <div class="security-item">
+              <div class="security-number">03</div>
+
+              <div>
+                <strong>Phiên đăng nhập bảo mật</strong>
+                <span
+                  >Hoạt động truy cập được xác thực trước khi vào hệ
+                  thống.</span
+                >
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- LOGIN -->
+        <section class="login-side">
+          <div class="login-head">
+            <a href="../html/index.html" class="back-link">
+              <svg viewBox="0 0 24 24">
+                <path d="M15 18l-6-6 6-6"></path>
+              </svg>
+
+              Trang chủ
+            </a>
+
+            <div class="employee-only">
+              <span></span>
+              Dành riêng cho nhân sự
+            </div>
+          </div>
+
+          <div class="login-content">
+            <div class="heading">
+              <h2>Đăng nhập hệ thống</h2>
+
+              <p>Sử dụng tài khoản nội bộ được doanh nghiệp cấp.</p>
+            </div>
 
             <form id="loginForm" novalidate>
               <div class="field">
-                <label for="email">Email</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="email@example.com"
-                  autocomplete="email"
-                  required
-                />
-                <small class="error" id="emailError"></small>
+                <label for="accountCode"> Mã tài khoản </label>
+
+                <div class="input-shell">
+                  <div class="input-icon">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M4 5h16v14H4z"></path>
+                      <path d="M8 9h8"></path>
+                      <path d="M8 13h5"></path>
+                    </svg>
+                  </div>
+
+                  <input
+                    id="accountCode"
+                    name="accountCode"
+                    type="text"
+                    placeholder="Nhập mã tài khoản"
+                    autocomplete="username"
+                    required
+                  />
+
+                  <span class="input-focus-line"></span>
+                </div>
+
+                <small class="error" id="accountCodeError"></small>
               </div>
 
               <div class="field">
-                <label for="password">Mật khẩu</label>
-                <div class="password-box">
+                <label for="password"> Mật khẩu </label>
+
+                <div class="input-shell">
+                  <div class="input-icon">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="5" y="10" width="14" height="10" rx="2"></rect>
+                      <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+                    </svg>
+                  </div>
+
                   <input
                     id="password"
                     name="password"
                     type="password"
-                    placeholder="Tối thiểu 8 ký tự"
+                    placeholder="Nhập mật khẩu"
                     autocomplete="current-password"
                     minlength="8"
                     required
                   />
+
                   <button
                     id="togglePassword"
-                    class="show-password"
+                    class="eye-button"
                     type="button"
                     aria-label="Hiện mật khẩu"
                   >
-                    Hiện
+                    <span id="eyeIcon"></span>
                   </button>
+
+                  <span class="input-focus-line"></span>
                 </div>
+
                 <small class="error" id="passwordError"></small>
+
+                <div class="forgot-row">
+                  <a href="../html/forgotpass.html" data-page-transition>
+                    Quên mật khẩu?
+                  </a>
+                </div>
               </div>
 
-              <div class="form-options">
+              <div class="form-meta">
                 <label class="remember">
                   <input type="checkbox" name="remember" />
+                  <span class="check-ui"></span>
                   <span>Ghi nhớ đăng nhập</span>
                 </label>
-                <a href="../html/501.html">Quên mật khẩu?</a>
+
+                <div class="encrypted">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 3l7 3v5c0 4.5-2.8 8.2-7 10-4.2-1.8-7-5.5-7-10V6l7-3z"
+                    ></path>
+                  </svg>
+                  Phiên bảo mật
+                </div>
               </div>
 
-              <button class="login-button" type="submit">Đăng nhập</button>
+              <button id="loginButton" class="login-button" type="submit">
+                <span class="button-shine"></span>
+
+                <span class="button-content">
+                  <span class="button-label"> Đăng nhập </span>
+
+                  <span class="button-arrow">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M5 12h14"></path>
+                      <path d="M13 6l6 6-6 6"></path>
+                    </svg>
+                  </span>
+                </span>
+
+                <span class="button-spinner"></span>
+              </button>
+
               <p class="form-message" id="formMessage" aria-live="polite"></p>
             </form>
-            <div class="divider"><span>hoặc</span></div>
-            <a class="lookup-button" href="../html/sso.html">
-              <span aria-hidden="true">⌕</span> Ứng viên tra cứu hồ sơ tại đây
-            </a>
+
+            <div class="candidate-box">
+              <div class="candidate-icon">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="11" cy="11" r="6"></circle>
+                  <path d="M16 16l4 4"></path>
+                </svg>
+              </div>
+
+              <div class="candidate-copy">
+                <strong>Bạn là ứng viên?</strong>
+                <span>Vui lòng tra cứu hồ sơ ứng tuyển tại đây.</span>
+              </div>
+
+              <a href="../html/sso.html" class="candidate-link">
+                Tra cứu hồ sơ
+
+                <svg viewBox="0 0 24 24">
+                  <path d="M5 12h14"></path>
+                  <path d="M13 6l6 6-6 6"></path>
+                </svg>
+              </a>
+            </div>
+
+            <div class="foot-security">
+              <span class="mini-lock">
+                <svg viewBox="0 0 24 24">
+                  <rect x="5" y="10" width="14" height="10" rx="2"></rect>
+                  <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+                </svg>
+              </span>
+
+              <span>
+                Hệ thống chỉ cho phép truy cập đối với tài khoản đã được cấp
+                quyền.
+              </span>
+            </div>
+
+            <div class="copyright">
+              © VietTech Development JSC. All rights reserved.
+            </div>
           </div>
-        </div>
+        </section>
       </section>
     </main>
+
+    <div class="toast-container" id="toastContainer"></div>
+
     <script src="../js/login.js"></script>
   </body>
 </html>

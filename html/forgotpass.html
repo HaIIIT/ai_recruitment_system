@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hệ Thống Xác Thực Tập trung | VietTech Development JSC</title>
+    <link rel="stylesheet" href="../css/forgotpass.css" />
+    <!--favicon-->
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="../favicon/fa/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="../favicon/fa/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="../favicon/fa/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../favicon/fa/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="../favicon/fa/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="../favicon/fa/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="../favicon/fa/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="../favicon/fa/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../favicon/fa/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="../favicon/fa/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../favicon/fa/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="../favicon/fa/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../favicon/fa/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../favicon/fa/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="../favicon/fa/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <!--end-->
+  </head>
+  <body>
+    <!-- ======================================================
+     PAGE TRANSITION - CỬA THÉP XÁC THỰC
+====================================================== -->
+    <div class="page-transition" id="pageTransition" aria-hidden="true">
+      <div class="steel-door steel-door-left">
+        <span class="door-rivet rivet-1"></span>
+        <span class="door-rivet rivet-2"></span>
+        <span class="door-rivet rivet-3"></span>
+        <span class="door-rivet rivet-4"></span>
+      </div>
+
+      <div class="steel-door steel-door-right">
+        <span class="door-rivet rivet-1"></span>
+        <span class="door-rivet rivet-2"></span>
+        <span class="door-rivet rivet-3"></span>
+        <span class="door-rivet rivet-4"></span>
+      </div>
+
+      <div class="vault-lock">
+        <div class="vault-wheel">
+          <span class="wheel-spoke spoke-1"></span>
+          <span class="wheel-spoke spoke-2"></span>
+          <span class="wheel-spoke spoke-3"></span>
+          <span class="wheel-core"></span>
+        </div>
+
+        <div class="transition-text">ĐANG CHUYỂN PHIÊN XÁC THỰC</div>
+      </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div class="forgot-page">
+      <div class="forgot-container">
+        <div class="logo-area">
+          <div class="logo">
+            <img src="../img/logo1.png" alt="logo VietTech Development JSC" />
+          </div>
+          <div>
+            <h2>HỆ THỐNG XÁC THỰC TẬP TRUNG</h2>
+            <p>Khôi phục quyền truy cập tài khoản</p>
+          </div>
+        </div>
+
+        <div class="forgot-card">
+          <div class="step-wrapper">
+            <div class="step active" id="stepItem1">
+              <div class="step-circle">1</div>
+              <span>Xác thực tài khoản</span>
+            </div>
+            <div class="step-line" id="line1"></div>
+            <div class="step" id="stepItem2">
+              <div class="step-circle">2</div>
+              <span>Xác thực mã</span>
+            </div>
+            <div class="step-line" id="line2"></div>
+            <div class="step" id="stepItem3">
+              <div class="step-circle">3</div>
+              <span>Mật khẩu mới</span>
+            </div>
+          </div>
+
+          <div class="form-step active" id="step1">
+            <div class="form-header">
+              <div class="header-icon">👤</div>
+              <h1>Xác thực thông tin tài khoản</h1>
+              <p>
+                Nhập chính xác thông tin tài khoản đã đăng ký để tiến hành cấp
+                lại mật khẩu.
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label for="accountCode">Mã tài khoản</label>
+              <input
+                type="text"
+                id="accountCode"
+                placeholder="Nhập mã tài khoản"
+              />
+              <span class="error" id="accountCodeError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="cccd">Số CCCD</label>
+              <input
+                type="text"
+                id="cccd"
+                maxlength="12"
+                placeholder="Nhập số CCCD"
+              />
+              <span class="error" id="cccdError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Nhập email đã đăng ký"
+              />
+              <span class="error" id="emailError"></span>
+            </div>
+
+            <div class="security-note">
+              <div class="note-icon">🔒</div>
+              <div>
+                <strong>Bảo mật thông tin</strong>
+                <p>
+                  Các thông tin trên sẽ được đối chiếu với dữ liệu tài khoản
+                  trong hệ thống.
+                </p>
+              </div>
+            </div>
+
+            <button type="button" class="btn-primary" id="verifyAccountBtn">
+              Tiến hành xác thực
+            </button>
+
+            <div class="back-login">
+              <a href="../html/login.html" data-page-transition
+                >← Trở về trang đăng nhập</a
+              >
+            </div>
+          </div>
+
+          <div class="form-step" id="step2">
+            <div class="form-header">
+              <div class="header-icon mail">✉</div>
+              <h1>Xác thực mã bảo mật</h1>
+              <p>Mã xác thực gồm 6 chữ số đã được gửi đến</p>
+              <strong class="email-display" id="emailDisplay"
+                >email@gmail.com</strong
+              >
+            </div>
+
+            <div class="demo-code">
+              <span>Mã OTP demo:</span>
+              <strong id="demoCode">------</strong>
+            </div>
+
+            <div class="otp-title">Nhập mã xác thực</div>
+
+            <div class="otp-container">
+              <input class="otp-input" maxlength="1" inputmode="numeric" />
+              <input class="otp-input" maxlength="1" inputmode="numeric" />
+              <input class="otp-input" maxlength="1" inputmode="numeric" />
+              <input class="otp-input" maxlength="1" inputmode="numeric" />
+              <input class="otp-input" maxlength="1" inputmode="numeric" />
+              <input class="otp-input" maxlength="1" inputmode="numeric" />
+            </div>
+
+            <span class="error otp-error" id="otpError"></span>
+
+            <div class="otp-options">
+              <span>Chưa nhận được mã?</span>
+              <button type="button" id="resendBtn" class="resend-btn">
+                Gửi lại mã
+              </button>
+            </div>
+
+            <div class="button-row">
+              <button type="button" class="btn-secondary" id="backStep1">
+                Quay lại
+              </button>
+              <button type="button" class="btn-primary" id="verifyOtpBtn">
+                Xác thực mã
+              </button>
+            </div>
+          </div>
+
+          <div class="form-step" id="step3">
+            <div class="form-header">
+              <div class="header-icon password">🔑</div>
+              <h1>Thiết lập mật khẩu mới</h1>
+              <p>Tạo mật khẩu mới để tiếp tục sử dụng tài khoản.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="newPassword">Mật khẩu mới</label>
+              <div class="password-box">
+                <input
+                  type="password"
+                  id="newPassword"
+                  placeholder="Nhập mật khẩu mới"
+                />
+                <button
+                  type="button"
+                  class="toggle-password"
+                  data-target="newPassword"
+                >
+                  👁
+                </button>
+              </div>
+              <span class="error" id="newPasswordError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="confirmPassword">Nhập lại mật khẩu</label>
+              <div class="password-box">
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  placeholder="Nhập lại mật khẩu mới"
+                />
+                <button
+                  type="button"
+                  class="toggle-password"
+                  data-target="confirmPassword"
+                >
+                  👁
+                </button>
+              </div>
+              <span class="error" id="confirmPasswordError"></span>
+            </div>
+
+            <div class="password-requirements">
+              <p>Mật khẩu cần đáp ứng:</p>
+              <div class="requirement" id="lengthCheck">
+                <span>○</span>Ít nhất 8 ký tự
+              </div>
+              <div class="requirement" id="uppercaseCheck">
+                <span>○</span>Có ít nhất 1 chữ hoa
+              </div>
+              <div class="requirement" id="numberCheck">
+                <span>○</span>Có ít nhất 1 chữ số
+              </div>
+              <div class="requirement" id="specialCheck">
+                <span>○</span>Có ít nhất 1 ký tự đặc biệt
+              </div>
+            </div>
+
+            <div class="button-row">
+              <button type="button" class="btn-secondary" id="backStep2">
+                Quay lại
+              </button>
+              <button type="button" class="btn-primary" id="resetPasswordBtn">
+                Cấp lại mật khẩu
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="copyright">
+          © VietTech Development JSC. All rights reserved.
+        </div>
+      </div>
+    </div>
+
+    <div class="verify-overlay" id="verifyOverlay">
+      <div class="verify-box">
+        <div class="verify-spinner-wrap">
+          <div class="verify-spinner"></div>
+          <div class="verify-spinner-inner">🔐</div>
+        </div>
+
+        <h3 id="verifyTitle">Đang xác thực thông tin</h3>
+        <p id="verifySubtitle">
+          Hệ thống đang đối chiếu dữ liệu tài khoản với cơ sở dữ liệu bảo mật.
+        </p>
+
+        <div class="verify-steps">
+          <div class="verify-step" id="verifyCheck1">
+            <div class="verify-step-icon">1</div>
+            <span>Kiểm tra mã tài khoản</span>
+          </div>
+
+          <div class="verify-step" id="verifyCheck2">
+            <div class="verify-step-icon">2</div>
+            <span>Đối chiếu CCCD</span>
+          </div>
+
+          <div class="verify-step" id="verifyCheck3">
+            <div class="verify-step-icon">3</div>
+            <span>Xác minh email đã đăng ký</span>
+          </div>
+
+          <div class="verify-step" id="verifyCheck4">
+            <div class="verify-step-icon">4</div>
+            <span>Tạo phiên xác thực 2FA</span>
+          </div>
+        </div>
+
+        <div class="verify-status">
+          <div class="verify-progress" id="verifyProgress"></div>
+        </div>
+
+        <div class="verify-secure-note">
+          <span>🛡</span>
+          <span>Kết nối xác thực được bảo vệ</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup-overlay" id="successPopup">
+      <div class="success-popup">
+        <div class="success-icon">✓</div>
+        <h2>Cấp lại mật khẩu thành công</h2>
+        <p>
+          Mật khẩu mới của bạn đã được thiết lập thành công. Bạn có thể sử dụng
+          mật khẩu mới để đăng nhập hệ thống.
+        </p>
+        <button type="button" id="goLoginBtn">Trở về trang đăng nhập</button>
+      </div>
+    </div>
+
+    <script src="../js/forgotpass.js"></script>
+  </body>
+</html>
