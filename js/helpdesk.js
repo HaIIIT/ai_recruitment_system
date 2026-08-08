@@ -1,261 +1,344 @@
-/* ================================
-   1. KHAI BÁO PHẦN TỬ
-================================ */
-
 const searchInput = document.querySelector("#helpSearch");
 const faqItems = [...document.querySelectorAll(".faq-item")];
 const emptySearch = document.querySelector(".empty-search");
-
 const modal = document.querySelector("#ticketModal");
 const form = document.querySelector("#ticketForm");
 const submitButton = form.querySelector(".submit-btn");
-
 const successModal = document.querySelector("#successModal");
 const successToast = document.querySelector("#successToast");
 const successCloseButton = document.querySelector(".success-close");
 const finishButton = document.querySelector(".finish-btn");
-
 let toastTimer;
-
-/* ================================
-   2. CHUẨN HÓA NỘI DUNG TÌM KIẾM
-================================ */
+const trackerForm = document.querySelector("#trackerForm");
+const trackCode = document.querySelector("#trackCode");
+const trackEmail = document.querySelector("#trackEmail");
+const trackerError = document.querySelector("#trackerError");
+const trackerEmpty = document.querySelector("#trackerEmpty");
+const ticketDetail = document.querySelector("#ticketDetail");
+const TICKET_STORAGE_KEY = "viettech_helpdesk_tickets_v1";
+const TIMELINE_LABELS = [
+  "Đã tiếp nhận",
+  "Đang kiểm tra",
+  "Đang xử lý",
+  "Đã phản hồi",
+  "Hoàn tất",
+];
 
 function normalizeText(value) {
   return value
     .toLocaleLowerCase("vi")
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d");
 }
-
-/* ================================
-   3. TÌM KIẾM CÂU HỎI THƯỜNG GẶP
-================================ */
 
 function filterFaqs() {
   const keyword = normalizeText(searchInput.value.trim());
-
   let visibleCount = 0;
-
   faqItems.forEach((item) => {
-    const faqContent = normalizeText(item.textContent);
-
-    const isVisible = keyword === "" || faqContent.includes(keyword);
-
+    const isVisible =
+      keyword === "" || normalizeText(item.textContent).includes(keyword);
     item.hidden = !isVisible;
-
-    if (isVisible) {
-      visibleCount++;
-    }
+    if (isVisible) visibleCount++;
   });
-
   emptySearch.hidden = visibleCount > 0;
 }
 
 searchInput.addEventListener("input", filterFaqs);
-
-/* ================================
-   4. ĐÓNG/MỞ CÂU HỎI FAQ
-================================ */
-
-faqItems.forEach((item) => {
-  const faqButton = item.querySelector("button");
-
-  faqButton.addEventListener("click", () => {
-    const willOpen = !item.classList.contains("open");
-
-    faqItems.forEach((faq) => {
-      faq.classList.remove("open");
-
-      const icon = faq.querySelector("b");
-
-      if (icon) {
-        icon.textContent = "+";
-      }
-    });
-
-    if (willOpen) {
-      item.classList.add("open");
-
-      const currentIcon = item.querySelector("b");
-
-      if (currentIcon) {
-        currentIcon.textContent = "−";
-      }
-    }
-  });
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    filterFaqs();
+    document.querySelector("#faq").scrollIntoView({ behavior: "smooth" });
+  }
 });
 
-/* ================================
-   5. CHỌN NHANH DANH MỤC HỖ TRỢ
-================================ */
+faqItems.forEach((item) => {
+  item.querySelector("button").addEventListener("click", () => {
+    const willOpen = !item.classList.contains("open");
+    faqItems.forEach((faq) => faq.classList.remove("open"));
+    if (willOpen) item.classList.add("open");
+  });
+});
 
 document.querySelectorAll("[data-query]").forEach((button) => {
   button.addEventListener("click", () => {
     searchInput.value = button.dataset.query;
-
     filterFaqs();
-
-    document.querySelector("#faq").scrollIntoView({
-      behavior: "smooth",
-    });
+    document.querySelector("#faq").scrollIntoView({ behavior: "smooth" });
   });
 });
 
-/* ================================
-   6. MỞ FORM GỬI YÊU CẦU
-================================ */
-
 function openModal() {
   modal.hidden = false;
-
   document.body.classList.add("modal-open");
 }
-
-document.querySelectorAll(".open-ticket").forEach((button) => {
-  button.addEventListener("click", openModal);
-});
-
-/* ================================
-   7. ĐÓNG FORM GỬI YÊU CẦU
-================================ */
-
 function closeModal() {
   modal.hidden = true;
-
-  if (successModal.hidden) {
-    document.body.classList.remove("modal-open");
-  }
+  if (successModal.hidden) document.body.classList.remove("modal-open");
 }
-
-const modalCloseButton = document.querySelector(".modal-close");
-
-modalCloseButton.addEventListener("click", closeModal);
-
-modal.addEventListener("mousedown", (event) => {
-  if (event.target === modal) {
-    closeModal();
-  }
-});
-
-/* ================================
-   8. HỘP KẾT QUẢ GỬI THÀNH CÔNG
-================================ */
-
 function closeSuccessModal() {
   successModal.hidden = true;
-
   document.body.classList.remove("modal-open");
 }
 
+document
+  .querySelectorAll(".open-ticket")
+  .forEach((btn) => btn.addEventListener("click", openModal));
+document.querySelector(".modal-close").addEventListener("click", closeModal);
+modal.addEventListener("mousedown", (e) => {
+  if (e.target === modal) closeModal();
+});
 successCloseButton.addEventListener("click", closeSuccessModal);
-
 finishButton.addEventListener("click", closeSuccessModal);
-
-successModal.addEventListener("mousedown", (event) => {
-  if (event.target === successModal) {
-    closeSuccessModal();
-  }
+successModal.addEventListener("mousedown", (e) => {
+  if (e.target === successModal) closeSuccessModal();
 });
 
-/* ================================
-   9. ĐÓNG HỘP BẰNG PHÍM ESC
-================================ */
-
-document.addEventListener("keydown", (event) => {
-  if (event.key !== "Escape") {
-    return;
-  }
-
-  if (!successModal.hidden) {
-    closeSuccessModal();
-  } else if (!modal.hidden) {
-    closeModal();
-  }
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  if (!successModal.hidden) closeSuccessModal();
+  else if (!modal.hidden) closeModal();
 });
-
-/* ================================
-   10. THÔNG BÁO GÓC PHẢI
-================================ */
 
 function showSuccessToast() {
   clearTimeout(toastTimer);
-
   successToast.classList.remove("show");
-
-  /*
-   * Khởi động lại animation nếu người dùng
-   * gửi nhiều yêu cầu liên tiếp.
-   */
   void successToast.offsetWidth;
-
   successToast.classList.add("show");
-
-  toastTimer = setTimeout(() => {
-    successToast.classList.remove("show");
-  }, 4500);
+  toastTimer = setTimeout(() => successToast.classList.remove("show"), 4500);
 }
 
-/* ================================
-   11. HIỂN THỊ TÓM TẮT PHIẾU
-================================ */
+function makeTicketCode() {
+  const random = Math.floor(1000 + Math.random() * 9000);
+  return `VT-QA-${random}`;
+}
 
-function fillTicketSummary(ticketData) {
-  document.querySelector("#summaryName").textContent = ticketData.fullName;
+function getTickets() {
+  try {
+    return JSON.parse(localStorage.getItem(TICKET_STORAGE_KEY)) || [];
+  } catch {
+    return [];
+  }
+}
 
-  document.querySelector("#summaryEmail").textContent = ticketData.email;
+function saveTickets(tickets) {
+  localStorage.setItem(TICKET_STORAGE_KEY, JSON.stringify(tickets));
+}
 
-  document.querySelector("#summarySubject").textContent =
-    ticketData.requestSubject;
+function ensureDemoTicket() {
+  const tickets = getTickets();
+  if (tickets.some((t) => t.code === "VT-QA-0001")) return;
+  tickets.push({
+    code: "VT-QA-0001",
+    email: "demo@viettech.vn",
+    fullName: "Nguyễn Minh Anh",
+    requestSubject: "Tài khoản & đăng nhập",
+    requestDescription:
+      "Tôi không nhận được mã xác thực khi thực hiện quên mật khẩu.",
+    createdAt: "2026-08-08T09:18:00+07:00",
+    updatedAt: "2026-08-08T14:32:00+07:00",
+    currentStep: 3,
+    response:
+      "Chào bạn Minh Anh, đội hỗ trợ đã kiểm tra và mở lại luồng gửi mã xác thực cho tài khoản. Bạn vui lòng thử lại thao tác “Quên mật khẩu”. Nếu chưa nhận được mã sau 5 phút, hãy phản hồi lại phiếu này để tụi mình kiểm tra tiếp.",
+    responseAt: "2026-08-08T14:32:00+07:00",
+  });
+  saveTickets(tickets);
+}
 
+function formatTicketDate(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value || "—";
+  return date.toLocaleString("vi-VN", {
+    hour: "2-digit",
+    minute: "2-digit",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+}
+
+function escapeHtml(value = "") {
+  return String(value).replace(
+    /[&<>'"]/g,
+    (char) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[
+        char
+      ],
+  );
+}
+
+function fillTicketSummary(data, code) {
+  document.querySelector("#summaryName").textContent = data.fullName;
+  document.querySelector("#summaryEmail").textContent = data.email;
+  document.querySelector("#summarySubject").textContent = data.requestSubject;
   document.querySelector("#summaryDescription").textContent =
-    ticketData.requestDescription;
+    data.requestDescription;
+  document.querySelector("#ticketCode").textContent = code;
 }
 
-/* ================================
-   12. XỬ LÝ GỬI PHIẾU YÊU CẦU
-================================ */
+function storeNewTicket(data, code) {
+  const tickets = getTickets();
+  const now = new Date().toISOString();
+  tickets.unshift({
+    code,
+    email: data.email.trim().toLowerCase(),
+    fullName: data.fullName,
+    requestSubject: data.requestSubject,
+    requestDescription: data.requestDescription,
+    createdAt: now,
+    updatedAt: now,
+    currentStep: 0,
+    response: "",
+    responseAt: "",
+  });
+  saveTickets(tickets.slice(0, 30));
+}
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+function statusText(step) {
+  return TIMELINE_LABELS[
+    Math.max(0, Math.min(step, TIMELINE_LABELS.length - 1))
+  ];
+}
 
-  /*
-   * Lấy dữ liệu người dùng đã nhập
-   * trước khi xóa nội dung form.
-   */
-  const formData = new FormData(form);
-  const ticketData = Object.fromEntries(formData.entries());
+function renderTicket(ticket) {
+  trackerError.hidden = true;
+  trackerEmpty.hidden = true;
+  ticketDetail.hidden = false;
+  const step = Math.max(0, Math.min(Number(ticket.currentStep) || 0, 4));
+  const isDone = step === 4;
+  const timeline = TIMELINE_LABELS.map((label, index) => {
+    const cls = index < step ? "complete" : index === step ? "current" : "";
+    return `<div class="timeline-step ${cls}"><i class="timeline-dot"></i>${label}</div>`;
+  }).join("");
 
-  /*
-   * Khóa nút trong thời gian gửi,
-   * tránh người dùng bấm nhiều lần.
-   */
+  const reply = ticket.response
+    ? `<div class="support-reply"><div class="reply-avatar">VT</div><div class="reply-body"><strong>Phản hồi từ VietTech Support</strong><p>${escapeHtml(ticket.response)}</p><span class="reply-time">${formatTicketDate(ticket.responseAt || ticket.updatedAt)}</span></div></div>`
+    : `<div class="waiting-reply">Phiếu đang được đội hỗ trợ tiếp nhận. Khi có cập nhật hoặc phản hồi, nội dung sẽ xuất hiện trực tiếp tại đây và đồng thời được gửi tới email của bạn.</div>`;
+
+  ticketDetail.innerHTML = `
+    <div class="ticket-detail-head">
+      <div>
+        <div class="ticket-detail-code">${escapeHtml(ticket.code)}</div>
+        <h3>${escapeHtml(ticket.requestSubject)}</h3>
+        <div class="ticket-detail-date">Tạo lúc ${formatTicketDate(ticket.createdAt)} · Cập nhật ${formatTicketDate(ticket.updatedAt)}</div>
+      </div>
+      <span class="status-pill ${isDone ? "done" : "active"}">${statusText(step)}</span>
+    </div>
+    <div class="ticket-info-grid">
+      <div class="ticket-info-box"><span>NGƯỜI GỬI</span><strong>${escapeHtml(ticket.fullName)}</strong></div>
+      <div class="ticket-info-box"><span>EMAIL</span><strong>${escapeHtml(ticket.email)}</strong></div>
+      <div class="ticket-info-box" style="grid-column:1/-1"><span>NỘI DUNG YÊU CẦU</span><strong>${escapeHtml(ticket.requestDescription)}</strong></div>
+    </div>
+    <div class="progress-title"><strong>Quy trình phản hồi</strong><span>Bước ${step + 1}/${TIMELINE_LABELS.length}</span></div>
+    <div class="ticket-timeline">${timeline}</div>
+    ${reply}
+  `;
+}
+
+function findTicket(code, email) {
+  const normalizedCode = code.trim().toUpperCase();
+  const normalizedEmail = email.trim().toLowerCase();
+
+  return getTickets().find(
+    (ticket) =>
+      ticket.code.toUpperCase() === normalizedCode &&
+      ticket.email.toLowerCase() === normalizedEmail,
+  );
+}
+
+trackerForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const ticket = findTicket(trackCode.value, trackEmail.value);
+  if (!ticket) {
+    ticketDetail.hidden = true;
+    trackerEmpty.hidden = false;
+    trackerError.textContent =
+      "Không tìm thấy yêu cầu khớp với mã phiếu và email này. Kiểm tra lại thông tin rồi thử lại nhé.";
+    trackerError.hidden = false;
+    return;
+  }
+  renderTicket(ticket);
+});
+
+ensureDemoTicket();
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(form).entries());
   submitButton.disabled = true;
-  submitButton.textContent = "Đang gửi yêu cầu...";
-
-  /*
-   * Mô phỏng quá trình gửi yêu cầu.
-   */
+  submitButton.textContent = "Đang gửi...";
   setTimeout(() => {
-    fillTicketSummary(ticketData);
-
+    const code = makeTicketCode();
+    storeNewTicket(data, code);
+    fillTicketSummary(data, code);
     form.reset();
-
     submitButton.disabled = false;
     submitButton.textContent = "Gửi yêu cầu hỗ trợ →";
-
     closeModal();
-
-    /*
-     * Hiện bảng tóm tắt giữa màn hình.
-     */
     successModal.hidden = false;
     document.body.classList.add("modal-open");
-
-    /*
-     * Hiện animation thông báo
-     * ở góc trên bên phải.
-     */
     showSuccessToast();
-  }, 900);
+  }, 800);
 });
+
+function goBack() {
+  if (window.history.length > 1) window.history.back();
+  else window.location.href = "index.html";
+}
+
+/* MICRO ANIMATIONS */
+const reducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
+
+if (!reducedMotion) {
+  const revealGroups = [
+    [".section-heading", 0],
+    [".category-card", 70],
+    [".tracker-search-card, .tracker-result-card", 90],
+    [".faq-left, .faq-item", 70],
+    [".cta", 0],
+    [".contact-card", 80],
+  ];
+
+  const revealElements = [];
+  revealGroups.forEach(([selector, stagger]) => {
+    document.querySelectorAll(selector).forEach((el, index) => {
+      el.classList.add("reveal-ready");
+      el.style.setProperty(
+        "--reveal-delay",
+        `${Math.min(index * stagger, 320)}ms`,
+      );
+      revealElements.push(el);
+    });
+  });
+
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -45px 0px" },
+  );
+
+  revealElements.forEach((el) => revealObserver.observe(el));
+
+  const hero = document.querySelector(".hero");
+  if (hero) {
+    hero.addEventListener("pointermove", (event) => {
+      const rect = hero.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      hero.style.setProperty("--mx", `${x.toFixed(1)}%`);
+      hero.style.setProperty("--my", `${y.toFixed(1)}%`);
+    });
+    hero.addEventListener("pointerleave", () => {
+      hero.style.setProperty("--mx", "74%");
+      hero.style.setProperty("--my", "22%");
+    });
+  }
+}
