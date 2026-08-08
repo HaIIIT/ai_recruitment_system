@@ -1158,287 +1158,646 @@ body::after {
     animation: none !important;
   }
 }
-
 /* ======================================================
-   PAGE TRANSITION - CỬA THÉP TRƯỢT NGANG
-   Không xoay 3D, không tạt ra phía người dùng
+   HELPDESK LIGHT THEME
+   Đồng bộ Forgot Password với Helpdesk + Login
 ====================================================== */
 
-.page-transition {
-  position: fixed;
-  inset: 0;
-  z-index: 999999;
-  overflow: hidden;
-  background: transparent;
-  pointer-events: all;
+:root {
+  --vt-blue: #5a8df8;
+  --vt-blue-dark: #4779e4;
+  --vt-purple: #8d8cf6;
+  --vt-cyan: #79d9f5;
+  --vt-green: #26ad82;
+
+  --vt-text: #263550;
+  --vt-muted: #74819a;
+  --vt-line: #e2eaf5;
+
+  --vt-page: #f7faff;
+  --vt-card: rgba(255, 255, 255, 0.95);
 }
 
-.page-transition.is-hidden {
-  visibility: hidden;
-  pointer-events: none;
-}
+/* ======================================================
+   NỀN TRANG
+====================================================== */
 
-/* ===============================
-   2 TẤM CỬA THÉP
-================================ */
-.steel-door {
-  position: absolute;
-  top: 0;
-  width: 50.2%;
-  height: 100%;
-  overflow: hidden;
+body {
+  color: var(--vt-text);
   background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.08),
-      rgba(255, 255, 255, 0) 20%
+    radial-gradient(
+      circle at 12% 8%,
+      rgba(105, 155, 255, 0.12),
+      transparent 28%
     ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.018) 0,
-      rgba(255, 255, 255, 0.018) 1px,
-      transparent 1px,
-      transparent 8px
+    radial-gradient(
+      circle at 90% 12%,
+      rgba(121, 217, 245, 0.12),
+      transparent 28%
     ),
-    linear-gradient(135deg, #274a69 0%, #193852 48%, #112940 100%);
+    radial-gradient(
+      circle at 78% 88%,
+      rgba(141, 140, 246, 0.07),
+      transparent 30%
+    ),
+    linear-gradient(145deg, #fcfdff 0%, #f3f8ff 48%, #f8fbff 100%);
+}
+
+body::before {
+  opacity: 0.18;
+
+  background-image:
+    linear-gradient(rgba(90, 141, 248, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90, 141, 248, 0.045) 1px, transparent 1px);
+
+  background-size: 48px 48px;
+}
+
+body::after {
+  width: 380px;
+  height: 380px;
+
+  top: 3%;
+  left: 4%;
+
+  background: rgba(105, 155, 255, 0.08);
+
+  filter: blur(105px);
+}
+
+/* ======================================================
+   VÙNG NỘI DUNG
+====================================================== */
+
+.forgot-page {
+  padding-top: 34px;
+  padding-bottom: 34px;
+}
+
+.forgot-container {
+  max-width: 740px;
+}
+
+/* ======================================================
+   LOGO / TÊN HỆ THỐNG
+====================================================== */
+
+.logo-area {
+  margin-bottom: 22px;
+}
+
+.logo {
+  width: 52px;
+  height: 52px;
+
+  padding: 4px;
+
+  border: 1px solid #e6edf7;
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow: 0 9px 24px rgba(69, 96, 151, 0.1);
+}
+
+.logo-area h2 {
+  color: #30405c;
+
+  font-size: 16px;
+  letter-spacing: 0.025em;
+}
+
+.logo-area p {
+  color: #8a97aa;
+}
+
+/* ======================================================
+   CARD CHÍNH
+====================================================== */
+
+.forgot-card {
+  position: relative;
+
+  border: 1px solid rgba(222, 232, 245, 0.95);
+  border-radius: 24px;
+
+  background: var(--vt-card);
+
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-    inset 0 0 90px rgba(0, 0, 0, 0.2),
-    0 0 35px rgba(3, 15, 28, 0.18);
-  will-change: transform;
-  transition: transform 0.78s cubic-bezier(0.72, 0.02, 0.22, 1);
+    0 24px 60px rgba(76, 103, 158, 0.1),
+    0 4px 15px rgba(76, 103, 158, 0.04);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
-.steel-door::before {
-  content: "";
-  position: absolute;
-  inset: 24px;
-  border: 1px solid rgba(160, 194, 226, 0.14);
-  box-shadow: inset 0 0 0 6px rgba(0, 0, 0, 0.045);
-}
+.forgot-card::before {
+  height: 2px;
 
-/* mép kim loại ở đường ráp giữa 2 cánh */
-.steel-door::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 14px;
   background: linear-gradient(
     90deg,
-    rgba(0, 0, 0, 0.34),
-    rgba(145, 196, 236, 0.15),
-    rgba(0, 0, 0, 0.28)
+    transparent,
+    rgba(90, 141, 248, 0.76),
+    rgba(121, 217, 245, 0.78),
+    rgba(141, 140, 246, 0.62),
+    transparent
   );
 }
 
-.steel-door-left {
-  left: 0;
-  transform: translateX(0);
-  border-right: 1px solid rgba(147, 190, 229, 0.18);
+/* ======================================================
+   THANH 3 BƯỚC
+====================================================== */
+
+.step {
+  color: #9ba6b7;
 }
 
-.steel-door-left::after {
-  right: 0;
+.step-circle {
+  border: 1px solid #e0e8f3;
+
+  color: #8190a6;
+  background: #f3f6fb;
 }
 
-.steel-door-right {
-  right: 0;
-  transform: translateX(0);
-  border-left: 1px solid rgba(147, 190, 229, 0.18);
+.step.active {
+  color: #5982d8;
 }
 
-.steel-door-right::after {
-  left: 0;
+.step.active .step-circle {
+  border-color: transparent;
+
+  color: #ffffff;
+
+  background: linear-gradient(135deg, #73a0f8, #8296f5);
+
+  box-shadow: 0 7px 18px rgba(90, 141, 248, 0.2);
 }
 
-/* Khi trang hiện ra: 2 tấm trượt thẳng ra 2 bên */
-.page-transition.is-open .steel-door-left {
-  transform: translateX(-101%);
+.step.completed {
+  color: #35a984;
 }
 
-.page-transition.is-open .steel-door-right {
-  transform: translateX(101%);
+.step.completed .step-circle {
+  border-color: #55bd9a;
+  background: #55bd9a;
 }
 
-/* ===============================
-   ĐINH TÁN
-================================ */
-.door-rivet {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  z-index: 2;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #8ba4bb, #324f69 58%, #122940);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.42);
+.step-line {
+  background: #e7edf5;
 }
 
-.rivet-1 {
-  top: 38px;
-  left: 38px;
+.step-line.active {
+  background: linear-gradient(90deg, #75a0f5, #8d9af2);
 }
 
-.rivet-2 {
-  top: 38px;
-  right: 38px;
+/* ======================================================
+   HEADER TỪNG BƯỚC
+====================================================== */
+
+.header-icon {
+  color: #5d88e1;
+
+  background: linear-gradient(145deg, #edf4ff, #f3f7ff);
+
+  border: 1px solid #e2ebfa;
+
+  box-shadow: 0 8px 20px rgba(90, 141, 248, 0.08);
 }
 
-.rivet-3 {
-  bottom: 38px;
-  left: 38px;
+.header-icon.mail {
+  background: linear-gradient(145deg, #eef4ff, #f3f1ff);
 }
 
-.rivet-4 {
-  right: 38px;
-  bottom: 38px;
+.header-icon.password {
+  background: linear-gradient(145deg, #ecf9f4, #f2fbf8);
 }
 
-/* ===============================
-   KHÓA TRUNG TÂM
-================================ */
-.vault-lock {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-  transition:
-    opacity 0.22s ease,
-    transform 0.28s ease;
-  pointer-events: none;
+.form-header h1 {
+  color: #263550;
 }
 
-/* Khi 2 cánh đã trượt ra ngoài thì khóa biến mất */
-.page-transition.is-open .vault-lock {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.82);
+.form-header p {
+  color: #7e8b9f;
 }
 
-/* Lúc đóng cửa để chuyển trang: khóa hiện nhẹ sau khi cửa chạy vào */
-.page-transition.is-closing .vault-lock {
-  transition-delay: 0.14s;
+.email-display {
+  color: #5a84dd;
 }
 
-.vault-wheel {
-  position: relative;
-  width: 112px;
-  height: 112px;
-  border: 8px solid #7892aa;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    #203b55 0 29%,
-    #112941 30% 57%,
-    #36536d 58% 62%,
-    #152b41 63%
-  );
+/* ======================================================
+   INPUT
+====================================================== */
+
+.form-group label {
+  color: #46546d;
+}
+
+.form-group > input,
+.password-box input {
+  border-color: #dfe7f1;
+
+  color: #263550;
+  background: #fbfdff;
+}
+
+.form-group > input::placeholder,
+.password-box input::placeholder {
+  color: #a0acbc;
+}
+
+.form-group > input:hover,
+.password-box input:hover {
+  border-color: #cfdaea;
+}
+
+.form-group input:focus,
+.password-box input:focus {
+  border-color: #84aaf9;
+
+  background: #ffffff;
+
   box-shadow:
-    0 0 0 5px #172f47,
-    0 0 0 7px rgba(157, 199, 236, 0.14),
-    0 18px 45px rgba(0, 0, 0, 0.38),
-    inset 0 0 18px rgba(0, 0, 0, 0.45);
+    0 0 0 4px rgba(90, 141, 248, 0.09),
+    0 8px 20px rgba(68, 96, 153, 0.05);
+
+  transform: translateY(-1px);
 }
 
-/* Chỉ xoay cái khóa, cửa không xoay */
-.page-transition.is-closing .vault-wheel {
-  animation: vaultWheelTurn 0.62s cubic-bezier(0.2, 0.75, 0.25, 1) forwards;
-  animation-delay: 0.1s;
+.toggle-password {
+  color: #8997aa;
 }
 
-@keyframes vaultWheelTurn {
-  0% {
-    transform: rotate(0deg) scale(0.94);
-  }
+.toggle-password:hover {
+  color: #5a8df8;
+}
 
-  55% {
-    transform: rotate(105deg) scale(1.04);
-  }
+/* ======================================================
+   GHI CHÚ BẢO MẬT
+====================================================== */
 
+.security-note {
+  border: 1px solid #deebfa;
+
+  background: linear-gradient(145deg, #f2f7ff, #f7faff);
+}
+
+.security-note strong {
+  color: #4f6280;
+}
+
+.security-note p {
+  color: #7d8ba0;
+}
+
+/* ======================================================
+   BUTTON
+====================================================== */
+
+.btn-primary {
+  color: #ffffff;
+
+  background: linear-gradient(135deg, #6c9af7 0%, #708ff3 52%, #8d8cf6 100%);
+
+  box-shadow: 0 11px 24px rgba(90, 141, 248, 0.18);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #6090ef, #7f83ed);
+
+  box-shadow: 0 14px 28px rgba(90, 141, 248, 0.22);
+
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  border: 1px solid #dce5f0;
+
+  color: #637086;
+  background: #ffffff;
+}
+
+.btn-secondary:hover {
+  border-color: #cddbeb;
+  background: #f7faff;
+}
+
+/* ======================================================
+   OTP
+====================================================== */
+
+.demo-code {
+  border: 1px dashed #fb923c;
+
+  color: #000000;
+  background: #fff7ed;
+}
+
+.demo-code strong {
+  color: #ea580c;
+}
+
+.otp-title {
+  color: #46546d;
+}
+
+.otp-input {
+  border-color: #dbe5f1;
+
+  color: #33445f;
+  background: #fbfdff;
+}
+
+.otp-input:focus {
+  border-color: #84aaf9;
+
+  background: #ffffff;
+
+  box-shadow: 0 0 0 4px rgba(90, 141, 248, 0.09);
+}
+
+.otp-options {
+  color: #8290a4;
+}
+
+.resend-btn {
+  color: #5a84dd;
+}
+
+.resend-btn:hover {
+  color: #416fcf;
+}
+
+/* ======================================================
+   YÊU CẦU MẬT KHẨU
+====================================================== */
+
+.password-requirements {
+  border: 1px solid #e1e8f2;
+
+  background: #f9fbfe;
+}
+
+.password-requirements > p {
+  color: #46546d;
+}
+
+.requirement {
+  color: #8390a3;
+}
+
+.requirement.valid {
+  color: #28a77d;
+}
+
+/* ======================================================
+   LINK QUAY LẠI
+====================================================== */
+
+.back-login a {
+  color: #5a84dd;
+}
+
+.back-login a:hover {
+  color: #3f6fce;
+}
+
+/* ======================================================
+   VERIFY OVERLAY
+====================================================== */
+
+.verify-overlay {
+  background: rgba(52, 69, 103, 0.3);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.verify-box {
+  border: 1px solid #e2eaf4;
+
+  background: rgba(255, 255, 255, 0.98);
+
+  box-shadow: 0 24px 65px rgba(49, 71, 116, 0.17);
+}
+
+.verify-box h3 {
+  color: #2d3b55;
+}
+
+.verify-box > p {
+  color: #7d899c;
+}
+
+.verify-spinner {
+  border-color: #dde8f7;
+  border-top-color: #6f9bf5;
+}
+
+.verify-spinner-inner {
+  background: #f2f7ff;
+}
+
+.verify-step {
+  color: #8390a3;
+}
+
+.verify-step-icon {
+  border-color: #dce5f1;
+
+  color: #8895a8;
+  background: #f7f9fc;
+}
+
+.verify-step.active {
+  color: #557fd5;
+}
+
+.verify-step.active .verify-step-icon {
+  border-color: #6e9af3;
+  border-top-color: transparent;
+}
+
+.verify-step.done {
+  color: #2da67f;
+}
+
+.verify-step.done .verify-step-icon {
+  border-color: #4db993;
+  background: #4db993;
+}
+
+.verify-status {
+  background: #e9eef5;
+}
+
+.verify-progress {
+  background: linear-gradient(90deg, #75a1f7, #8e99f2, #54c6b1);
+}
+
+.verify-secure-note {
+  color: #8995a7;
+}
+
+/* ======================================================
+   TOAST
+====================================================== */
+
+.toast {
+  border: 1px solid #e2e9f3;
+
+  background: rgba(255, 255, 255, 0.98);
+
+  box-shadow: 0 14px 36px rgba(57, 80, 128, 0.13);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.toast-title {
+  color: #36455f;
+}
+
+.toast-message {
+  color: #7d899c;
+}
+
+.toast.success {
+  border-left-color: #4bb48f;
+}
+
+.toast.error {
+  border-left-color: #e26a78;
+}
+
+.toast.info {
+  border-left-color: #73a0f8;
+}
+
+/* ======================================================
+   POPUP THÀNH CÔNG
+====================================================== */
+
+.popup-overlay {
+  background: rgba(48, 65, 97, 0.3);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.success-popup {
+  border: 1px solid #e2e9f3;
+
+  background: rgba(255, 255, 255, 0.99);
+
+  box-shadow: 0 24px 65px rgba(49, 71, 116, 0.16);
+}
+
+.success-icon {
+  color: #ffffff;
+
+  background: linear-gradient(135deg, #53c39b, #38a981);
+
+  box-shadow: 0 10px 24px rgba(38, 173, 130, 0.2);
+}
+
+.success-popup h2 {
+  color: #2d3b55;
+}
+
+.success-popup p {
+  color: #7d899c;
+}
+
+.success-popup button {
+  color: #ffffff;
+
+  background: linear-gradient(135deg, #6c9af7, #898cf4);
+
+  box-shadow: 0 10px 22px rgba(90, 141, 248, 0.18);
+}
+
+.success-popup button:hover {
+  transform: translateY(-1px);
+
+  box-shadow: 0 13px 26px rgba(90, 141, 248, 0.22);
+}
+
+/* ======================================================
+   COPYRIGHT
+====================================================== */
+
+.copyright {
+  color: #8795a8;
+  opacity: 1;
+}
+
+/* ======================================================
+   ANIMATION NHẸ
+====================================================== */
+
+.step.active .step-circle {
+  animation: lightStepPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes lightStepPulse {
+  0%,
   100% {
-    transform: rotate(165deg) scale(1);
+    box-shadow:
+      0 7px 18px rgba(90, 141, 248, 0.18),
+      0 0 0 0 rgba(90, 141, 248, 0.14);
+  }
+
+  50% {
+    box-shadow:
+      0 7px 18px rgba(90, 141, 248, 0.18),
+      0 0 0 8px rgba(90, 141, 248, 0);
   }
 }
 
-.wheel-spoke {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 68px;
-  height: 7px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #506c86, #9cb2c6, #506c86);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.32);
-  transform-origin: center;
-}
-
-.spoke-1 {
-  transform: translate(-50%, -50%) rotate(0deg);
-}
-
-.spoke-2 {
-  transform: translate(-50%, -50%) rotate(60deg);
-}
-
-.spoke-3 {
-  transform: translate(-50%, -50%) rotate(120deg);
-}
-
-.wheel-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 30px;
-  height: 30px;
-  border: 3px solid #718ca5;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #8ca5ba, #243e57 70%);
-  transform: translate(-50%, -50%);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
-}
-
-.transition-text {
-  margin-top: 23px;
-  color: #c7d8e8;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-}
+/* ======================================================
+   MOBILE
+====================================================== */
 
 @media (max-width: 600px) {
-  .vault-wheel {
-    width: 88px;
-    height: 88px;
-    border-width: 6px;
+  .forgot-page {
+    padding: 24px 14px;
   }
 
-  .wheel-spoke {
-    width: 54px;
-    height: 6px;
+  .forgot-card {
+    border-radius: 20px;
   }
 
-  .transition-text {
-    font-size: 8px;
+  .logo-area h2 {
+    font-size: 14px;
   }
 
-  .steel-door::before {
-    inset: 14px;
+  .logo-area p {
+    font-size: 11px;
+  }
+
+  body::after {
+    width: 260px;
+    height: 260px;
+    left: -70px;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .steel-door,
-  .vault-lock {
-    transition-duration: 0.01ms !important;
-  }
+/* ======================================================
+   GIẢM CHUYỂN ĐỘNG
+====================================================== */
 
-  .page-transition.is-closing .vault-wheel {
-    animation-duration: 0.01ms !important;
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after,
+  .forgot-card,
+  .forgot-card::before,
+  .step.active .step-circle {
+    animation: none !important;
   }
 }

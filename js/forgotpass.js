@@ -517,87 +517,9 @@ resetPasswordBtn.addEventListener("click", function () {
 });
 
 goLoginBtn.addEventListener("click", function () {
-  navigateWithVault("../html/login.html");
+  window.location.href = "../html/login.html";
 });
 
 cccd.addEventListener("input", function () {
   this.value = this.value.replace(/\D/g, "").slice(0, 12);
 });
-
-/* ======================================================
-   PAGE TRANSITION - CỬA THÉP TRƯỢT NGANG
-====================================================== */
-
-const pageTransition = document.getElementById("pageTransition");
-
-/*
-   Khi vào trang:
-   2 tấm cửa đang khép ở giữa,
-   sau đó trượt thẳng ra trái/phải.
-*/
-function openVaultPage() {
-  if (!pageTransition) {
-    return;
-  }
-
-  pageTransition.classList.remove("is-hidden", "is-closing", "is-open");
-
-  setTimeout(function () {
-    pageTransition.classList.add("is-open");
-  }, 80);
-
-  setTimeout(function () {
-    pageTransition.classList.add("is-hidden");
-  }, 920);
-}
-
-/*
-   Khi bấm chuyển trang:
-   2 tấm cửa trượt từ hai bên vào giữa,
-   khóa xoay nhẹ rồi mới đổi trang.
-*/
-function navigateWithVault(url) {
-  if (!pageTransition) {
-    window.location.href = url;
-    return;
-  }
-
-  pageTransition.classList.remove("is-hidden");
-
-  /*
-       Giữ trạng thái cửa đang nằm ngoài 2 bên
-       trước khi cho nó trượt vào giữa.
-    */
-  pageTransition.classList.add("is-open");
-
-  requestAnimationFrame(function () {
-    requestAnimationFrame(function () {
-      pageTransition.classList.add("is-closing");
-      pageTransition.classList.remove("is-open");
-    });
-  });
-
-  setTimeout(function () {
-    window.location.href = url;
-  }, 820);
-}
-
-/* Chỉ các link có data-page-transition mới chạy hiệu ứng */
-document.querySelectorAll("a[data-page-transition]").forEach(function (link) {
-  link.addEventListener("click", function (event) {
-    if (
-      event.ctrlKey ||
-      event.metaKey ||
-      event.shiftKey ||
-      link.target === "_blank"
-    ) {
-      return;
-    }
-
-    event.preventDefault();
-
-    navigateWithVault(link.getAttribute("href"));
-  });
-});
-
-openVaultPage();
